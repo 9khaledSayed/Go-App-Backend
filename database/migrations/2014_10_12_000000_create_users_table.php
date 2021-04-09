@@ -17,10 +17,18 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->unique();
+//            $table->unsignedBigInteger('payment_method_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+//
+//            $table->foreign('payment_method_id')
+//                ->references('id')
+//                ->on('payment_methods')
+//                ->onDelete('cascade');
+
         });
     }
 
