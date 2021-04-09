@@ -67,6 +67,30 @@
                 </li>
 
 
+                <li class="menu-item menu-item" aria-haspopup="true">
+                    <a href="{{route('dashboard.users.index')}}" class="menu-link">
+                            <span class="svg-icon menu-icon">
+                                <span class="svg-icon menu-icon">
+                                    <i class="flaticon2-user-1"></i>
+                                </span>
+                            </span>
+                        <span class="menu-text">المستخدمين</span>
+                    </a>
+                </li>
+
+                <li class="menu-item menu-item" aria-haspopup="true">
+                    <a href="{{route('dashboard.providers.index')}}" class="menu-link">
+                            <span class="svg-icon menu-icon">
+                                <span class="svg-icon menu-icon">
+                                    <i class="flaticon2-user-1"></i>
+                                </span>
+                            </span>
+                        <span class="menu-text">مزودي الخدمه</span>
+                    </a>
+                </li>
+
+
+
 
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a onclick="document.getElementById('logout-form').submit();" href="javascript:" class="menu-link menu-toggle">

@@ -11,12 +11,7 @@ class Admin extends Authenticatable
     protected $table = 'admins';
     protected $guard = 'admin';
     protected $guarded = [];
-    public $rules   =
-    [
-        'name'=>'required | min:3',
-        'email'  =>'required | email | unique:admins',
-        'password' => 'required|confirmed|min:6',
-    ];
+
 
 
 

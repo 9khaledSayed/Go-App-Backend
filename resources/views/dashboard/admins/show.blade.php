@@ -29,21 +29,6 @@
                                                 <input class="form-control" disabled  value="{{$admin->email}}" />
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <label>* الصلاحيات :</label>
-                                                <select class="form-control select2" id="kt_select_roles"  multiple="multiple">
-                                                    @foreach($roles as $role)
-                                                        <option value="{{$role->id}}" @if($adminRoles->contains($role)) selected @endif>{{$role->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                                @if ($errors->has('roles'))
-                                                    <div>
-                                                        <p class="invalid-input">{{ $errors->first('roles') }}</p>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -55,21 +55,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <label>* الصلاحيات :</label>
-                                                <select class="form-control select2" id="kt_select_roles" name="roles[]"  multiple="multiple">
-                                                    @foreach($roles as $role)
-                                                        <option value="{{$role->id}}">{{$role->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                                @if ($errors->has('roles'))
-                                                    <div>
-                                                        <p class="invalid-input">{{ $errors->first('roles') }}</p>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <div class="col-lg-6">
                                                 <label>* كلمه المرور :</label>
                                                 <input type="password" name="password" class="form-control" placeholder="أدخل كلمــه المرور" value="{{old('password')}}" />
