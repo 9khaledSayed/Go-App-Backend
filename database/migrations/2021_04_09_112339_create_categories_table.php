@@ -15,7 +15,23 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('service_id');
+            $table->string('name');
+            $table->enum('type', ['print', 'store']);
+            $table->longText('description');
+            $table->longText('images');
             $table->timestamps();
+
+            $table->foreign('service_id')
+                ->references('id')
+                ->on('services')
+                ->onDelete('cascade');
+
+            $table->foreign('parent_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('cascade');
         });
     }
 
