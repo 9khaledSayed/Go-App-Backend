@@ -17,6 +17,7 @@ class CreatePaymentMethodsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image')->default('default-payment-method.png');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

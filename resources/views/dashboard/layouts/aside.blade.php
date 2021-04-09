@@ -71,7 +71,7 @@
                     <a href="{{route('dashboard.users.index')}}" class="menu-link">
                             <span class="svg-icon menu-icon">
                                 <span class="svg-icon menu-icon">
-                                    <i class="flaticon2-user-1"></i>
+                                    <i class="flaticon2-user"></i>
                                 </span>
                             </span>
                         <span class="menu-text">المستخدمين</span>
@@ -82,7 +82,7 @@
                     <a href="{{route('dashboard.providers.index')}}" class="menu-link">
                             <span class="svg-icon menu-icon">
                                 <span class="svg-icon menu-icon">
-                                    <i class="flaticon2-user-1"></i>
+                                    <i class="fa fa-hand-holding"></i>
                                 </span>
                             </span>
                         <span class="menu-text">مزودي الخدمه</span>
@@ -94,7 +94,7 @@
                     <a href="javascript:;" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
 										<span class="svg-icon menu-icon">
-											<i class="flaticon2-user-1"></i>
+											<i class="fa fa-credit-card"></i>
 										</span>
 										</span>
                         <span class="menu-text">طرق الدفع</span>

@@ -108,40 +108,25 @@ var KTDatatableRemoteAjaxDemo = function() {
                 selector: false,
                 textAlign: 'center',
             },  {
-                field: 'accountNameAr',
-                title: "مالك الحساب",
+                field: 'name',
+                title: "اسم طريقه الدفع",
                 selector: false,
                 textAlign: 'center',
             },{
-                field: 'bankNameAr',
-                title: "أسم البنك",
-                selector: false,
-                textAlign: 'center',
-            },{
-                field: 'icon',
-                title: "شعار البنك",
+                field: 'image',
+                title: "صوره طريقه الدفع",
                 selector: false,
                 textAlign: 'center',
                 template: function(row) {
-                    if (row.bankLogo)
+                    if (row.image)
                     {
-                        return '<img src="/storage/' + row.bankLogo +'" style="width:50px;height:50px;border-radius:5px" class="shadow"/>';
+                        return '<img src="/storage/Images/PaymentMethods/' + row.image +'" style="width:50px;height:50px;border-radius:5px" class="shadow"/>';
 
                     }else
                     {
-                        return '<img src="/placeholder.png" style="width:50px;height:50px;border-radius:5px" class="shadow"/>';
+                        return '<img src="/placeholder.png" style="width:80px;height:40px;border-radius:5px" class="shadow"/>';
                     }
                 },
-            },{
-                field: 'accountNo',
-                title: "رقم الحساب",
-                selector: false,
-                textAlign: 'center',
-            },{
-                field: 'ibanNo',
-                title: "رقم الايبان",
-                selector: false,
-                textAlign: 'center',
             },{
                 field: 'status',
                 title: "الحاله",

@@ -35,9 +35,6 @@ class PaymentMethodController extends Controller
     }
 
 
-
-
-
     public function edit(PaymentMethod $paymentMethod)
     {
         return view('dashboard.payment-methods.edit',compact('paymentMethod'));
@@ -54,28 +51,43 @@ class PaymentMethodController extends Controller
     {
 
         $data = $request->validate([
-            'name'=>'required | min:3 | unique:paymentMethods',
+            'name'=>'required | min:3 | unique:payment_methods',
             'image'  =>'nullable | mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
+
+
+        if($request->hasFile('image'))
+        {
+            $data['image'] = uploadImage($request->file('image'), "PaymentMethods");
+        }
+
+        $data['status'] = $request['status'] == 'on';
 
         PaymentMethod::create($data);
 
 
-        return redirect()->route('dashboard.payment-methods.index')->with('message','تم إضافه مشرف بنجاج');
+        return redirect()->route('dashboard.payment-methods.index')->with('message','تم إضافه طريقه دفع جديده بنجاج');
     }
 
     public function update(Request $request, PaymentMethod $paymentMethod)
     {
 
-
         $data = $request->validate([
-            'name'=>'required | min:3',
-            'email'  =>'required | email | unique:paymentMethods,id,' . $paymentMethod->id,
+            'name'=>'required | min:3 | unique:payment_methods,id,' . $paymentMethod->id,
+            'image'  =>'nullable | mimes:jpeg,jpg,png,gif | max:10000',
         ]);
+
+        if($request->hasFile('image'))
+        {
+            deleteImage($paymentMethod['image'] , "PaymentMethods");
+            $data['image'] = uploadImage($request->file('image'), "PaymentMethods");
+        }
+
+        $data['status'] = $request['status'] == 'on';
 
         $paymentMethod->update($data);
 
-        return redirect()->route('dashboard.payment-methods.index')->with('message','تم تعديل بيانات المشرف بنجاج');
+        return redirect()->route('dashboard.payment-methods.index')->with('message','تم تعديل بيانات طريقه الدفع بنجاج');
 
     }
 
@@ -84,16 +96,7 @@ class PaymentMethodController extends Controller
 
         if($request->ajax())
         {
-            if ($id != 1)
-            {
-                PaymentMethod::find($id)->destroy($id);
-            }else
-            {
-                return response()->json([
-                    'message' => 'لا يمكن حذف هذا المشرف'
-                ],422);
-            }
-
+            PaymentMethod::find($id)->destroy($id);
         }
     }
 }

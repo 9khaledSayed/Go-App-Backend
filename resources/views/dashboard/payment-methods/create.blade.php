@@ -37,7 +37,7 @@
                                         <label class="col-12 text-center mb-5">ارفق صوره طريقه الدفع</label>
                                         <div class="form-group row">
                                             <div class="col-12 text-center">
-                                                <div class="image-input image-input-outline image-input-circle" id="kt_image_4">
+                                                <div class="image-input image-input-outline image-input-circle" id="kt_image">
                                                     <div class="image-input-wrapper" style="background-image: url({{asset('placeholder.png')}})"></div>
                                                     <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="{{__('Change Logo')}}">
                                                         <i class="fa fa-pen icon-sm text-muted"></i>
@@ -57,10 +57,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-lg-3 m-auto">
+
+                                            <div class="col-lg-8">
                                                 <label>* إســـم طريقه الدفع :</label>
-                                            </div>
-                                            <div class="col-lg-9">
                                                 <input type="text" name="name" class="form-control" placeholder="أدخل إســـم طريقه الدفع"  value="{{old('name')}}" />
                                                 @if ($errors->has('name'))
                                                     <div>
@@ -68,6 +67,19 @@
                                                     </div>
                                                 @endif
                                             </div>
+
+                                            <div class="col-4 d-flex justify-content-around mt-auto">
+                                                <label class="col-9 col-form-label">الظهور في التطبيق</label>
+                                                <div class="col-3">
+												<span class="switch switch-lg switch-icon">
+														<label>
+																<input type="checkbox"  name="status"  checked />
+																<span></span>
+														</label>
+												</span>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -92,10 +104,6 @@
     <!--end::Entry-->
 @endsection
 @push('scripts')
-    <script>
-        $('#kt_select_roles').select2({
-            placeholder: "اختر",
-        });
-    </script>
+    <script src="{{asset('assets/js/pages/crud/file-upload/image-input.js')}}"></script>
 
 @endpush
