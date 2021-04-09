@@ -12,7 +12,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 type: 'remote',
                 source: {
                     read: {
-                        url: '/dashboard/clients',
+                        url: '/dashboard/users',
                         method:'GET',
                         // sample custom headers
                         // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
@@ -68,7 +68,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                                 $.ajax({
                                     method: 'delete',
                                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                                    url: '/dashboard/clients/' + data.id,
+                                    url: '/dashboard/users/' + data.id,
                                     error: function (err) {
                                         if (err.hasOwnProperty('responseJSON')) {
                                             if (err.responseJSON.hasOwnProperty('message')) {
@@ -113,13 +113,8 @@ var KTDatatableRemoteAjaxDemo = function() {
                 selector: false,
                 textAlign: 'center',
             }, {
-                field: 'mobile',
+                field: 'phone',
                 title: "الجوال",
-                selector: false,
-                textAlign: 'center',
-            },{
-                field: 'address',
-                title: "العنوان",
                 selector: false,
                 textAlign: 'center',
             },{
@@ -134,7 +129,7 @@ var KTDatatableRemoteAjaxDemo = function() {
                 template: function(row) {
                     return '\
                         <div class="dropdown dropdown-inline">\
-                            <a href="/dashboard/clients/' + row.id  + '" class="btn btn-sm btn-clean btn-icon mr-2" title="عـرض">\
+                            <a href="/dashboard/users/' + row.id  + '" class="btn btn-sm btn-clean btn-icon mr-2" title="عـرض">\
                              \<i class="flaticon-eye"></i>\
                             </a>\
                         </div>\

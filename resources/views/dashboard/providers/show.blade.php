@@ -10,7 +10,7 @@
                 <div class="col-lg-12">
                     <div class="card card-custom example example-compact">
                         <div class="card-header">
-                            <h2 class="card-title">  المستخدم :  {{$user->name}} </h2>
+                            <h2 class="card-title">  مزود الخدمه :  {{$provider->name}} </h2>
                         </div>
                         <!--begin::Form-->
                         <form class="form">
@@ -20,15 +20,15 @@
                                         <div class="form-group row">
                                             <div class="col-lg-4">
                                                 <label> الأسم  :</label>
-                                                <input type="text" class="form-control text-center" disabled value="{{$user->name }}" />
+                                                <input type="text" class="form-control text-center" disabled value="{{ $provider->name }}" />
                                             </div>
                                             <div class="col-lg-4">
                                                 <label> الجوال  :</label>
-                                                <input type="text" class="form-control text-center" disabled value="{{$user->phone }}" />
+                                                <input type="text" class="form-control text-center" disabled value="{{ $provider->phone }}" />
                                             </div>
                                             <div class="col-lg-4">
                                                 <label> البريد الأكتروني :</label>
-                                                <input type="text" class="form-control text-center" disabled value="{{$user->email ?? 'لا يوجد' }}" />
+                                                <input type="text" class="form-control text-center" disabled value="{{ $provider->email ?? 'لا يوجد' }}" />
                                             </div>
                                         </div>
 
