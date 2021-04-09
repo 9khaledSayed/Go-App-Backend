@@ -11,6 +11,7 @@ Route::group( ['prefix' => 'dashboard' ,  'namespace' => 'Dashboard' , 'middlewa
         Route::resource('admins','AdminController');
         Route::resource('users','UserController');
         Route::resource('providers','ProviderController');
+        Route::resource('categories','CategoryController');
         Route::resource('payment-methods','PaymentMethodController');
 
         Route::post('/logout' ,'AdminController@logout')->name('logout');

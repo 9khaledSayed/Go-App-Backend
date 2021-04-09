@@ -75,6 +75,7 @@
                                 </span>
                             </span>
                         <span class="menu-text">المستخدمين</span>
+                        <i class="menu-arrow"></i>
                     </a>
                 </li>
 
@@ -86,9 +87,42 @@
                                 </span>
                             </span>
                         <span class="menu-text">مزودي الخدمه</span>
+                        <i class="menu-arrow"></i>
                     </a>
                 </li>
 
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+										<span class="svg-icon menu-icon">
+										<span class="svg-icon menu-icon">
+											<i class="fas fa-square"></i>
+										</span>
+										</span>
+                        <span class="menu-text">الفئات</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('dashboard.categories.index')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">قائمه الفئات</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('dashboard.categories.create')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">اضافه فئه جديده</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
