@@ -90,6 +90,38 @@
                 </li>
 
 
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+										<span class="svg-icon menu-icon">
+										<span class="svg-icon menu-icon">
+											<i class="flaticon2-user-1"></i>
+										</span>
+										</span>
+                        <span class="menu-text">طرق الدفع</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('dashboard.payment-methods.index')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">قائمه طرق الدفع</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('dashboard.payment-methods.create')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">اضافه طريقه دفع جديده</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
 
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
