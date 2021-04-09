@@ -8,79 +8,76 @@ use App\Http\Controllers\Controller;
 
 class ServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()){
+            $services = Service::get();
+            return response()->json($services);
+        }
+        return view('dashboard.services.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('dashboard.services.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|max:255,unique:services',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description' => 'required|max:255',
+        ]);
+
+        if ($request->hasFile('logo')) {
+            $data['logo'] = uploadImage($request->file('logo'), "Services");
+        }
+
+        Service::create($data);
+
+        return redirect(route('dashboard.services.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Service $service)
     {
-        //
+        return view('dashboard.services.show', compact('service'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Service $service)
     {
-        //
+        return view('dashboard.services.edit', compact('service'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Service $service)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|max:255,unique:services,'. $service->id,
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description' => 'required|max:255',
+        ]);
+
+        if ($request->hasFile('logo')) {
+            deleteImage($service->logo, 'Services');
+            $data['logo'] = uploadImage($request->file('logo'), "Services");
+        }
+
+        $service->update($data);
+        return view('dashboard.services.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        return response()->json([
+            'status' => 1,
+            'message' => 'Item Deleted Successfully'
+        ]);
     }
 }

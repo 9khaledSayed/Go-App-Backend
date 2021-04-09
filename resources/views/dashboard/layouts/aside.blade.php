@@ -89,6 +89,83 @@
                     </a>
                 </li>
 
+                <li class="menu-item menu-item" aria-haspopup="true">
+                    <a href="{{route('dashboard.orders.index')}}" class="menu-link">
+                            <span class="svg-icon menu-icon">
+                                <span class="svg-icon menu-icon">
+                                    <i class="flaticon2-user-1"></i>
+                                </span>
+                            </span>
+                        <span class="menu-text">الطلبات</span>
+                    </a>
+                </li>
+
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+										<span class="svg-icon menu-icon">
+										<span class="svg-icon menu-icon">
+											<i class="flaticon2-user-1"></i>
+										</span>
+										</span>
+                        <span class="menu-text">الخدمات</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('dashboard.services.index')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">قائمه الخدمات</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('dashboard.services.create')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">اضافه خدمة جديدة</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+										<span class="svg-icon menu-icon">
+										<span class="svg-icon menu-icon">
+											<i class="flaticon2-layers"></i>
+										</span>
+										</span>
+                        <span class="menu-text">الخصائص</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="#" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">قائمه الخصائص</span>
+                                </a>
+                            </li>
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('dashboard.attributes.create')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">اضافه خاصية جديدة</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
 
 

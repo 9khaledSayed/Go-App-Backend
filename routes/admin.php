@@ -11,11 +11,11 @@ Route::group( ['prefix' => 'dashboard' ,  'namespace' => 'Dashboard' , 'middlewa
         Route::resource('admins','AdminController');
         Route::resource('users','UserController');
         Route::resource('providers','ProviderController');
+        Route::resource('services','ServiceController');
+        Route::resource('orders','OrderController')->except(['create','store','edit', 'update', 'delete']);
+        Route::resource('attributes','AttributeController');
 
         Route::post('/logout' ,'AdminController@logout')->name('logout');
-
-
-
     });
 
 });
