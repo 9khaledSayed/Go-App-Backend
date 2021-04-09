@@ -14,6 +14,8 @@ Route::group( ['prefix' => 'dashboard' ,  'namespace' => 'Dashboard' , 'middlewa
         Route::resource('services','ServiceController');
         Route::resource('orders','OrderController')->except(['create','store','edit', 'update', 'delete']);
         Route::resource('attributes','AttributeController');
+        Route::resource('categories','CategoryController');
+        Route::resource('payment-methods','PaymentMethodController');
 
         Route::post('/logout' ,'AdminController@logout')->name('logout');
     });

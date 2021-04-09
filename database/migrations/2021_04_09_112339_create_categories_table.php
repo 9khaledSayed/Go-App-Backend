@@ -15,10 +15,9 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id');
-            $table->unsignedBigInteger('service_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->unsignedBigInteger('service_id')->nullable();
             $table->string('name');
-            $table->enum('type', ['print', 'store']);
             $table->longText('description');
             $table->longText('images');
             $table->timestamps();

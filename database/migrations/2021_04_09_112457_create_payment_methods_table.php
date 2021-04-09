@@ -15,10 +15,9 @@ class CreatePaymentMethodsTable extends Migration
     {
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users');
+            $table->string('name');
+            $table->string('image')->default('default-payment-method.png');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
