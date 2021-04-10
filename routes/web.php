@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/' ,'login/admin');
 
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin.show-login');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin.login');

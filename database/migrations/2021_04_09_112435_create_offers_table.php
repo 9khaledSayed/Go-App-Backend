@@ -16,10 +16,20 @@ class CreateOffersTable extends Migration
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('provider_id');
-            $table->unsignedBigInteger('offer_id');
+            $table->unsignedBigInteger('order_id');
             $table->date('deadline');
             $table->decimal('price')->default(0);
             $table->timestamps();
+
+            $table->foreign('provider_id')
+                ->references('id')
+                ->on('providers')
+                ->onDelete('Cascade');
+
+            $table->foreign('order_id')
+                ->references('id')
+                ->on('orders')
+                ->onDelete('Cascade');
         });
     }
 

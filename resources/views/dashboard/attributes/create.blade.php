@@ -59,10 +59,6 @@
                                                             <input type="radio" name="type" @if(old('type') == 'number') checked @endif value="number" /> رقم
                                                             <span></span>
                                                         </label>
-                                                        <label class="radio radio-success">
-                                                            <input type="radio" name="type" value="image" @if(old('type') == 'image') checked @endif />صورة
-                                                            <span></span>
-                                                        </label>
                                                         <label class="radio radio-danger">
                                                             <input type="radio" name="type" value="size" @if(old('type') == 'size') checked @endif id="size"/>مقاس
                                                             <span></span>
@@ -82,7 +78,7 @@
                                             <div class="form-group row" id="valuesDiv" style="display: none">
                                                 <label class="col-form-label text-right col-lg-3 col-sm-12">Values</label>
                                                 <div class="col-lg-6 col-md-9 col-sm-12">
-                                                    <input id="values" class="form-control tagify" name='value' placeholder='type...'  autofocus="" />
+                                                    <input id="values" class="form-control tagify" name='value' value='{{old('value')}}' placeholder='type...'  autofocus="" />
                                                     <div class="mt-3">
                                                         <a href="javascript:;" id="kt_tagify_1_remove" class="btn btn-sm btn-light-primary font-weight-bold">حذف جميع الخيارات</a>
                                                     </div>
@@ -113,101 +109,5 @@
     <!--end::Entry-->
 @endsection
 @push('scripts')
-    <script src="{{asset('assets/js/pages/crud/forms/widgets/tagify.js')}}"></script>
-    <script>
-        $(function () {
-
-            $("input[type='radio']").each(function (key, radioBtn) {
-                toggleValuesDiv($(this));
-            })
-
-            radioBtnOnClick();
-            demo1();
-        });
-
-        var radioBtnOnClick = function () {
-            $("input[type='radio']").click(function () {
-                toggleValuesDiv($(this))
-            });
-        }
-
-        var toggleValuesDiv = function (radioBtn) {
-            var type = radioBtn.val();
-            var valuesDive =  $("#valuesDiv");
-
-            if (type != 'size' && type != 'list'){
-                valuesDive.fadeOut();
-            }else{
-
-                if(radioBtn.is(":checked")){
-                    valuesDive.fadeIn();
-                }
-
-            }
-        }
-
-        var demo1 = function() {
-            var input = document.getElementById('values'),
-                // init Tagify script on the above inputs
-                tagify = new Tagify(input, {
-                    originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
-                })
-
-
-            // "remove all tags" button event listener
-            document.getElementById('kt_tagify_1_remove').addEventListener('click', tagify.removeAllTags.bind(tagify))
-
-            // Chainable event listeners
-            tagify.on('add', onAddTag)
-                .on('remove', onRemoveTag)
-                .on('input', onInput)
-                .on('edit', onTagEdit)
-                .on('invalid', onInvalidTag)
-                .on('click', onTagClick)
-                .on('dropdown:show', onDropdownShow)
-                .on('dropdown:hide', onDropdownHide)
-
-            // tag added callback
-            function onAddTag(e) {
-                console.log("onAddTag: ", e.detail);
-                console.log("original input value: ", input.value)
-                tagify.off('add', onAddTag) // exmaple of removing a custom Tagify event
-            }
-
-            // tag remvoed callback
-            function onRemoveTag(e) {
-                console.log(e.detail);
-                console.log("tagify instance value:", tagify.value)
-            }
-
-            // on character(s) added/removed (user is typing/deleting)
-            function onInput(e) {
-                console.log(e.detail);
-                console.log("onInput: ", e.detail);
-            }
-
-            function onTagEdit(e) {
-                console.log("onTagEdit: ", e.detail);
-            }
-
-            // invalid tag added callback
-            function onInvalidTag(e) {
-                console.log("onInvalidTag: ", e.detail);
-            }
-
-            // invalid tag added callback
-            function onTagClick(e) {
-                console.log(e.detail);
-                console.log("onTagClick: ", e.detail);
-            }
-
-            function onDropdownShow(e) {
-                console.log("onDropdownShow: ", e.detail)
-            }
-
-            function onDropdownHide(e) {
-                console.log("onDropdownHide: ", e.detail)
-            }
-        }
-    </script>
+    <script src="{{asset('js/components/attribute_form.js')}}"></script>
 @endpush

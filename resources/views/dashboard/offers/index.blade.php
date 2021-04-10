@@ -14,16 +14,16 @@
                         <div class="alert-text font-weight-bold">{{session()->get('message')}}</div>
                         <div class="alert-close">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span>
-                                                <i class="ki ki-close"></i>
-                                            </span>
+                                <span>
+                                    <i class="ki ki-close"></i>
+                                </span>
                             </button>
                         </div>
                     </div>
                 @endif
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                     <div class="card-title">
-                        <h3>قائمه الخصائص</h3>
+                        <h3>قائمة العروض</h3>
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Dropdown-->
@@ -146,5 +146,5 @@
     <!--end::Entry-->
 @endsection
 @push('scripts')
-    <script src="{{asset('js/datatables/attributes.js')}}"></script>
+    <script src="{{asset('js/datatables/offers.js')}}"></script>
 @endpush

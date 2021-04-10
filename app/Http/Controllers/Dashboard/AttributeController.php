@@ -11,17 +11,16 @@ class AttributeController extends Controller
 
     public function index(Request $request)
     {
+        if ($request->ajax()){
+            $attributes =  Attribute::get();
+            return response()->json($attributes);
+        }
 
         return view('dashboard.attributes.index');
     }
 
     public function create()
     {
-//        $attribute = Attribute::find(1);
-//        dd(json_decode($attribute['value'] , true));
-
-
-
         return view('dashboard.attributes.create');
     }
 
@@ -36,29 +35,36 @@ class AttributeController extends Controller
 
         Attribute::create($data);
 
-        dd('done');
+        return redirect(route('dashboard.attributes.index'));
     }
 
 
-    public function show(Attribute $atribute)
+    public function show(Attribute $attribute)
     {
-        //
+        return view('dashboard.attributes.show', compact('attribute'));
     }
 
 
-    public function edit(Attribute $atribute)
+    public function edit(Attribute $attribute)
     {
-        //
+        return view('dashboard.attributes.edit', compact('attribute'));
     }
 
 
-    public function update(Request $request, Attribute $atribute)
+    public function update(Request $request, Attribute $attribute)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|unique:attributes,id,' . $attribute->id,
+            'type' => 'required',
+            'value' => 'required_if:type,size,list'
+        ]);
+        $attribute->update($data);
+
+        return redirect(route('dashboard.attributes.index'));
     }
 
 
-    public function destroy(Attribute $atribute)
+    public function destroy(Attribute $attribute)
     {
         //
     }

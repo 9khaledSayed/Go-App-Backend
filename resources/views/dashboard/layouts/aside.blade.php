@@ -101,6 +101,17 @@
                     </a>
                 </li>
 
+                <li class="menu-item menu-item" aria-haspopup="true">
+                    <a href="{{route('dashboard.offers.index')}}" class="menu-link">
+                            <span class="svg-icon menu-icon">
+                                <span class="svg-icon menu-icon">
+                                    <i class="flaticon2-layers-2"></i>
+                                </span>
+                            </span>
+                        <span class="menu-text">العروض</span>
+                    </a>
+                </li>
+
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
 										<span class="svg-icon menu-icon">
@@ -181,7 +192,7 @@
                         <i class="menu-arrow"></i>
                         <ul class="menu-subnav">
                             <li class="menu-item" aria-haspopup="true">
-                                <a href="#" class="menu-link">
+                                <a href="{{route('dashboard.attributes.index')}}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
