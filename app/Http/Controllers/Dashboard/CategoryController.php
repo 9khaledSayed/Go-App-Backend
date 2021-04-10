@@ -14,11 +14,29 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax())
+        {
+            $parentCategories = Category::whereNull('parent_id')->with('service')->get();
+
+            return response()->json($parentCategories);
+
+        }
+
+        return view('dashboard.categories.index');
+    }
+
+    public function childrenCategories(Request $request)
+    {
+        if ($request->ajax())
+        {
+            $category_id = $request->toArray()['query']['category_id'];
+            $childrenCategories  = Category::where('parent_id' , $category_id)->get();
+            return response()->json($childrenCategories);
+        }
     }
 
     /**
@@ -156,8 +174,13 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+
+    public function destroy(Request $request, $id)
     {
-        //
+
+        if($request->ajax())
+        {
+            Category::find($id)->destroy($id);
+        }
     }
 }

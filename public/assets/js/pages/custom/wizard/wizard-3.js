@@ -92,9 +92,10 @@ var KTWizard3 = function () {
 
 				});
 
-				console.log(category_id);
-
 			}
+
+			_wizard.stop();
+
 		});
 
 		// Change event

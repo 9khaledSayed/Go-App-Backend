@@ -222,12 +222,7 @@
                                     <!--end: Wizard Step 3-->
 
                                     <!--begin: Wizard Actions-->
-                                    <div class="d-flex justify-content-between border-top mt-5 p-10">
-                                        <div class="mr-2">
-                                            <button class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4" id="prev-btn"
-                                                    data-wizard-type="action-prev">الصفحه السابقه
-                                            </button>
-                                        </div>
+                                    <div class="d-flex justify-content-end border-top mt-5 p-10">
                                         <div>
                                             <button class="btn btn-success font-weight-bold text-uppercase px-9 py-4"
                                                     data-wizard-type="action-submit" id="action-submit">حفظ
