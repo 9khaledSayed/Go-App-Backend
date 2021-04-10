@@ -6,7 +6,6 @@ Route::group( ['prefix' => 'dashboard' ,  'namespace' => 'Dashboard' , 'middlewa
 
     Route::name('dashboard.')->group( function (){
 
-        Route::get('/' ,'DashboardController@index')->name('index');
 
         Route::resource('admins','AdminController');
         Route::resource('users','UserController');
@@ -17,6 +16,10 @@ Route::group( ['prefix' => 'dashboard' ,  'namespace' => 'Dashboard' , 'middlewa
         Route::resource('categories','CategoryController');
         Route::resource('payment-methods','PaymentMethodController');
 
+        Route::get('/' ,'DashboardController@index')->name('index');
+
+        Route::post('categories/attributes' , 'CategoryController@storeAttributes');
+        Route::post('categories/images' , 'CategoryController@storeImages');
         Route::post('/logout' ,'AdminController@logout')->name('logout');
     });
 

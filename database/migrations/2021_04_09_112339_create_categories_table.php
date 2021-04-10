@@ -18,8 +18,9 @@ class CreateCategoriesTable extends Migration
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('service_id')->nullable();
             $table->string('name');
-            $table->longText('description');
-            $table->longText('images');
+            $table->longText('description')->nullable();
+            $table->boolean('status')->default(true);
+            $table->longText('images')->nullable();
             $table->timestamps();
 
             $table->foreign('service_id')
