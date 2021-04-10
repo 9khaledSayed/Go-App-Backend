@@ -1,4 +1,11 @@
 @extends('dashboard.layouts.master')
+@push('styles')
+    <style>
+        .radio-inline .radio span {
+            margin-right: 0.75rem;
+        }
+    </style>
+@endpush
 @section('content')
     <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
@@ -10,47 +17,41 @@
                     <div class="col-lg-12">
                         <div class="card card-custom example example-compact">
                             <div class="card-header">
-                                <h2 class="card-title">تعديل البيانات</h2>
+                                <h2 class="card-title">عرض تفاصيل الخاصية</h2>
                             </div>
                             <!--begin::Form-->
                             <div class="card-body">
-                                @if ($errors->any())
-                                    <div class="alert alert-custom alert-light-danger" role="alert" id="kt_form_2_msg" >
-                                        <div class="alert-icon">
-                                            <i class="flaticon2-bell-5"></i>
-                                        </div>
-                                        <div class="alert-text font-weight-bold">خطأ في التحقق من الصحة ، قم بتغيير بعض الأشياء وحاول الإرسال مرة أخرى.</div>
-                                        <div class="alert-close">
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span>
-                                        <i class="ki ki-close"></i>
-                                    </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                @endif
                                 <div class="mb-3">
                                     <div class="mb-2">
-                                        <label class="col-12 text-center mb-5">شعار الخدمة</label>
                                         <div class="form-group row">
-                                            <div class="col-12 text-center">
-                                                <div class="image-input image-input-outline image-input-circle" id="kt_image_1">
-                                                    <div class="image-input-wrapper" style="background-image: url({{asset(getImagesPath('Services') . $service->logo)}})"></div>
-
-                                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="احذف الصوره">
-                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                </span>
+                                            <div class="col-lg-12">
+                                                <label>* الأســـم :</label>
+                                                <input type="text" name="name" class="form-control" disabled value="{{$attribute->name}}" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <label>* النوع :</label>
+                                                <div class="radio-inline" style="width: fit-content; margin: auto">
+                                                    <label class="radio radio-primary">
+                                                        <input type="radio" name="type" disabled @if(($attribute->type) == 'number') checked @endif value="number" /> رقم
+                                                        <span></span>
+                                                    </label>
+                                                    <label class="radio radio-danger">
+                                                        <input type="radio" name="type" disabled value="size" @if(($attribute->type) == 'size') checked @endif id="size"/>مقاس
+                                                        <span></span>
+                                                    </label>
+                                                    <label class="radio radio-warning">
+                                                        <input type="radio" name="type" disabled value="list" @if(($attribute->type) == 'list') checked @endif id="list"/>خيارات متعددة
+                                                        <span></span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-6">
-                                                <label>* الأســـم :</label>
-                                                <input type="text" name="name" disabled class="form-control" value="{{$service->name}}" />
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label>* الوصف :</label>
-                                                <input type="text" name="description" disabled class="form-control"  value="{{ $service->description}}" />
+                                        <div class="form-group row" id="valuesDiv" style="display: none">
+                                            <label class="col-form-label text-right col-lg-3 col-sm-12">Values</label>
+                                            <div class="col-lg-6 col-md-9 col-sm-12">
+                                                <input id="values" class="form-control tagify" disabled name='value' value='{{$attribute->value}}' />
                                             </div>
                                         </div>
                                     </div>
@@ -59,7 +60,7 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-lg-12 text-center">
-                                        <a href="{{route('dashboard.services.index')}}" class="btn btn-light-primary font-weight-bold">إلـغـاء</a>
+                                        <a href="{{route('dashboard.attributes.index')}}" class="btn btn-light-primary font-weight-bold">إلـغـاء</a>
                                     </div>
                                 </div>
                             </div>
@@ -76,6 +77,5 @@
     <!--end::Entry-->
 @endsection
 @push('scripts')
-    <script src="{{asset('js/datatables/users.js')}}"></script>
-    <script src="{{asset('js/components/upload_image.js')}}"></script>
+    <script src="{{asset('js/components/attribute_form.js')}}"></script>
 @endpush

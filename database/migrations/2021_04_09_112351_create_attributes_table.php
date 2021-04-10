@@ -17,7 +17,7 @@ class CreateAttributesTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('value')->nullable();
-            $table->enum('type', ['number', 'image', 'list', 'size']);
+            $table->enum('type', ['number', 'list', 'size']);
             $table->timestamps();
         });
 
