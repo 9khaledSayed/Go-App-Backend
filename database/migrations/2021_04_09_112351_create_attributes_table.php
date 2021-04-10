@@ -16,7 +16,7 @@ class CreateAttributesTable extends Migration
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('value');
+            $table->longText('value')->nullable();
             $table->enum('type', ['number', 'image', 'list', 'size']);
             $table->timestamps();
         });

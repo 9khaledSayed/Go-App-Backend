@@ -17,6 +17,11 @@ class AttributeController extends Controller
 
     public function create()
     {
+//        $attribute = Attribute::find(1);
+//        dd(json_decode($attribute['value'] , true));
+
+
+
         return view('dashboard.attributes.create');
     }
 

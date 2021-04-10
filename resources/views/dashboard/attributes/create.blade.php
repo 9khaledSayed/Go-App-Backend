@@ -150,7 +150,7 @@
             var input = document.getElementById('values'),
                 // init Tagify script on the above inputs
                 tagify = new Tagify(input, {
-
+                    originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
                 })
 
 
