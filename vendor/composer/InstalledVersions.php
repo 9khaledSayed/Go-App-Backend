@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'b5d1ccb017b7939788b967a3bacd48454aee487b',
+    'reference' => '56a96f7027ba8026e0e41efa8fa346bac0cbcfa0',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -464,6 +464,15 @@ private static $installed = array (
       ),
       'reference' => '9dd38140dc2924daa1a020a3d7a45f9ceff03df3',
     ),
+    'laravel/helpers' => 
+    array (
+      'pretty_version' => 'v1.4.1',
+      'version' => '1.4.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'febb10d8daaf86123825de2cb87f789a3371f0ac',
+    ),
     'laravel/laravel' => 
     array (
       'pretty_version' => 'dev-master',
@@ -471,7 +480,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'b5d1ccb017b7939788b967a3bacd48454aee487b',
+      'reference' => '56a96f7027ba8026e0e41efa8fa346bac0cbcfa0',
     ),
     'laravel/passport' => 
     array (

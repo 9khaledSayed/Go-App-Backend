@@ -14,12 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['middleware' => ['cors', 'json.response']], function () {
+    Route::post('/login/user', 'Auth\ApiAuthController@userLogin');
+    Route::post('/login/provider', 'Auth\ApiAuthController@providerLogin');
+    Route::post('/register', 'Auth\ApiAuthController@register');
+    Route::get('/services', 'ServiceController@index');
+});
 
-Route::post('/login', 'API\Auth\ApiAuthController@login');
-Route::post('/register', 'API\Auth\ApiAuthController@register');
 
-Route::group(['middleware' => 'auth:api'], function(){
+Route::group(['middleware' => 'auth:user-api'], function(){
     Route::get('/user', function( Request $request ){
+        dd($request->user());
         return $request->user();
     });
+
+    Route::post('/logout/user', 'Auth\ApiAuthController@logout');
+});
+
+Route::group(['middleware' => 'auth:provider-api'], function(){
+    Route::get('/provider', function( Request $request ){
+        dd($request->user());
+        return $request->user();
+    });
+
+    Route::post('/logout/provider', 'Auth\ApiAuthController@logout');
 });
