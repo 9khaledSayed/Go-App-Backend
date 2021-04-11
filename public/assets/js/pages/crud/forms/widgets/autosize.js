@@ -11,6 +11,7 @@ var KTAutosize = function () {
         autosize(demo1);
 
         autosize(demo2);
+        autosize.update(demo1)  ;
         autosize.update(demo2);
     }
 

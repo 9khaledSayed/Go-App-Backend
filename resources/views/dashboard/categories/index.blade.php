@@ -151,7 +151,7 @@
                     <!--end::Search Form-->
                     <!--end: Search Form-->
                     <!--begin: Datatable-->
-                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                    <div class="kt-datatable" id="child_data_local"></div>
                     <!--end: Datatable-->
                 </div>
             </div>
@@ -162,5 +162,5 @@
     <!--end::Entry-->
 @endsection
 @push('scripts')
-    <script src="{{asset('js/datatables/admins.js')}}"></script>
+    <script src="{{asset('js/datatables/categories.js')}}"></script>
 @endpush

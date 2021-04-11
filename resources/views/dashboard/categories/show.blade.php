@@ -13,7 +13,7 @@
                         <div class="card-header">
                             <h2 class="card-title"> المشرف : {{$admin->name}}</h2>
                         </div>
-                        <!--begin::Form-->
+                        <!--beginaa::Form-->
                         <form class="form">
                             @csrf
                             <div class="card-body">

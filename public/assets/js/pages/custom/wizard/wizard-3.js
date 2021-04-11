@@ -6,7 +6,7 @@ var KTWizard3 = function () {
 	var _wizardEl;
 	var _formEl;
 	var _wizard;
-	var _validations = [];
+
 
 	// Private functions
 	var initWizard = function () {
@@ -16,26 +16,86 @@ var KTWizard3 = function () {
 			clickableSteps: true  // allow step clicking
 		});
 
-		// Validation before going to next page
-		_wizard.on('beforeNext', function (wizard) {
-			_validations[wizard.getStep() - 1].validate().then(function (status) {
-				if (status == 'Valid') {
-					_wizard.goNext();
-					KTUtil.scrollTop();
-				} else {
-					swal.fire({
-						text: "Sorry, looks like there are some errors detected, please try again.",
-						icon: "error",
-						buttonsStyling: false,
-						confirmButtonText: "Ok, got it!",
-						confirmButtonClass: "btn font-weight-bold btn-light"
-					}).then(function () {
-						KTUtil.scrollTop();
-					});
-				}
-			});
 
-			_wizard.stop();  // Don't go to the next step
+		_wizard.on('beforeNext', function (wizard) {
+
+			if ( wizard.getStep() == 1)
+			{
+
+				let formData      = new FormData( _formEl );
+
+				$.ajax({
+					method: 'post',
+					headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+					processData: false,
+					contentType: false,
+					data: formData,
+					url: '/dashboard/categories',
+				}).done(function (response) {
+					if (response['errors'] != null)
+					{
+						for (let key in response['errors']) {
+
+							$('#' + key + 'ValidationError').text(response['errors'][key][0]);
+
+						}
+
+						console.log(response);
+
+						KTUtil.scrollTop();
+
+					}else
+					{
+
+						category_id = response['category_id'];
+
+						$('#prev-btn').prop('disabled', true);
+
+						_wizard.goNext();
+					}
+
+
+				});
+
+
+
+			}else if (wizard.getStep() == 2)
+			{
+
+				$.ajax({
+					method: 'post',
+					headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+					data:
+					{ attributes : selectedAttributesIDs ,
+					  category_id: category_id
+					},
+					url: '/dashboard/categories/attributes',
+				}).done(function (response) {
+					if (response['errors'] != null)
+					{
+						for (let key in response['errors']) {
+
+							$('#' + key + 'ValidationError').text(response['errors'][key][0]);
+
+						}
+
+						console.log(response);
+
+						KTUtil.scrollTop();
+
+					}else
+					{
+
+						_wizard.goNext();
+					}
+
+
+				});
+
+			}
+
+			_wizard.stop();
+
 		});
 
 		// Change event
@@ -44,197 +104,17 @@ var KTWizard3 = function () {
 		});
 	}
 
-	var initValidation = function () {
-		// Step 1
-		_validations.push(FormValidation.formValidation(
-			_formEl,
-			{
-				fields: {
-					address1: {
-						validators: {
-							notEmpty: {
-								message: 'Address is required'
-							}
-						}
-					},
-					postcode: {
-						validators: {
-							notEmpty: {
-								message: 'Postcode is required'
-							}
-						}
-					},
-					city: {
-						validators: {
-							notEmpty: {
-								message: 'City is required'
-							}
-						}
-					},
-					state: {
-						validators: {
-							notEmpty: {
-								message: 'State is required'
-							}
-						}
-					},
-					country: {
-						validators: {
-							notEmpty: {
-								message: 'Country is required'
-							}
-						}
-					}
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					bootstrap: new FormValidation.plugins.Bootstrap()
-				}
-			}
-		));
+	var initSubmit = function() {
 
-		// Step 2
-		_validations.push(FormValidation.formValidation(
-			_formEl,
-			{
-				fields: {
-					package: {
-						validators: {
-							notEmpty: {
-								message: 'Package details is required'
-							}
-						}
-					},
-					weight: {
-						validators: {
-							notEmpty: {
-								message: 'Package weight is required'
-							},
-							digits: {
-								message: 'The value added is not valid'
-							}
-						}
-					},
-					width: {
-						validators: {
-							notEmpty: {
-								message: 'Package width is required'
-							},
-							digits: {
-								message: 'The value added is not valid'
-							}
-						}
-					},
-					height: {
-						validators: {
-							notEmpty: {
-								message: 'Package height is required'
-							},
-							digits: {
-								message: 'The value added is not valid'
-							}
-						}
-					},
-					packagelength: {
-						validators: {
-							notEmpty: {
-								message: 'Package length is required'
-							},
-							digits: {
-								message: 'The value added is not valid'
-							}
-						}
-					}
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					bootstrap: new FormValidation.plugins.Bootstrap()
-				}
-			}
-		));
+		var btn = $("#action-submit");
 
-		// Step 3
-		_validations.push(FormValidation.formValidation(
-			_formEl,
-			{
-				fields: {
-					delivery: {
-						validators: {
-							notEmpty: {
-								message: 'Delivery type is required'
-							}
-						}
-					},
-					packaging: {
-						validators: {
-							notEmpty: {
-								message: 'Packaging type is required'
-							}
-						}
-					},
-					preferreddelivery: {
-						validators: {
-							notEmpty: {
-								message: 'Preferred delivery window is required'
-							}
-						}
-					}
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					bootstrap: new FormValidation.plugins.Bootstrap()
-				}
-			}
-		));
+		btn.on('click', function(e) {
 
-		// Step 4
-		_validations.push(FormValidation.formValidation(
-			_formEl,
-			{
-				fields: {
-					locaddress1: {
-						validators: {
-							notEmpty: {
-								message: 'Address is required'
-							}
-						}
-					},
-					locpostcode: {
-						validators: {
-							notEmpty: {
-								message: 'Postcode is required'
-							}
-						}
-					},
-					loccity: {
-						validators: {
-							notEmpty: {
-								message: 'City is required'
-							}
-						}
-					},
-					locstate: {
-						validators: {
-							notEmpty: {
-								message: 'State is required'
-							}
-						}
-					},
-					loccountry: {
-						validators: {
-							notEmpty: {
-								message: 'Country is required'
-							}
-						}
-					}
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					bootstrap: new FormValidation.plugins.Bootstrap()
-				}
-			}
-		));
+			window.location.href = '/dashboard/categories';
+
+		});
 	}
+
 
 	return {
 		// public functions
@@ -243,7 +123,7 @@ var KTWizard3 = function () {
 			_formEl = KTUtil.getById('kt_form');
 
 			initWizard();
-			initValidation();
+			initSubmit();
 		}
 	};
 }();
