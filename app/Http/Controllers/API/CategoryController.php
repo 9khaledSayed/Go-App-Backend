@@ -9,8 +9,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $mainCategories = Category::whereNull('parent_id')->get();
-        $response       = $mainCategories->map( function ($mainCategory){
+        $categories = Category::whereNull('parent_id')->get()->map( function ($mainCategory){
 
             return
             [
@@ -26,7 +25,7 @@ class CategoryController extends Controller
 
         });
 
-        return response($response);
+        return response($categories);
 
     }
 }
