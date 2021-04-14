@@ -19,6 +19,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/login/provider', 'Auth\ApiAuthController@providerLogin');
     Route::post('/register', 'Auth\ApiAuthController@register');
     Route::get('/services', 'ServiceController@index');
+    Route::get('/categories', 'CategoryController@index');
 });
 
 
