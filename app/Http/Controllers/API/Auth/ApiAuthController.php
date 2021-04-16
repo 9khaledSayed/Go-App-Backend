@@ -55,14 +55,17 @@ class ApiAuthController extends Controller
 
             $user = User::create($this->userValidator($request));
             $token = $user->createToken('Laravel Password Grant Client')->accessToken;
+            $response = ['token' => $token, 'user' => $user];
 
         }else{
 
             $provider = Provider::create($this->providerValidator($request));
             $token = $provider->createToken('Laravel Password Grant Client')->accessToken;
+            $response = ['token' => $token, 'user' => $provider];
+
         }
 
-        $response = ['token' => $token];
+
 
         return response($response, 200);
     }
