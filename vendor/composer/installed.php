@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '99ebe1f428428e6333aa8222327e14daa3282891',
+    'reference' => 'fc971f3e662d09a23b1429abab42e7aef3463b33',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -99,12 +99,12 @@
     ),
     'facade/flare-client-php' => 
     array (
-      'pretty_version' => '1.6.1',
-      'version' => '1.6.1.0',
+      'pretty_version' => '1.7.0',
+      'version' => '1.7.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f2b0969f2d9594704be74dbeb25b201570a98098',
+      'reference' => '6bf380035890cb0a09b9628c491ae3866b858522',
     ),
     'facade/ignition' => 
     array (
@@ -417,12 +417,12 @@
     ),
     'laminas/laminas-diactoros' => 
     array (
-      'pretty_version' => '2.5.0',
-      'version' => '2.5.0.0',
+      'pretty_version' => '2.5.1',
+      'version' => '2.5.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '4ff7400c1c12e404144992ef43c8b733fd9ad516',
+      'reference' => '53df7b7cd66e0905e6133970a4b90392a7a08075',
     ),
     'laminas/laminas-zendframework-bridge' => 
     array (
@@ -458,7 +458,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '99ebe1f428428e6333aa8222327e14daa3282891',
+      'reference' => 'fc971f3e662d09a23b1429abab42e7aef3463b33',
     ),
     'laravel/passport' => 
     array (
@@ -498,12 +498,12 @@
     ),
     'lcobucci/jwt' => 
     array (
-      'pretty_version' => '4.1.4',
-      'version' => '4.1.4.0',
+      'pretty_version' => '4.0.3',
+      'version' => '4.0.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '71cf170102c8371ccd933fa4df6252086d144de6',
+      'reference' => 'ae4165a76848e070fdac691e773243d10cd06ce1',
     ),
     'league/commonmark' => 
     array (

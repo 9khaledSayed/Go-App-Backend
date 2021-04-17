@@ -24,6 +24,11 @@ class CreateOrdersTable extends Migration
                 ->references('id')
                 ->on('users');
 
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories');
+
+
             $table->timestamps();
         });
     }

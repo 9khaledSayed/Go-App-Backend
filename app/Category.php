@@ -8,6 +8,15 @@ class Category extends Model
 {
     protected $guarded = [];
 
+    public function getImagesAttribute()
+    {
+        $images = unserialize($this->attributes['images']);
+        foreach ($images as $key => $image){
+            $images[$key] = getImagesPath('Categories') . $image;
+        }
+        return $images;
+    }
+
     public function children()
     {
         return $this->hasMany(Category::class ,'parent_id');

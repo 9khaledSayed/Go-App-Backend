@@ -19,6 +19,7 @@ class CreateOffersTable extends Migration
             $table->unsignedBigInteger('order_id');
             $table->date('deadline');
             $table->decimal('price')->default(0);
+            $table->longText('description');
             $table->timestamps();
 
             $table->foreign('provider_id')
