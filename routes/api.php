@@ -26,13 +26,14 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 });
 
 
-Route::group(['middleware' => 'auth:user-api'], function(){
+Route::group(['middleware' => ['auth:user-api']], function(){
     Route::get('/user', function( Request $request ){
         dd($request->user());
         return $request->user();
     });
 
     Route::post('/logout/user', 'Auth\ApiAuthController@logout');
+    Route::post('/store-order', 'OrderController@store');
 });
 
 Route::group(['middleware' => 'auth:provider-api'], function(){
