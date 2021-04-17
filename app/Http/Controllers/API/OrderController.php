@@ -20,4 +20,9 @@ class OrderController extends Controller
         });
         return response($offers);
     }
+
+    public function store(Request $request)
+    {
+        dd($request->toArray());
+    }
 }

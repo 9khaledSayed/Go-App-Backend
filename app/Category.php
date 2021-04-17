@@ -10,11 +10,18 @@ class Category extends Model
 
     public function getImagesAttribute()
     {
-        $images = unserialize($this->attributes['images']);
-        foreach ($images as $key => $image){
-            $images[$key] = getImagesPath('Categories') . $image;
-        }
-        return $images;
+//        if ($this->attributes['images'])
+//        {
+//            $images = unserialize($this->attributes['images']);
+//            foreach ($images as $key => $image){
+//                $images[$key] = getImagesPath('Categories') . $image;
+//            }
+//            return $images;
+//        }else
+//        {
+//            return [];
+//        }
+
     }
 
     public function children()
