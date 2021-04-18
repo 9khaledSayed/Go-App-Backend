@@ -14,6 +14,7 @@ return array(
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\API\\Auth\\ApiAuthController' => $baseDir . '/app/Http/Controllers/API/Auth/ApiAuthController.php',
     'App\\Http\\Controllers\\API\\CategoryController' => $baseDir . '/app/Http/Controllers/API/CategoryController.php',
+    'App\\Http\\Controllers\\API\\OfferController' => $baseDir . '/app/Http/Controllers/API/OfferController.php',
     'App\\Http\\Controllers\\API\\OrderController' => $baseDir . '/app/Http/Controllers/API/OrderController.php',
     'App\\Http\\Controllers\\API\\ServiceController' => $baseDir . '/app/Http/Controllers/API/ServiceController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',

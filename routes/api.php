@@ -41,6 +41,6 @@ Route::group(['middleware' => 'auth:provider-api'], function(){
         dd($request->user());
         return $request->user();
     });
-
+    Route::post('/offers', 'OfferController@store');
     Route::post('/logout/provider', 'Auth\ApiAuthController@logout');
 });

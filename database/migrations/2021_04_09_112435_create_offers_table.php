@@ -17,7 +17,6 @@ class CreateOffersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('provider_id');
             $table->unsignedBigInteger('order_id');
-            $table->date('deadline');
             $table->decimal('price')->default(0);
             $table->longText('description');
             $table->integer('duration')->default(0);
