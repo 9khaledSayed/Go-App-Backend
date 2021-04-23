@@ -1,5 +1,4 @@
 @extends('dashboard.layouts.master')
-@section('title','المشرفون')
 @section('content')
     <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
@@ -24,7 +23,7 @@
                 @endif
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                     <div class="card-title">
-                        <h3>قائمه المشرفون</h3>
+                        <h3>قائمه الفئات</h3>
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Dropdown-->
@@ -85,7 +84,7 @@
                         </div>
                         <!--end::Dropdown-->
                         <!--begin::Button-->
-                        <a href="{{route('dashboard.admins.create')}}" class="btn btn-primary font-weight-bolder">
+                        <a href="{{route('dashboard.categories.create')}}" class="btn btn-primary font-weight-bolder">
 											<span class="svg-icon svg-icon-md">
 												<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -96,7 +95,7 @@
 													</g>
 												</svg>
                                                 <!--end::Svg Icon-->
-											</span>إضـافه مشرف جـديد
+											</span>إضـافه فئه جـديده
                         </a>
                         <!--end::Button-->
                     </div>
