@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth:user-api']], function(){
 
     Route::post('/logout/user', 'Auth\ApiAuthController@logout');
     Route::post('/store-order', 'OrderController@store');
+    Route::get('/orders', 'OrderController@index');
+
 });
 
 Route::group(['middleware' => 'auth:provider-api'], function(){

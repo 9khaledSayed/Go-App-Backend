@@ -7,8 +7,9 @@ Route::group( ['prefix' => 'dashboard' ,  'namespace' => 'Dashboard' , 'middlewa
     Route::name('dashboard.')->group( function (){
 
         Route::get('/' ,'DashboardController@index')->name('index');
-        Route::get('/offers' ,'OfferController@index')->name('offers.index');
+        Route::get('/offers' ,'OfferController@index')->name(   'offers.index');
         Route::get('/categories/children' ,'CategoryController@childrenCategories');
+        Route::post('categories/image/remove' ,'CategoryController@deleteImage');
 
         Route::resource('admins','AdminController');
         Route::resource('users','UserController');

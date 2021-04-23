@@ -122,6 +122,23 @@ class CategoryController extends Controller
 
     }
 
+
+
+    public function  deleteImage(Request $request)
+    {
+        if ($request->ajax())
+        {
+            $category  = Category::find($request['category_id']);
+            $images  = unserialize($category->images);
+            array_splice($images,$request['image_index'],1);
+            $category->update([
+                'images' => serialize($images)
+            ]);
+        }
+
+    }
+
+
     public function storeAttributes(Request $request )
     {
 
@@ -129,6 +146,7 @@ class CategoryController extends Controller
         $attributes = $request['attributes'];
 
         if( $attributes )
+        $category->attributes()->detach();
         $category->attributes()->attach($attributes);
 
     }
@@ -153,7 +171,13 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+
+        $parentCategories = Category::whereNull('parent_id')->get();
+        $services         = Service::all();
+        $attributes       = Attribute::get(['id','name']);
+        $images           = $category['images'] != null ? unserialize($category['images'] ) : [];
+
+        return view('dashboard.categories.edit', compact('category','parentCategories','services','attributes','images'));
     }
 
     /**
@@ -165,7 +189,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        dd($category);
     }
 
     /**

@@ -8,8 +8,8 @@ class Category extends Model
 {
     protected $guarded = [];
 
-    public function getImagesAttribute()
-    {
+//    public function getImagesAttribute()
+//    {
 //        if ($this->attributes['images'])
 //        {
 //            $images = unserialize($this->attributes['images']);
@@ -21,8 +21,8 @@ class Category extends Model
 //        {
 //            return [];
 //        }
-
-    }
+//
+//    }
 
     public function children()
     {

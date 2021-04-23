@@ -17,9 +17,9 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
-            $table->longText('description');
+            $table->longText('notes');
             $table->longText('details');
-            $table->enum('status', ['pending', 'underway', 'finished', 'canceled'])->default('pending');
+            $table->enum('status', ['pending', 'in_progress', 'finished', 'canceled'])->default('pending');
 
             $table->foreign('user_id')
                 ->references('id')

@@ -258,7 +258,7 @@
         let selectedAttributesIDs = [];
 
     </script>
-    <script src="{{asset('assets/js/pages/custom/wizard/wizard-3.js')}}"></script>
+    <script src="{{asset('js/wizards/create_category.js')}}"></script>
 
     <script src="{{asset('js/vue.js')}}"></script>
 
