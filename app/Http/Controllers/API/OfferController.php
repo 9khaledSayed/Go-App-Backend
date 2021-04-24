@@ -32,8 +32,8 @@ class OfferController extends Controller
         $offer->save();
 
         $order = $offer->order;
-        $order->status = "underway";
         $order->accepted_date = Carbon::now()->format('yyyy-mm-d');
+        $order->status = "in_progress";
         $order->save();
 
         return response()->json([

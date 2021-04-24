@@ -54,6 +54,7 @@ class OrderController extends Controller
                 'categoryName' => $order['category']['name'],
                 'orderDate' => date('d-m-Y' , strtotime($order['created_at'])),
                 'status' => $order['status'],
+               
             ];
         });
         return response($orders);
@@ -112,6 +113,44 @@ class OrderController extends Controller
 
 
         });
+
+        public function pendingOrders(Request $request)
+    {
+        $orders = auth()->user()->orders()->where('status', 'pending')->get()->map(function ($order){
+            return
+                [
+                    'id' => $order['id'],
+                    'category_id' => $order['category_id'],
+                    'user_id' => $order['user_id'],
+                    'notes' => $order['notes'],
+                    'details' => $order['details'],
+                    'categoryName' => $order['category']['name'],
+                    'orderDate' => $order->create_at,
+                ];
+        });
+
+
+        return response($orders);
+    }
+
+    public function workshop()
+    {
+        $orders = Order::where('status', 'pending')->get()->map(function ($order){
+            return
+                [
+                    'id' => $order['id'],
+                    'category_id' => $order['category_id'],
+                    'user_id' => $order['user_id'],
+                    'notes' => $order['notes'],
+                    'details' => $order['details'],
+                    'categoryName' => $order['category']['name'],
+                    'orderDate' => $order->create_at,
+                    'category_images' => $order->category->images,
+                    'user_name' => $order->user->name,
+                ];
+        });
+
+
         return response($orders);
     }
 }
