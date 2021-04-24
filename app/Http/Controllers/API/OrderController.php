@@ -53,7 +53,64 @@ class OrderController extends Controller
                 'details' => $order['details'],
                 'categoryName' => $order['category']['name'],
                 'orderDate' => date('d-m-Y' , strtotime($order['created_at'])),
+                'status' => $order['status'],
             ];
+        });
+        return response($orders);
+    }
+
+
+    public function inProgressOrders()
+    {
+
+        $orders = auth()->guard('user-api')->user()->orders->where('status','in_progress')->map(function ($order){
+
+            $acceptedOffer = $order->offers->where('status','approved')->first();
+            $daysLeft      = new Carbon( $acceptedOffer['accepted_date'] );
+            $daysLeft      = $daysLeft->diffInDays( Carbon::now() );
+
+            return
+            [
+                'id' => $order['id'],
+                'category_id' => $order['category_id'],
+                'user_id' => $order['user_id'],
+                'notes' => $order['notes'],
+                'details' => $order['details'],
+                'categoryName' => $order['category']['name'],
+                'orderDate' => date('d-m-Y' , strtotime($order['created_at'])),
+                'status' => $order['status'],
+                'provider_name' => $acceptedOffer['provider']['name'],
+                'totalDays' => $acceptedOffer['duration'],
+                'daysLeft' => $acceptedOffer['duration'] - $daysLeft,
+            ];
+        });
+        return response($orders);
+    }
+
+
+    public function finishedOrders()
+    {
+
+        $orders = auth()->guard('provider-api')->user()->offers()->where('status','approved')
+            ->whereHas('order' , function ($order){
+
+              $order->where('status','finished');
+
+        })->get()->map(function ($offer){
+
+                return
+                    [
+                        'id' => $offer['order']['id'],
+                        'category_id' => $offer['order']['category_id'],
+                        'user_id' => $offer['order']['user_id'],
+                        'notes' => $offer['order']['notes'],
+                        'details' => $offer['order']['details'],
+                        'categoryName' => $offer['order']['category']['name'],
+                        'orderDate' => date('d-m-Y' , strtotime($offer['order']['created_at'])),
+                        'status' => $offer['order']['status'],
+                    ];
+
+
         });
         return response($orders);
     }

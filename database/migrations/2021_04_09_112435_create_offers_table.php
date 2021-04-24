@@ -21,6 +21,7 @@ class CreateOffersTable extends Migration
             $table->longText('description');
             $table->integer('duration')->default(0);
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->date('accepted_date')->nullable();
             $table->timestamps();
 
             $table->foreign('provider_id')

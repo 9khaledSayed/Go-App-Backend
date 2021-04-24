@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Offer;
 use App\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OfferController extends Controller
@@ -32,6 +33,7 @@ class OfferController extends Controller
 
         $order = $offer->order;
         $order->status = "underway";
+        $order->accepted_date = Carbon::now()->format('yyyy-mm-d');
         $order->save();
 
         return response()->json([
