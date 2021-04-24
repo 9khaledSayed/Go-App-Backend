@@ -31,7 +31,7 @@ class OfferController extends Controller
         $offer->save();
 
         $order = $offer->order;
-        $order->status = "underway";
+        $order->status = "in_progress";
         $order->save();
 
         return response()->json([

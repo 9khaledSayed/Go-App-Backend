@@ -22,7 +22,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::get('/categories', 'CategoryController@index');
     Route::get('/orders/{order}/offers', 'OrderController@offers');
     Route::get('/offers/{offer}', 'OfferController@show');
-    Route::get('/offers/{offer}/accept', 'OfferController@accept');
+    Route::get('/orders/workshop', 'OrderController@workshop');
 });
 
 
@@ -35,7 +35,8 @@ Route::group(['middleware' => ['auth:user-api']], function(){
     Route::post('/logout/user', 'Auth\ApiAuthController@logout');
     Route::post('/store-order', 'OrderController@store');
     Route::get('/orders', 'OrderController@index');
-
+    Route::get('/pending_orders', 'OrderController@pendingOrders');
+    Route::get('/offers/{offer}/accept', 'OfferController@accept');
 });
 
 Route::group(['middleware' => 'auth:provider-api'], function(){

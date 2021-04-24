@@ -8,21 +8,21 @@ class Category extends Model
 {
     protected $guarded = [];
 
-//    public function getImagesAttribute()
-//    {
-//        if ($this->attributes['images'])
-//        {
-//            $images = unserialize($this->attributes['images']);
-//            foreach ($images as $key => $image){
-//                $images[$key] = getImagesPath('Categories') . $image;
-//            }
-//            return $images;
-//        }else
-//        {
-//            return [];
-//        }
-//
-//    }
+    public function getImagesAttribute()
+    {
+        if (isset($this->attributes['images']) && $this->attributes['images'] != '') {
+
+            $images = unserialize($this->attributes['images']);
+            foreach ($images as $key => $image){
+                $images[$key] = getImagesPath('Categories') . $image;
+            }
+            return $images;
+
+        }else {
+            return [];
+        }
+
+    }
 
     public function children()
     {
