@@ -22,14 +22,12 @@ var KTWizard3 = function () {
             if ( wizard.getStep() == 1)
             {
 
-                let formData      = new FormData( _formEl );
 
                 $.ajax({
                     method: 'PUT',
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    processData: false,
-                    contentType: false,
-                    data: formData,
+
+                    data: $('#kt_form').serialize(),
                     url: '/dashboard/categories/' + category_id,
                 }).done(function (response) {
                     if (response['errors'] != null)
@@ -70,7 +68,8 @@ var KTWizard3 = function () {
                 }).done(function (response) {
                     if (response['errors'] != null)
                     {
-                        for (let key in response['errors']) {
+                        for (let key in response['errors'])
+                        {
 
                             $('#' + key + 'ValidationError').text(response['errors'][key][0]);
 
@@ -82,7 +81,6 @@ var KTWizard3 = function () {
 
                     }else
                     {
-
                         _wizard.goNext();
                     }
 
@@ -117,7 +115,7 @@ var KTWizard3 = function () {
         // public functions
         init: function () {
             _wizardEl = KTUtil.getById('kt_wizard_v3');
-            _formEl = KTUtil.getById('kt_form');
+            _formEl   = KTUtil.getById('kt_form');
 
             initWizard();
             initSubmit();

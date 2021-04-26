@@ -75,7 +75,3 @@
     </div>
     <!--end::Entry-->
 @endsection
-@push('scripts')
-    <script src="{{asset('assets/js/pages/crud/file-upload/image-input.js')}}"></script>
-
-@endpush

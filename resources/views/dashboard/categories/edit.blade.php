@@ -59,7 +59,7 @@
                                     <!--begin: Wizard Step 1-->
                                     <div class="p-15" data-wizard-type="step-content" data-wizard-state="current">
 
-                                        <div class="mb-5" id="myApp">
+
 
                                             <div class="form-group row mb-5">
                                                 <div class="col-lg-12">
@@ -147,7 +147,7 @@
                                                 </div>
                                             </div>
 
-
+                                        <div class="mb-5" id="myApp">
                                             <div class="form-group row mb-10 mx-auto text-center mt-15">
 
                                                 <label class="col-3 col-form-label text-right"><b>الظهور في
@@ -231,12 +231,12 @@
                                             </div>
                                         </form>
                                         <div class="form-group row">
-                                            @foreach($images as $image)
+                                            @foreach($category->images as $image)
 
 
                                                 <div class="col-4 d-flex justify-content-center mb-5" id="{{'img_'.$loop->index}}">
                                                     <div class="image-input image-input-outline">
-                                                        <img  src="{{ getImagesPath('Categories') .  $image }}" style="margin:auto;height:150px;width:250px;border-radius:10px;border:3px;border-style: groove;" alt="" />
+                                                        <img  src="{{ $image }}" style="margin:auto;height:150px;width:250px;border-radius:10px;border:3px;border-style: groove;" alt="" />
                                                         <a href="javascript:;" class="delete-item" data-category = "{{$category->id}}" data-image-index="{{ $loop->index }}" ><label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="حذف الصوره">
                                                                 <i class="fa fa-times   " style="color:darkred"></i>
                                                             </label></a>
@@ -403,7 +403,7 @@
                             confirmButtonClass: "btn font-weight-bold btn-primary",
                         });
 
-                        $('#img_' + image_index).hide();
+                        $('#img_' + image_index).remove();
                     });
                 }
             });

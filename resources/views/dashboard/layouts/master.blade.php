@@ -53,7 +53,7 @@
 
         @include('dashboard.layouts.aside')
         <!--begin::Wrapper-->
-            <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+            <div class="d-flex flex-column flex-row-fluid wrapper" style="padding-right:182px" id="kt_wrapper"  >
 
                 @include('dashboard.layouts.header')
 

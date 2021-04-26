@@ -114,7 +114,6 @@
                                                         <label class="col-form-label"><b></b>الخدمات</label>
                                                         <div></div>
                                                         <select class="custom-select form-control" name="service_id">
-                                                            <option  value="" selected >أختر</option>
                                                             @foreach($services as $service)
                                                                 <option value="{{$service->id}}">{{$service->name}}</option>
                                                             @endforeach
@@ -132,7 +131,6 @@
                                                         <label class="col-form-label"><b></b>الفئات الرئيسيه</label>
                                                         <div></div>
                                                         <select class="custom-select form-control" name="parent_id">
-                                                            <option  value="" selected >أختر</option>
                                                             @foreach($parentCategories as $category)
                                                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                                             @endforeach

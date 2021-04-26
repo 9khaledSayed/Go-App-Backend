@@ -33,9 +33,19 @@ class CategoryController extends Controller
     {
         if ($request->ajax())
         {
-            $category_id = $request->toArray()['query']['category_id'];
+            $category_id         = $request->toArray()['query']['category_id'];
             $childrenCategories  = Category::where('parent_id' , $category_id)->get();
-            return response()->json($childrenCategories);
+
+            return response()->json([
+                'data' => $childrenCategories,
+                'meta' => [
+                    'page' => 1 ,
+                    'pages' => $childrenCategories->count() / 5 ,
+                    'perpage' => 5 ,
+                    'sort' => "asc" ,
+                    'total' => $childrenCategories->count() ,
+                ]
+            ]);
         }
     }
 
@@ -106,7 +116,7 @@ class CategoryController extends Controller
 
         if ($category->images)
         {
-            $images    = unserialize($category->images);
+            $images = $category->images;
             array_push($images,$imageName);
             $category->images = serialize($images);
             $category->save();
@@ -129,7 +139,7 @@ class CategoryController extends Controller
         if ($request->ajax())
         {
             $category  = Category::find($request['category_id']);
-            $images  = unserialize($category->images);
+            $images    = $category->images;
             array_splice($images,$request['image_index'],1);
             $category->update([
                 'images' => serialize($images)
@@ -172,12 +182,12 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
 
+
         $parentCategories = Category::whereNull('parent_id')->get();
         $services         = Service::all();
         $attributes       = Attribute::get(['id','name']);
-        $images           = $category['images'] != null ? unserialize($category['images'] ) : [];
 
-        return view('dashboard.categories.edit', compact('category','parentCategories','services','attributes','images'));
+        return view('dashboard.categories.edit', compact('category','parentCategories','services','attributes'));
     }
 
     /**
@@ -189,7 +199,34 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        dd($category);
+
+        $validation = Validator::make($request->all() , [
+            'name'        => 'required | string | max:255 | unique:categories,id,' . $category->id,
+            'description' => 'required_if:type,sub',
+            'service_id' => 'required_if:type,main',
+            'parent_id' => 'required_if:type,sub',
+        ]);
+
+        if ($validation->fails())
+        {
+            return response()->json([
+                "errors" => $validation->errors(),
+                "code" => 422
+            ]);
+        }
+
+        $category->update([
+            'name'        => $request['name'],
+            'description' => $request['description'],
+            'service_id' => $request['service_id'],
+            'parent_id' => $request['parent_id'],
+            'status' => $request['status'] == 'on'
+        ]);
+
+        return response()->json([
+            "category_id" => $category['id'],
+            "code" => 200
+        ]);
     }
 
     /**

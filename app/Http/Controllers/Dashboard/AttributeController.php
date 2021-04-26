@@ -64,8 +64,11 @@ class AttributeController extends Controller
     }
 
 
-    public function destroy(Attribute $attribute)
+    public function destroy(Request $request ,Attribute $attribute)
     {
-        //
+        if($request->ajax())
+        {
+            $attribute->delete();
+        }
     }
 }

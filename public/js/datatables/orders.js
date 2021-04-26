@@ -46,58 +46,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             search: {
                 input: $('#generalSearch'),
-            }, rows: {
-                afterTemplate: function (row, data, index) {
-                    row.find('.delete-item').on('click', function () {
-                        swal.fire({
-                            text: "هـل أنـت متـأكد مـن حـذف هـذا العنـصر ؟ ",
-                            confirmButtonText: "نعــم, أمسح !",
-                            icon: "warning",
-                            confirmButtonClass: "btn font-weight-bold btn-danger",
-                            showCancelButton: true,
-                            cancelButtonText: "لا , ألغي",
-                            cancelButtonClass: "btn font-weight-bold btn-primary"
-                        }).then(function (result) {
-                            if (result.value) {
-                                swal.fire({
-                                    title: "تحميل ...",
-                                    onOpen: function () {
-                                        swal.showLoading();
-                                    }
-                                });
-                                $.ajax({
-                                    method: 'delete',
-                                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                                    url: '/dashboard/services/' + data.id,
-                                    error: function (err) {
-                                        if (err.hasOwnProperty('responseJSON')) {
-                                            if (err.responseJSON.hasOwnProperty('message')) {
-                                                swal.fire({
-                                                    title: "حطـأ !",
-                                                    text: err.responseJSON.message,
-                                                    confirmButtonText: "موافق",
-                                                    icon: "error",
-                                                    confirmButtonClass: "btn font-weight-bold btn-primary",
-                                                });
-                                            }
-                                        }
-                                        console.log(err);
-                                    }
-                                }).done(function (res) {
-                                    swal.fire({
-                                        text: "تم الحذف بنجاح",
-                                        confirmButtonText: "موافق",
-                                        icon: "success",
-                                        confirmButtonClass: "btn font-weight-bold btn-primary",
-                                    });
-                                    datatable.reload();
-                                });
-                            }
-                        });
-                    });
-                }
             },
-
             // columns definition
             columns: [{
                 field: 'id',
@@ -108,13 +57,28 @@ var KTDatatableRemoteAjaxDemo = function() {
                 selector: false,
                 textAlign: 'center',
             }, {
-                field: 'user',
+                field: 'user_name',
                 title: "طالب الخدمة",
                 selector: false,
                 textAlign: 'center',
             }, {
-                field: 'category',
+                field: 'category_name',
                 title: "نوع الطلب",
+                selector: false,
+                textAlign: 'center',
+            },{
+                field: 'notes',
+                title: "ملاحظات الطلب",
+                selector: false,
+                textAlign: 'center',
+            },{
+                field: 'no_offers',
+                title: "عدد العروض المقدمه",
+                selector: false,
+                textAlign: 'center',
+            },{
+                field: 'status',
+                title: "حاله الطلب",
                 selector: false,
                 textAlign: 'center',
             },{

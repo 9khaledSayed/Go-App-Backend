@@ -10,7 +10,7 @@
                     <div class="col-lg-12">
                         <div class="card card-custom example example-compact">
                             <div class="card-header">
-                                <h2 class="card-title">تعديل البيانات</h2>
+                                <h2 class="card-title"> بيانات الطلب رقم {{$order['id']}}</h2>
                             </div>
                             <!--begin::Form-->
                             <div class="card-body">
@@ -31,26 +31,31 @@
                                 @endif
                                 <div class="mb-3">
                                     <div class="mb-2">
-                                        <label class="col-12 text-center mb-5">شعار الخدمة</label>
                                         <div class="form-group row">
-                                            <div class="col-12 text-center">
-                                                <div class="image-input image-input-outline image-input-circle" id="kt_image_1">
-                                                    <div class="image-input-wrapper" style="background-image: url({{asset(getImagesPath('Services') . $service->logo)}})"></div>
-
-                                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="احذف الصوره">
-                                                    <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                                </span>
-                                                </div>
+                                            <div class="col-lg-6">
+                                                <label>* أســـم طالب الخدمه:</label>
+                                                <input type="text"  disabled class="form-control" value="{{$order->user->name}}" />
                                             </div>
+                                            <div class="col-lg-6">
+                                                <label>* رقم هاتف طالب الخدمه:</label>
+                                                <input type="text"  disabled class="form-control" value="{{$order->user->phone}}" />
+                                            </div>
+
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-lg-6">
-                                                <label>* الأســـم :</label>
-                                                <input type="text" name="name" disabled class="form-control" value="{{$service->name}}" />
+                                                <label>* اسم المنتج المطلوب :</label>
+                                                <input type="text"  disabled class="form-control"  value="{{ $order->category->name}}" />
                                             </div>
                                             <div class="col-lg-6">
-                                                <label>* الوصف :</label>
-                                                <input type="text" name="description" disabled class="form-control"  value="{{ $service->description}}" />
+                                                <label>* ملاحظات الطلب :</label>
+                                                <input type="text"  disabled class="form-control"  value="{{ $order->notes}}" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <label>* تفاصيل الطلب:</label>
+                                                <input type="text"  disabled class="form-control" value="{{$order->details}}" />
                                             </div>
                                         </div>
                                     </div>
@@ -59,7 +64,7 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-lg-12 text-center">
-                                        <a href="{{route('dashboard.services.index')}}" class="btn btn-light-primary font-weight-bold">إلـغـاء</a>
+                                        <a href="{{route('dashboard.orders.index')}}" class="btn btn-primary font-weight-bold">العوده</a>
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +80,3 @@
     </div>
     <!--end::Entry-->
 @endsection
-@push('scripts')
-    <script src="{{asset('js/datatables/users.js')}}"></script>
-    <script src="{{asset('js/components/upload_image.js')}}"></script>
-@endpush

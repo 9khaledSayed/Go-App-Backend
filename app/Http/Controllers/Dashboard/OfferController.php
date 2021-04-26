@@ -12,9 +12,14 @@ class OfferController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()){
-            $offers = Offer::with(['offer', 'order'])->get();
+            $offers = Offer::with(['provider', 'order'])->get();
             return response()->json($offers);
         }
         return view('dashboard.offers.index');
+    }
+
+    public function show(Offer $offer)
+    {
+        return view('dashboard.offers.show' , compact('offer'));
     }
 }

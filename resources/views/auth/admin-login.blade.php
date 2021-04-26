@@ -105,7 +105,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--end::Aside body-->
                 <!--begin: Aside footer for desktop-->
                 <div class="d-flex flex-column-auto justify-content-center mt-15">
-                    <div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">© 2021 WebStdy</div>
+                    <div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">© 2021 Go-App</div>
                 </div>
                 <!--end: Aside footer for desktop-->
             </div>
