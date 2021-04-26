@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,6 @@ Route::redirect('/' ,'login/admin');
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin.show-login');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin.login');
 
-
+Route::get('initialize' , function (){
+    Artisan::call('storage:link');
+});

@@ -36,6 +36,7 @@ var AttributeForm = function () {
             })
 
 
+
         // "remove all tags" button event listener
         document.getElementById('kt_tagify_1_remove').addEventListener('click', tagify.removeAllTags.bind(tagify))
 
@@ -90,6 +91,7 @@ var AttributeForm = function () {
         function onDropdownHide(e) {
             console.log("onDropdownHide: ", e.detail)
         }
+
     }
 
     return {

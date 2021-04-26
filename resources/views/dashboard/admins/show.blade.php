@@ -54,10 +54,3 @@
     </div>
     <!--end::Entry-->
 @endsection
-@push('scripts')
-    <script>
-    $('#kt_select_roles').select2({
-        placeholder: "اختر",
-    });
-    </script>
-@endpush

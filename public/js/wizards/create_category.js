@@ -13,7 +13,7 @@ var KTWizard3 = function () {
         // Initialize form wizard
         _wizard = new KTWizard(_wizardEl, {
             startStep: 1, // initial active step number
-            clickableSteps: true  // allow step clicking
+            clickableSteps: false  // allow step clicking
         });
 
 

@@ -46,58 +46,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 
             search: {
                 input: $('#generalSearch'),
-            }, rows: {
-                afterTemplate: function (row, data, index) {
-                    row.find('.delete-item').on('click', function () {
-                        swal.fire({
-                            text: "هـل أنـت متـأكد مـن حـذف هـذا العنـصر ؟ ",
-                            confirmButtonText: "نعــم, أمسح !",
-                            icon: "warning",
-                            confirmButtonClass: "btn font-weight-bold btn-danger",
-                            showCancelButton: true,
-                            cancelButtonText: "لا , ألغي",
-                            cancelButtonClass: "btn font-weight-bold btn-primary"
-                        }).then(function (result) {
-                            if (result.value) {
-                                swal.fire({
-                                    title: "تحميل ...",
-                                    onOpen: function () {
-                                        swal.showLoading();
-                                    }
-                                });
-                                $.ajax({
-                                    method: 'delete',
-                                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                                    url: '/dashboard/services/' + data.id,
-                                    error: function (err) {
-                                        if (err.hasOwnProperty('responseJSON')) {
-                                            if (err.responseJSON.hasOwnProperty('message')) {
-                                                swal.fire({
-                                                    title: "حطـأ !",
-                                                    text: err.responseJSON.message,
-                                                    confirmButtonText: "موافق",
-                                                    icon: "error",
-                                                    confirmButtonClass: "btn font-weight-bold btn-primary",
-                                                });
-                                            }
-                                        }
-                                        console.log(err);
-                                    }
-                                }).done(function (res) {
-                                    swal.fire({
-                                        text: "تم الحذف بنجاح",
-                                        confirmButtonText: "موافق",
-                                        icon: "success",
-                                        confirmButtonClass: "btn font-weight-bold btn-primary",
-                                    });
-                                    datatable.reload();
-                                });
-                            }
-                        });
-                    });
-                }
             },
-
             // columns definition
             columns: [{
                 field: 'id',
@@ -108,8 +57,13 @@ var KTDatatableRemoteAjaxDemo = function() {
                 selector: false,
                 textAlign: 'center',
             }, {
-                field: 'provider',
+                field: 'provider.name',
                 title: "مقدم الخدمة",
+                selector: false,
+                textAlign: 'center',
+            },{
+                field: 'provider.phone',
+                title: " رقم هاتف مقدم الخدمة",
                 selector: false,
                 textAlign: 'center',
             }, {
@@ -122,6 +76,37 @@ var KTDatatableRemoteAjaxDemo = function() {
                 title: "السعر",
                 selector: false,
                 textAlign: 'center',
+                template:function (row) {
+                    return row.price + " ر.س ";
+                }
+            },{
+                field: 'duration',
+                title: "مده التنفيذ",
+                selector: false,
+                textAlign: 'center',
+                template:function (row) {
+                    return row.duration + " يوم ";
+                }
+            },{
+                field: 'status',
+                title: "حاله الطلب",
+                selector: false,
+                textAlign: 'center',
+                template:function (row) {
+                    if (row.status === "pending")
+                    {
+                        return "قيد الأنتظار";
+
+                    }else if (row.status === "pending")
+                    {
+                        return "تم الموافقه علي العرض";
+
+                    }else
+                    {
+                        return "تم رفض العرض";
+
+                    }
+                }
             },{
                 field: 'Actions',
                 title: "الأجراءات",

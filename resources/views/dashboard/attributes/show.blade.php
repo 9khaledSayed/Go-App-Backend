@@ -49,9 +49,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group row" id="valuesDiv" style="display: none">
-                                            <label class="col-form-label text-right col-lg-3 col-sm-12">Values</label>
+                                            <label class="col-form-label text-right col-lg-3 col-sm-12">القيم</label>
                                             <div class="col-lg-6 col-md-9 col-sm-12">
-                                                <input id="values" class="form-control tagify" disabled name='value' value='{{$attribute->value}}' />
+                                                <input id="values" class="form-control tagify"  name='value' value='{{$attribute->value}}' />
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +60,7 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-lg-12 text-center">
-                                        <a href="{{route('dashboard.attributes.index')}}" class="btn btn-light-primary font-weight-bold">إلـغـاء</a>
+                                        <a href="{{route('dashboard.attributes.index')}}" class="btn btn-primary font-weight-bold">العوده</a>
                                     </div>
                                 </div>
                             </div>
