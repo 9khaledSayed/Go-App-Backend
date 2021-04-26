@@ -28,8 +28,8 @@ var KTDatatableRemoteAjaxDemo = function() {
                 },
                 pageSize: 10,
                 serverPaging: true,
-                serverFiltering: true,
-                serverSorting: true,
+                serverFiltering: false,
+                serverSorting: false,
             },
 
             // layout definition

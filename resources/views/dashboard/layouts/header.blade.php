@@ -225,76 +225,78 @@
 <!--end::Header-->
 
 
-{{--@push('scripts')--}}
+@push('scripts')
 
 
-{{--    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>--}}
-{{--    <script>--}}
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 
-{{--        // Enable pusher logging - don't include this in production--}}
-{{--        Pusher.logToConsole = true;--}}
+    <script>
 
-{{--        var pusher = new Pusher(--}}
-{{--            '1e2bb7b0bd64c940e9b8', {--}}
-{{--            cluster: 'ap2',--}}
-{{--            encrypted: true--}}
-{{--        });--}}
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
 
-{{--        var channel = pusher.subscribe('newOrderChannel');--}}
+        var pusher = new Pusher(
+            'e272102844b71c3a21d8', {
+                cluster: 'eu',
+                encrypted: true
+        });
 
-{{--        channel.bind('OrderEvent', function(data) {--}}
+        var channel = pusher.subscribe('newOrderChannel');
 
-
-{{--            document.getElementById('notification-count-1').innerText = parseInt(document.getElementById('notification-count-1').innerText) + 1;--}}
-{{--            document.getElementById('notification-count-2').innerText = document.getElementById('notification-count-1').innerText;--}}
+        channel.bind('OrderEvent', function(data) {
 
 
-{{--            var notificationRow =--}}
-{{--                ' <div class="d-flex align-items-center mb-6"> ' +--}}
-
-{{--                '<div class="symbol symbol-40 symbol-primary mr-5">' +--}}
-{{--                '<span class="symbol-label">' +--}}
-{{--                '<i class="flaticon2-bell text-light"></i>' +--}}
-{{--                '</span>' +--}}
-{{--                '</div>' +--}}
-{{--                '<div class="d-flex flex-column font-weight-bold">' +--}}
-{{--                '<a href="' + data['order'].link + '" onclick="markRead(' + data['order'].id + ')" class="text-dark text-hover-primary mb-1 font-size-lg font-weight-bolder"> طلب جديد  </a>' +--}}
-{{--                '<span class="text-muted">' + "تم استلام طلب جديد برقم"  + data['order'].number + '</span>' +--}}
-{{--                '</div>' +--}}
-{{--                '</div>';--}}
-
-{{--            var notification_body = document.getElementById('notificationsBody');--}}
-{{--            notification_body.insertAdjacentHTML("afterbegin", notificationRow);--}}
-
-{{--            var notificationSound = new Audio("{{asset('notify.mp3')}}");--}}
-
-{{--            notificationSound.play();--}}
-
-{{--            if( document.getElementById('no_notifications'))--}}
-{{--            {--}}
-{{--                document.getElementById('no_notifications').style.display = "none";--}}
-{{--            }--}}
+            alert('done')
+            {{--document.getElementById('notification-count-1').innerText = parseInt(document.getElementById('notification-count-1').innerText) + 1;--}}
+            {{--document.getElementById('notification-count-2').innerText = document.getElementById('notification-count-1').innerText;--}}
 
 
-{{--        });--}}
+            {{--var notificationRow =--}}
+            {{--    ' <div class="d-flex align-items-center mb-6"> ' +--}}
 
-{{--    </script>--}}
-{{--    <script>--}}
+            {{--    '<div class="symbol symbol-40 symbol-primary mr-5">' +--}}
+            {{--    '<span class="symbol-label">' +--}}
+            {{--    '<i class="flaticon2-bell text-light"></i>' +--}}
+            {{--    '</span>' +--}}
+            {{--    '</div>' +--}}
+            {{--    '<div class="d-flex flex-column font-weight-bold">' +--}}
+            {{--    '<a href="' + data['order'].link + '" onclick="markRead(' + data['order'].id + ')" class="text-dark text-hover-primary mb-1 font-size-lg font-weight-bolder"> طلب جديد  </a>' +--}}
+            {{--    '<span class="text-muted">' + "تم استلام طلب جديد برقم"  + data['order'].number + '</span>' +--}}
+            {{--    '</div>' +--}}
+            {{--    '</div>';--}}
 
-{{--        function markRead(id)--}}
-{{--        {--}}
+            {{--var notification_body = document.getElementById('notificationsBody');--}}
+            {{--notification_body.insertAdjacentHTML("afterbegin", notificationRow);--}}
 
-{{--            --}}{{--var audio = new Audio('{{base_path('notification.mp3')}}');--}}
-{{--            --}}{{--audio.play();--}}
+            {{--var notificationSound = new Audio("{{asset('notify.mp3')}}");--}}
 
-{{--            $.ajax({--}}
-{{--                type:"PUT",--}}
-{{--                url: "admin/notifications/mark-read/" + id,--}}
-{{--                data:{--}}
-{{--                    "_token": "{{ csrf_token() }}",--}}
-{{--                },--}}
-{{--            });--}}
-{{--        }--}}
+            {{--notificationSound.play();--}}
 
-{{--    </script>--}}
-{{--@endpush--}}
+            {{--if( document.getElementById('no_notifications'))--}}
+            {{--{--}}
+            {{--    document.getElementById('no_notifications').style.display = "none";--}}
+            {{--}--}}
+
+
+        });
+
+    </script>
+    <script>
+
+        function markRead(id)
+        {
+
+            var audio = new Audio('{{base_path('notification.mp3')}}');
+            audio.play();
+
+            $.ajax({
+                type:"PUT",
+                url: "admin/notifications/mark-read/" + id,
+                data:{
+                    "_token": "{{ csrf_token() }}",
+                },
+            });
+        }
+
+    </script>
+@endpush
