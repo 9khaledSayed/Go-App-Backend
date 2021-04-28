@@ -22,7 +22,7 @@ class CategoryController extends Controller
             "service_id" =>  $mainCategory['service_id'],
             "name" =>  $mainCategory['name'],
             "description" =>  $mainCategory['description'],
-            "images" =>  $mainCategory['images'] ? unserialize($mainCategory['images']) : [],
+            "images" =>  $mainCategory['images'],
             "status" =>  $mainCategory['status'],
             "attributes" => $mainCategory['attributes']->map(function ($attribute){
                 return
@@ -41,7 +41,7 @@ class CategoryController extends Controller
                     "service_id" =>  $childCategory['service_id'],
                     "name" =>  $childCategory['name'],
                     "description" =>  $childCategory['description'],
-                    "images" =>  $childCategory['images'] ? unserialize($childCategory['images']) : [],
+                    "images" =>  $childCategory['images'],
                     "status" =>  $childCategory['status'],
                     "children" => [],
                     "attributes" => $childCategory['attributes']->map(function ($attribute){

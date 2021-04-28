@@ -2,15 +2,31 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
     protected $casts = [
-        'created_at' => 'date:Y-m-d',
+        'created_at' => 'datetime:Y-m-d',
     ];
 
     protected $guarded = [];
+
+    public function getCategoryIdAttribute()
+    {
+        return intval($this->attributes['category_id']);
+    }
+
+    public function getUserIdAttribute()
+    {
+        return intval($this->attributes['user_id']);
+    }
+
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
+    }
 
     public function offers()
     {
