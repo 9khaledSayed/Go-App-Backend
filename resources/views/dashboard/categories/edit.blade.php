@@ -232,6 +232,7 @@
                                         </form>
                                         <div class="form-group row">
                                             @foreach($category->images as $image)
+                                                @dd($category,$image)
 
 
                                                 <div class="col-4 d-flex justify-content-center mb-5" id="{{'img_'.$loop->index}}">
