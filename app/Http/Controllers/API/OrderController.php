@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Offer;
 use App\Order;
+use App\Provider;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -54,7 +55,7 @@ class OrderController extends Controller
                 'categoryName' => $order['category']['name'],
                 'orderDate' => date('d-m-Y' , strtotime($order['created_at'])),
                 'status' => $order['status'],
-               
+
             ];
         });
         return response($orders);
@@ -92,12 +93,12 @@ class OrderController extends Controller
     public function finishedOrders()
     {
 
-        $orders = auth()->guard('provider-api')->user()->offers()->where('status','approved')
-            ->whereHas('order' , function ($order){
+        $orders = auth()->user()->offers()->where('status', 'approved')
+            ->whereHas('order', function ($order) {
 
-              $order->where('status','finished');
+                $order->where('status', 'finished');
 
-        })->get()->map(function ($offer){
+            })->get()->map(function ($offer) {
 
                 return
                     [
@@ -107,12 +108,13 @@ class OrderController extends Controller
                         'notes' => $offer['order']['notes'],
                         'details' => $offer['order']['details'],
                         'categoryName' => $offer['order']['category']['name'],
-                        'orderDate' => date('d-m-Y' , strtotime($offer['order']['created_at'])),
+                        'orderDate' => date('d-m-Y', strtotime($offer['order']['created_at'])),
                         'status' => $offer['order']['status'],
                     ];
+            });
 
-
-        });
+        return response($orders);
+    }
 
         public function pendingOrders(Request $request)
     {
@@ -125,7 +127,7 @@ class OrderController extends Controller
                     'notes' => $order['notes'],
                     'details' => $order['details'],
                     'categoryName' => $order['category']['name'],
-                    'orderDate' => $order->create_at,
+                    'orderDate' => $order->created_at,
                 ];
         });
 
@@ -144,7 +146,7 @@ class OrderController extends Controller
                     'notes' => $order['notes'],
                     'details' => $order['details'],
                     'categoryName' => $order['category']['name'],
-                    'orderDate' => $order->create_at,
+                    'orderDate' => $order->created_at,
                     'category_images' => $order->category->images,
                     'user_name' => $order->user->name,
                 ];
@@ -152,5 +154,30 @@ class OrderController extends Controller
 
 
         return response($orders);
+    }
+
+    public function myInProgressOrders(Request $request)
+    {
+        $provider = auth()->user();
+
+        $myInProgressOrders = $provider->offers->where('status', 'approved')->map(function ($offer){
+            $order = $offer->order;
+            if($order->status == 'in_progress'){
+                return [
+                    'id' => $order['id'],
+                    'category_id' => $order['category_id'],
+                    'user_id' => $order['user_id'],
+                    'notes' => $order['notes'],
+                    'details' => $order['details'],
+                    'categoryName' => $order['category']['name'],
+                    'orderDate' => $order->created_at,
+                    'category_images' => $order->category->images,
+                    'user_name' => $order->user->name,
+                ];
+            }
+
+        })->filter();
+
+        return response($myInProgressOrders);
     }
 }

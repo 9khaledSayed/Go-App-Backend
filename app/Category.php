@@ -8,10 +8,12 @@ class Category extends Model
 {
     protected $guarded = [];
     protected $casts = [
-        'status' => 'integer',
+ 
         'parent_id' => 'integer',
         'service_id' => 'integer',
+        'status' => 'boolean',
     ];
+
 
     public function getImagesAttribute()
     {

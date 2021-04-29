@@ -11,6 +11,7 @@ return array(
     'App\\Attribute' => $baseDir . '/app/Attribute.php',
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Events\\NewOrderEvent' => $baseDir . '/app/Events/NewOrderEvent.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\API\\Auth\\ApiAuthController' => $baseDir . '/app/Http/Controllers/API/Auth/ApiAuthController.php',
     'App\\Http\\Controllers\\API\\CategoryController' => $baseDir . '/app/Http/Controllers/API/CategoryController.php',

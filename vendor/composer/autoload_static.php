@@ -50,9 +50,9 @@ class ComposerStaticInit81d038829c483f64ba6663285e15d553
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
-        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
         '17d016dc52a631c1e74d2eb8fdd57342' => __DIR__ . '/..' . '/laravel/helpers/src/helpers.php',
         '646961a8eab48144f6c03fc7c3185753' => __DIR__ . '/../..' . '/app/Http/Helpers/Functions.php',
     );
@@ -582,6 +582,7 @@ class ComposerStaticInit81d038829c483f64ba6663285e15d553
         'App\\Attribute' => __DIR__ . '/../..' . '/app/Attribute.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Events\\NewOrderEvent' => __DIR__ . '/../..' . '/app/Events/NewOrderEvent.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\API\\Auth\\ApiAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Auth/ApiAuthController.php',
         'App\\Http\\Controllers\\API\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/CategoryController.php',

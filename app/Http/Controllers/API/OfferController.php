@@ -29,10 +29,10 @@ class OfferController extends Controller
     public function accept(Offer $offer)
     {
         $offer->status = "approved";
+        $offer->accepted_date = Carbon::now()->format('Y-m-d');
         $offer->save();
 
         $order = $offer->order;
-        $order->accepted_date = Carbon::now()->format('yyyy-mm-d');
         $order->status = "in_progress";
         $order->save();
 
