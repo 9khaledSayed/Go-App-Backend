@@ -3,29 +3,57 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
+    use SoftDeletes;
     protected $guarded = [];
     protected $casts = [
- 
+
         'parent_id' => 'integer',
         'service_id' => 'integer',
-        'status' => 'boolean',
+        'status' => 'integer',
     ];
 
 
     public function getImagesAttribute()
     {
-        if (isset($this->attributes['images']) && $this->attributes['images'] != '') {
+        if (isset($this->attributes['images']) && $this->attributes['images'] != '')
+        {
 
             $images = unserialize($this->attributes['images']);
-            foreach ($images as $key => $image){
+            foreach ($images as $key => $image)
+            {
                 $images[$key] = getImagesPath('Categories') . $image;
             }
+
             return $images;
 
-        }else {
+        }else
+        {
+            return [];
+        }
+
+    }
+
+
+
+    public function getImages()
+    {
+        if (isset($this->attributes['images']) && $this->attributes['images'] != '')
+        {
+
+            $images = unserialize($this->attributes['images']);
+            foreach ($images as $key => $image)
+            {
+                $images[$key] =  $image;
+            }
+
+            return $images;
+
+        }else
+        {
             return [];
         }
 
@@ -46,6 +74,7 @@ class Category extends Model
     {
         return $this->belongsTo(Service::class ,'service_id');
     }
+
     public function attributes()
     {
         return $this->belongsToMany(Attribute::class , 'attribute-category' , 'category_id');

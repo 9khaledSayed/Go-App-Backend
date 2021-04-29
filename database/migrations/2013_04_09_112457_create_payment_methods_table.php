@@ -19,6 +19,8 @@ class CreatePaymentMethodsTable extends Migration
             $table->string('image')->default('default-payment-method.png');
             $table->boolean('status')->default(true);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -108,6 +108,7 @@ class CategoryController extends Controller
 
         $category_id = $request['category_id'];
 
+
         $category = Category::find($category_id);
 
 
@@ -116,7 +117,7 @@ class CategoryController extends Controller
 
         if ($category->images)
         {
-            $images = $category->images;
+            $images = $category->getImages();
             array_push($images,$imageName);
             $category->images = serialize($images);
             $category->save();
@@ -139,7 +140,7 @@ class CategoryController extends Controller
         if ($request->ajax())
         {
             $category  = Category::find($request['category_id']);
-            $images    = $category->images;
+            $images    = $category->getImages();
             array_splice($images,$request['image_index'],1);
             $category->update([
                 'images' => serialize($images)
@@ -185,8 +186,9 @@ class CategoryController extends Controller
         $parentCategories = Category::whereNull('parent_id')->get();
         $services         = Service::all();
         $attributes       = Attribute::get(['id','name']);
+        $categoryID       = $category->id;
 
-        return view('dashboard.categories.edit', compact('category','parentCategories','services','attributes'));
+        return view('dashboard.categories.edit', compact('category','parentCategories','services','attributes','categoryID'));
     }
 
     /**
@@ -198,6 +200,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+
 
         $validation = Validator::make($request->all() , [
             'name'        => 'required | string | max:255 | unique:categories,id,' . $category->id,

@@ -232,9 +232,6 @@
                                         </form>
                                         <div class="form-group row">
                                             @foreach($category->images as $image)
-                                                @dd($category,$image)
-
-
                                                 <div class="col-4 d-flex justify-content-center mb-5" id="{{'img_'.$loop->index}}">
                                                     <div class="image-input image-input-outline">
                                                         <img  src="{{ $image }}" style="margin:auto;height:150px;width:250px;border-radius:10px;border:3px;border-style: groove;" alt="" />
@@ -280,14 +277,13 @@
         <!--end::Container-->
     </div>
 
-
 @endsection
 
 @push('scripts')
 
     <script>
 
-        let category_id = "{{ $category['id'] }}";
+        let categoryID = "{{ $categoryID }}";
 
         let selectedAttributesIDs = @json($category->attributes->pluck('id')->toArray())
     </script>
@@ -298,7 +294,6 @@
 
     <script>
         window.onload = function () {
-
 
             @if(old('type') != "sub") $('#main').hide()
             @endif
@@ -412,6 +407,12 @@
 
     </script>
 
+    <script>
+        let categoryID = "{{$category['id']}}";
+        $(document).ready(function () {
+            alert('ahmed');
+        });
+    </script>
     <script src="{{asset('assets/js/pages/crud/file-upload/dropzonejs.js')}}"></script>
 
 

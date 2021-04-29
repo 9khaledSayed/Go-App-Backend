@@ -82,7 +82,7 @@ class OrderController extends Controller
                 'orderDate' => date('d-m-Y' , strtotime($order['created_at'])),
                 'status' => $order['status'],
                 'provider_name' => $acceptedOffer['provider']['name'],
-                'totalDays' => $acceptedOffer['duration'],
+                'totalDays' => intval( $acceptedOffer['duration'] ),
                 'daysLeft' => $acceptedOffer['duration'] - $daysLeft,
             ];
         });

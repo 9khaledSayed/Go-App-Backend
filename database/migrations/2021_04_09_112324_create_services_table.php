@@ -19,6 +19,8 @@ class CreateServicesTable extends Migration
             $table->string('logo')->default('default.png');
             $table->string('description');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

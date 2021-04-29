@@ -16,7 +16,7 @@ var KTDropzoneDemo = function () {
             addRemoveLinks: true,
             init: function() {
                 this.on("sending", function(file, xhr, formData){
-                    formData.append("category_id", category_id);
+                    formData.append("category_id", categoryID);
                 });
             },
             accept: function(file, done) {

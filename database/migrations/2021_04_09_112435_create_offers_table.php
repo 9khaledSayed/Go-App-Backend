@@ -23,6 +23,7 @@ class CreateOffersTable extends Migration
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->date('accepted_date')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('provider_id')
                 ->references('id')

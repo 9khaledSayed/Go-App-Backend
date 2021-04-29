@@ -18,11 +18,7 @@ Route::redirect('/' ,'login/admin');
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin.show-login');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin.login');
 
-Route::get('test' , function (){
-
-
-    broadcast(new \App\Events\NewOrderEvent('asadghsda'))->toOthers();
-
-
-    dd('d');
+Route::get('migrate' , function (){
+    Artisan::call('migrate:fresh','--seed');
+    dd("done");
 });

@@ -4,9 +4,12 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use phpDocumentor\Reflection\Types\Integer;
 
 class Order extends Model
 {
+    use SoftDeletes;
     protected $casts = [
         'created_at' => 'datetime:Y-m-d',
     ];

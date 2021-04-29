@@ -28,7 +28,7 @@ var KTWizard3 = function () {
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
 
                     data: $('#kt_form').serialize(),
-                    url: '/dashboard/categories/' + category_id,
+                    url: '/dashboard/categories/' + categoryID,
                 }).done(function (response) {
                     if (response['errors'] != null)
                     {
@@ -62,7 +62,7 @@ var KTWizard3 = function () {
                     data:
                         {
                             attributes : selectedAttributesIDs ,
-                            category_id: category_id
+                            category_id: categoryID
                         },
                     url: '/dashboard/categories/attributes',
                 }).done(function (response) {

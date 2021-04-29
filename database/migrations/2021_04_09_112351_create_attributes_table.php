@@ -19,6 +19,8 @@ class CreateAttributesTable extends Migration
             $table->longText('value')->nullable();
             $table->enum('type', ['number', 'list', 'size']);
             $table->timestamps();
+            $table->softDeletes();
+
         });
 
         Schema::create('attribute-category', function (Blueprint $table) {

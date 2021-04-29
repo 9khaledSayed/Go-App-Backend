@@ -22,6 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->boolean('status')->default(true);
             $table->longText('images')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('service_id')
                 ->references('id')
