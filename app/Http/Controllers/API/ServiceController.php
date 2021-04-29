@@ -15,7 +15,7 @@ class ServiceController extends Controller
             [
                 "id" => $service['id'],
                 "name" => $service['name'],
-                "logo" => 'http://192.168.1.15:8000/storage/Images/Services/' .$service['logo'],
+                "logo" => getImagesPath('Services') . $service['logo'],
                 "description" => $service['description'],
             ];
         });
