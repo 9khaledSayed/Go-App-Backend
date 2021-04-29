@@ -182,7 +182,6 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
 
-
         $parentCategories = Category::whereNull('parent_id')->get();
         $services         = Service::all();
         $attributes       = Attribute::get(['id','name']);

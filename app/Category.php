@@ -8,8 +8,12 @@ class Category extends Model
 {
     protected $guarded = [];
     protected $casts = [
+ 
+        'parent_id' => 'integer',
+        'service_id' => 'integer',
         'status' => 'boolean',
     ];
+
 
     public function getImagesAttribute()
     {
@@ -25,11 +29,6 @@ class Category extends Model
             return [];
         }
 
-    }
-
-    public function getServiceIdAttribute()
-    {
-        return intval($this->attributes['service_id']);
     }
 
 

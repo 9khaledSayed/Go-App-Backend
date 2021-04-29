@@ -21,10 +21,8 @@ Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin.logi
 Route::get('test' , function (){
 
 
-
-    broadcast(new \App\Events\NewOrderEvent('sadhjdsgkj'));
-
+    broadcast(new \App\Events\NewOrderEvent('asadghsda'))->toOthers();
 
 
-    dd('ahmed');
+    dd('d');
 });

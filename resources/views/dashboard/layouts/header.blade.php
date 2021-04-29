@@ -237,7 +237,7 @@
 
         var pusher = new Pusher(
             'e272102844b71c3a21d8', {
-                cluster: 'eu',
+                cluster: 'ap2',
                 encrypted: true
         });
 
