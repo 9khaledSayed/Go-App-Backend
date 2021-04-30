@@ -58,10 +58,11 @@ class OfferController extends Controller
         ])->exists();
 
         if ($offerExists){
-            return response()->json([
-                'status' => false,
-                'message' => "لقد قمت بالفعل بعمل عرض مسبقا علي هذا الطلب",
-            ]);
+            return response([
+                'errors' => [
+                    'message' => ["لقد قمت بالفعل بعمل عرض مسبقا علي هذا الطلب"],
+                ]
+            ], 422);
         }
 
 
