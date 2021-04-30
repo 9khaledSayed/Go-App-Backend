@@ -19,6 +19,7 @@ Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('adm
 Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin.login');
 
 Route::get('migrate' , function (){
-    Artisan::call('migrate:fresh','--seed');
+    Artisan::call('passport:install');
+    Artisan::call('migrate');
     dd("done");
 });

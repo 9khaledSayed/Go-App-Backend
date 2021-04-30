@@ -13,7 +13,7 @@ class CategoryController extends Controller
     {
         $serviceID  = $request['service_id'];
 
-        $categories = Service::find($serviceID)->categories->map( function ($mainCategory){
+        $categories = Service::find($serviceID)->categories->whereNull('parent_id')->map( function ($mainCategory){
 
         return
         [
