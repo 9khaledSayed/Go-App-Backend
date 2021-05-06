@@ -55,7 +55,11 @@
                                         <div class="form-group row">
                                             <div class="col-lg-12">
                                                 <label>* تفاصيل الطلب:</label>
-                                                <input type="text"  disabled class="form-control" value="{{$order->details}}" />
+                                                <div class="bg-gray-100 rounded-card p-6">
+                                                    @foreach( json_decode($order->details,true) as $key => $value)
+                                                        <p class="font-weight-bolder">{{ $key . ' : ' . $value}}</p> <br>
+                                                    @endforeach
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -10,6 +10,7 @@ Route::group( ['prefix' => 'dashboard' ,  'namespace' => 'Dashboard' , 'middlewa
         Route::get('/offers' ,'OfferController@index')->name('offers.index');
         Route::get('/offers/{offer}' ,'OfferController@show')->name('offers.show');
         Route::get('/categories/children' ,'CategoryController@childrenCategories');
+        Route::put('notifications/mark-read' ,'NotifictionController@markAsRead');
         Route::post('categories/image/remove' ,'CategoryController@deleteImage');
 
         Route::resource('admins','AdminController');

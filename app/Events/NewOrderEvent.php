@@ -14,11 +14,17 @@ class NewOrderEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $message;
+    public $id;
+    public $title;
+    public $url;
+    public $timeAgo;
 
-    public function __construct($message)
+    public function __construct($notificationID , $title,$timeAgo,$url)
     {
-        $this->message = $message;
+        $this->id       = $notificationID;
+        $this->title    = $title;
+        $this->url      = $url;
+        $this->timeAgo  = $timeAgo;
     }
 
     /**
