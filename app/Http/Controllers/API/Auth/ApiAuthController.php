@@ -84,6 +84,7 @@ class ApiAuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required',
             'password' => 'required|string|min:6|confirmed',
+            'fcm_token' => ['required', 'string', 'max:255'],
         ]);
 
         $data['password']=Hash::make($request['password']);
@@ -99,6 +100,7 @@ class ApiAuthController extends Controller
             'email' => 'required|string|email|max:255|unique:providers',
             'phone' => 'required',
             'password' => 'required|string|min:6|confirmed',
+            'fcm_token' => ['required', 'string', 'max:255'],
         ]);
         $data['password']=Hash::make($request['password']);
         $data['remember_token'] = Str::random(10);
