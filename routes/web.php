@@ -23,14 +23,15 @@ Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin.logi
 Route::get('test' , function ()
 {
 
-      \App\Order::create([
-         'category_id' => 1,
-         'user_id' => 1,
-         'notes' => 'a',
-         'details' => 'a',
-         'status' => 'in_progress',
-
-      ]);
+        sendFirebaseNotification("User",1);
+//      \App\Order::create([
+//         'category_id' => 1,
+//         'user_id' => 1,
+//         'notes' => 'a',
+//         'details' => 'a',
+//         'status' => 'in_progress',
+//
+//      ]);
 //    Artisan::call('passport:install');
 //    Artisan::call('migrate');
     dd("done");

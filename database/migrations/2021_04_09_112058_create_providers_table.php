@@ -20,6 +20,7 @@ class CreateProvidersTable extends Migration
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->text('fcm_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
