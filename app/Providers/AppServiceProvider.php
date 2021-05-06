@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Admin;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Laravel\Passport\Console\ClientCommand;
@@ -29,10 +30,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        $this->commands([
-            InstallCommand::class,
-            ClientCommand::class,
-            KeysCommand::class,
-        ]);
+        $notifications = Admin::first()->unreadNotifications;
+
+        view()->share(['notifications' => $notifications]);
     }
 }

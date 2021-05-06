@@ -57,8 +57,8 @@ var KTLeaflet = function () {
 
 		// set circle polygon
 		var circle = L.circle([51.5073219, -0.1276474], {
-			color: '#4A7DFF',
-			fillColor: '#6993FF',
+			color: '#1762D7',
+			fillColor: '#1762D7',
 			fillOpacity: 0.5,
 			radius: 700
 		}).addTo(leaflet);
@@ -150,8 +150,8 @@ var KTLeaflet = function () {
 
 		// set circle polygon
 		var circle = L.circle([51.508, -0.11], {
-			color: '#4A7DFF',
-			fillColor: '#6993FF',
+			color: '#1762D7',
+			fillColor: '#1762D7',
 			fillOpacity: 0.5,
 			radius: 700
 		}).addTo(leaflet);

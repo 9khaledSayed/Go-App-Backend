@@ -1,7 +1,7 @@
 "use strict";
 
 // Shared Colors Definition
-const primary = '#6993FF';
+const primary = '#1762D7';
 const success = '#1BC5BD';
 const info = '#8950FC';
 const warning = '#FFA800';

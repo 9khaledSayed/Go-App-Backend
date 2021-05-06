@@ -1,3 +1,8 @@
+
+<audio id="sound">
+    <source src="{{asset('assets/tune.mp3')}}" type="audio/mpeg">
+</audio>
+
 <!--begin::Header-->
 <div id="kt_header" class="header header-fixed noprint">
     <!--begin::Container-->
@@ -9,16 +14,13 @@
         <!--end::Header Menu Wrapper-->
         <!--begin::Topbar-->
         <div class="topbar">
-{{--                @php--}}
-{{--                    $notifications = App\Models\Admin::find(1)->unreadNotifications;--}}
-{{--                @endphp--}}
 
                 <div class="dropdown">
                     <!--begin::Toggle-->
                     <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
                         <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1 pulse pulse-primary">
 
-                            <span style="background:red;color:white;font-weight:bold;font-size:0.8rem;margin-top:-15px" class="rounded-circle pl-2 pr-2 "> <span id="notification-count-1">12</span> </span>
+                            <span style="background:red;color:white;font-weight:bold;font-size:0.8rem;margin-top:-15px" class="rounded-circle pl-2 pr-2 "> <span id="notification-count-1">{{ $notifications->count() }}</span> </span>
 
                             <span>
                             <i class="flaticon2-bell text-primary"></i>
@@ -34,7 +36,7 @@
                             <div class="d-flex flex-column pt-12 bgi-size-cover bgi-no-repeat rounded-top" style="background-image: url({{asset('assets/media/misc/bg-1.jpg')}})">
                                 <!--begin::Title-->
                                 <h4 class="d-flex flex-center rounded-top">
-                                    <span class="btn btn-text btn-primary btn-sm font-weight-bolder btn-font-md ml-2 mb-10"><span id="notification-count-2">12</span> جديد </span>
+                                    <span class="btn btn-text btn-primary btn-sm font-weight-bolder btn-font-md ml-2 mb-10"><span id="notification-count-2">{{ $notifications->count() }}</span> جديد </span>
                                 </h4>
                                 <!--end::Title-->
                             </div>
@@ -47,35 +49,35 @@
 
                                     <div class="scroll pr-7 mr-n7" data-scroll="true" data-height="300" data-mobile-height="200" id="notificationsBody" >
 
-{{--                                    @forelse($notifications as $notification)--}}
-{{--                                        <!--begin::Item-->--}}
-{{--                                            <div class="d-flex align-items-center mb-6">--}}
-{{--                                                <!--begin::Symbol-->--}}
-{{--                                                <div class="symbol symbol-40 symbol-primary mr-5">--}}
-{{--                                            <span class="symbol-label">--}}
-{{--                                             <i class="flaticon2-bell text-light"></i>--}}
-{{--                                            </span>--}}
-{{--                                                </div>--}}
-{{--                                                <!--end::Symbol-->--}}
-{{--                                                <!--begin::Text-->--}}
-{{--                                                <div class="d-flex flex-column font-weight-bold">--}}
-{{--                                                    <a href="{{$notification['data']['link']}}" onclick="markRead('{{$notification['id']}}')" class="text-dark text-hover-primary mb-1 font-size-lg font-weight-bolder">طلب جديد</a>--}}
-{{--                                                    <span class="text-muted">تم استلام طلب جديد برقم {{$notification['data']['number']}}</span>--}}
-{{--                                                </div>--}}
-{{--                                                <!--end::Text-->--}}
-{{--                                            </div>--}}
-{{--                                            <!--end::Item-->--}}
+                                    @forelse($notifications as $notification)
+                                        <!--begin::Item-->
+                                            <div class="d-flex align-items-center mb-6">
+                                                <!--begin::Symbol-->
+                                                <div class="symbol symbol-40 symbol-primary mr-5">
+                                            <span class="symbol-label">
+                                             <i class="flaticon2-bell text-light"></i>
+                                            </span>
+                                                </div>
+                                                <!--end::Symbol-->
+                                                <!--begin::Text-->
+                                                <div class="d-flex flex-column font-weight-bold">
+                                                    <a href="{{$notification['data']['url']}}" onclick="markRead('{{$notification['id']}}')" class="text-dark text-hover-primary mb-1 font-size-lg font-weight-bolder">{{$notification['data']['title']}}</a>
+                                                    <span class="text-muted">{{$notification['data']['timeAgo']}}</span>
+                                                </div>
+                                                <!--end::Text-->
+                                            </div>
+                                            <!--end::Item-->
 
 
-{{--                                        @empty--}}
+                                        @empty
 
-{{--                                            <div class="tab-pane" id="no_notifications" role="tabpanel">--}}
-{{--                                                <!--begin::Nav-->--}}
-{{--                                                <div class="d-flex flex-center text-center min-h-200px font-weight-bolder">لا يوجد اشعارات جديده !</div>--}}
-{{--                                                <!--end::Nav-->--}}
-{{--                                            </div>--}}
+                                            <div class="tab-pane" id="no_notifications" role="tabpanel">
+                                                <!--begin::Nav-->
+                                                <div class="d-flex flex-center text-center min-h-200px font-weight-bolder">لا يوجد اشعارات جديده !</div>
+                                                <!--end::Nav-->
+                                            </div>
 
-{{--                                        @endforelse--}}
+                                        @endforelse
                                     </div>
                                     <!--end::Scroll-->
                                 </div>
@@ -237,45 +239,46 @@
 
         var pusher = new Pusher(
             'e272102844b71c3a21d8', {
-                cluster: 'ap2',
+                cluster: 'eu',
                 encrypted: true
         });
 
         var channel = pusher.subscribe('newOrderChannel');
 
         channel.bind('OrderEvent', function(data) {
+            console.log(data)
+
+            document.getElementById('notification-count-1').innerText = parseInt(document.getElementById('notification-count-1').innerText) + 1;
+            document.getElementById('notification-count-2').innerText = document.getElementById('notification-count-1').innerText;
 
 
-            alert('done')
-            {{--document.getElementById('notification-count-1').innerText = parseInt(document.getElementById('notification-count-1').innerText) + 1;--}}
-            {{--document.getElementById('notification-count-2').innerText = document.getElementById('notification-count-1').innerText;--}}
+            var notificationRow =
+                ' <div class="d-flex align-items-center mb-6"> ' +
 
+                '<div class="symbol symbol-40 symbol-primary mr-5">' +
+                '<span class="symbol-label">' +
+                '<i class="flaticon2-bell text-light"></i>' +
+                '</span>' +
+                '</div>' +
+                '<div class="d-flex flex-column font-weight-bold">' +
+                '<a href="' + data['url'] + '" onclick="markRead(' + data['id'] + ')" class="text-dark text-hover-primary mb-1 font-size-lg font-weight-bolder"> ' + data["title"] + ' </a>' +
+                '<span class="text-muted">' + data['timeAgo'] + '</span>' +
+                '</div>' +
+                '</div>';
 
-            {{--var notificationRow =--}}
-            {{--    ' <div class="d-flex align-items-center mb-6"> ' +--}}
-
-            {{--    '<div class="symbol symbol-40 symbol-primary mr-5">' +--}}
-            {{--    '<span class="symbol-label">' +--}}
-            {{--    '<i class="flaticon2-bell text-light"></i>' +--}}
-            {{--    '</span>' +--}}
-            {{--    '</div>' +--}}
-            {{--    '<div class="d-flex flex-column font-weight-bold">' +--}}
-            {{--    '<a href="' + data['order'].link + '" onclick="markRead(' + data['order'].id + ')" class="text-dark text-hover-primary mb-1 font-size-lg font-weight-bolder"> طلب جديد  </a>' +--}}
-            {{--    '<span class="text-muted">' + "تم استلام طلب جديد برقم"  + data['order'].number + '</span>' +--}}
-            {{--    '</div>' +--}}
-            {{--    '</div>';--}}
-
-            {{--var notification_body = document.getElementById('notificationsBody');--}}
-            {{--notification_body.insertAdjacentHTML("afterbegin", notificationRow);--}}
+            var notification_body = document.getElementById('notificationsBody');
+            notification_body.insertAdjacentHTML("afterbegin", notificationRow);
 
             {{--var notificationSound = new Audio("{{asset('notify.mp3')}}");--}}
 
             {{--notificationSound.play();--}}
 
-            {{--if( document.getElementById('no_notifications'))--}}
-            {{--{--}}
-            {{--    document.getElementById('no_notifications').style.display = "none";--}}
-            {{--}--}}
+            $('#sound')[0].play();
+
+            if( document.getElementById('no_notifications'))
+            {
+                document.getElementById('no_notifications').style.display = "none";
+            }
 
 
         });
@@ -286,13 +289,11 @@
         function markRead(id)
         {
 
-            var audio = new Audio('{{base_path('notification.mp3')}}');
-            audio.play();
-
             $.ajax({
                 type:"PUT",
-                url: "admin/notifications/mark-read/" + id,
+                url: "/dashboard/notifications/mark-read/",
                 data:{
+                    id:id,
                     "_token": "{{ csrf_token() }}",
                 },
             });

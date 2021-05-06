@@ -1,4 +1,6 @@
 <?php
+
+use App\Events\NewOrderEvent;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +20,18 @@ Route::redirect('/' ,'login/admin');
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin.show-login');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin.login');
 
-Route::get('migrate' , function (){
-    Artisan::call('passport:install');
-    Artisan::call('migrate');
+Route::get('test' , function ()
+{
+
+      \App\Order::create([
+         'category_id' => 1,
+         'user_id' => 1,
+         'notes' => 'a',
+         'details' => 'a',
+         'status' => 'in_progress',
+
+      ]);
+//    Artisan::call('passport:install');
+//    Artisan::call('migrate');
     dd("done");
 });
