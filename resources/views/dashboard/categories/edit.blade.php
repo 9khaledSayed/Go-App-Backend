@@ -72,7 +72,6 @@
                                                 </div>
                                             </div>
 
-
                                             <div class="form-group row mb-5">
                                                 <div class="col-lg-12">
                                                     <label>* الوصف :</label>
@@ -85,6 +84,7 @@
                                                 </div>
                                             </div>
 
+                                            <div  id="myApp" >
 
                                             <div class="form-group row mt-10 mb-5 text-center">
                                                 <div class="col-lg-12">
@@ -94,14 +94,14 @@
 
                                                         <label class="radio radio-primary">
                                                             <input type="radio" name="type"
-                                                                   @if($category['type'] != "sub") checked
+                                                                   @if($category['parent_id'] == null) checked
                                                                    @endif value="main" @click="toggleType"/>
                                                             <span class=""></span>فئه رئيسيه
                                                         </label>
 
                                                         <label class="radio radio-success">
                                                             <input type="radio" name="type"
-                                                                   @if($category['type']   == "sub") checked
+                                                                   @if($category['parent_id'] != null) checked
                                                                    @endif value="sub" @click="toggleType"/>
                                                             <span class=""></span>فئه فرعيه
                                                         </label>
@@ -118,7 +118,7 @@
                                                     <select class="custom-select form-control" name="service_id">
                                                         <option  value="" selected >أختر</option>
                                                         @foreach($services as $service)
-                                                            <option value="{{$service->id}}" {{ $category['service_id'] == $service->id ? 'selected' : '' }}>{{$service->name}}</option>
+                                                            <option value="{{$service->id}}" {{ $category['service_id']  ? 'selected' : '' }}>{{$service->name}}</option>
                                                         @endforeach
                                                     </select>
 
@@ -135,8 +135,8 @@
                                                     <div></div>
                                                     <select class="custom-select form-control" name="parent_id">
                                                         <option  value="" selected >أختر</option>
-                                                        @foreach($parentCategories as $category)
-                                                            <option value="{{$category->id}}" {{ $category['parent_id'] == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                                                        @foreach($parentCategories as $parentCategory)
+                                                            <option value="{{$parentCategory->id}}" {{ $category['parent_id'] == $parentCategory->id ? 'selected' : '' }}>{{$parentCategory->name}}</option>
                                                         @endforeach
                                                     </select>
 
@@ -147,38 +147,39 @@
                                                 </div>
                                             </div>
 
-                                        <div class="mb-5" id="myApp">
-                                            <div class="form-group row mb-10 mx-auto text-center mt-15">
+                                            <div class="mb-5">
+                                                <div class="form-group row mb-10 mx-auto text-center mt-15">
 
-                                                <label class="col-3 col-form-label text-right"><b>الظهور في
-                                                        التطبيق</b> </label>
+                                                    <label class="col-3 col-form-label text-right"><b>الظهور في
+                                                            التطبيق</b> </label>
 
-                                                <div class="col-6">
-                                                        <span class="switch switch-lg switch-icon mx-auto text-center"
-                                                              style="width:fit-content">
-                                                                <label>
-                                                                        <input type="checkbox" v-model="checked"
-                                                                               name="status"/>
+                                                    <div class="col-6">
+                                                            <span class="switch switch-lg switch-icon mx-auto text-center"
+                                                                  style="width:fit-content">
+                                                                    <label>
+                                                                            <input type="checkbox" v-model="checked"
+                                                                                   name="status"/>
 
-                                                                        <span></span>
-                                                                </label>
-                                                        </span>
+                                                                            <span></span>
+                                                                    </label>
+                                                            </span>
+                                                    </div>
+
+                                                    <label class="col-3 col-form-label text-left"><b> @{{ checked ?
+                                                            "متاح" : "غير متاح" }} </b></label>
+
+
+
+                                                    <div class="col-12 text-center mt-10">
+                                                        <p class="invalid-input" id="statusValidationError"></p>
+                                                    </div>
+
+
                                                 </div>
-
-                                                <label class="col-3 col-form-label text-left"><b> @{{ checked ?
-                                                        "متاح" : "غير متاح" }} </b></label>
-
-
-
-                                                <div class="col-12 text-center mt-10">
-                                                    <p class="invalid-input" id="statusValidationError"></p>
-                                                </div>
-
 
                                             </div>
 
-                                        </div>
-
+                                            </div>
                                     </div>
                                     <!--end: Wizard Step 1-->
 
@@ -295,8 +296,7 @@
     <script>
         window.onload = function () {
 
-            @if(old('type') != "sub") $('#main').hide()
-            @endif
+            @if( $category['parent_id'] == null )  $('#main').hide() @else  $('#services').hide()  @endif
 
             new Vue({
                 el: "#myApp",

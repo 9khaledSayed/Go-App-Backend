@@ -251,7 +251,7 @@
 
     <script>
 
-        let category_id = null;
+        let categoryID = null;
 
         let selectedAttributesIDs = [];
 

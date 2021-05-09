@@ -74,7 +74,7 @@ class CategoryController extends Controller
     {
 
         $validation = Validator::make($request->all() , [
-            'name'        => 'required | string | max:255 | unique:categories',
+            'name'        => 'required | string | max:255',
             'description' => 'required_if:type,sub',
             'service_id' => 'required_if:type,main',
             'parent_id' => 'required_if:type,sub',
@@ -203,7 +203,7 @@ class CategoryController extends Controller
 
 
         $validation = Validator::make($request->all() , [
-            'name'        => 'required | string | max:255 | unique:categories,id,' . $category->id,
+            'name'        => 'required | string | max:255 ',
             'description' => 'required_if:type,sub',
             'service_id' => 'required_if:type,main',
             'parent_id' => 'required_if:type,sub',

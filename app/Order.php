@@ -62,6 +62,9 @@ class Order extends Model
             $admin->notify( new NewOrder($title , $timeAgo , $orderUrl));
             $notificationID = Notification::all()->last()->id;
             event( new NewOrderEvent($notificationID,$title , $timeAgo, $orderUrl));
+
+            // tell all the providers about the new order
+            sendFirebaseNotification("Provider",'يوجد طلب جديد');
         });
 
     }

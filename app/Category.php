@@ -37,10 +37,9 @@ class Category extends Model
 
     }
 
-
-
     public function getImages()
     {
+
         if (isset($this->attributes['images']) && $this->attributes['images'] != '')
         {
 

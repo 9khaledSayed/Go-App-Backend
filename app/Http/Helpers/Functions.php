@@ -72,7 +72,7 @@ if(!function_exists('isTabActive')){
 if(!function_exists('sendFirebaseNotification')){
 
 
-    function sendFirebaseNotification($modelName , $id = null){
+    function sendFirebaseNotification($modelName , $notificationBody ,$id = null){
 
 
         $SERVER_API_KEY = env("FCM_API_KEY");
@@ -81,9 +81,9 @@ if(!function_exists('sendFirebaseNotification')){
 
             "notification" => [
 
-                "title" => 'Welcome',
+                "title" => 'Go-App',
 
-                "body" => 'this notification from go app',
+                "body" => $notificationBody,
 
                 "sound"=> "default"
 

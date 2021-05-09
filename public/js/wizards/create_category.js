@@ -47,7 +47,7 @@ var KTWizard3 = function () {
                     }else
                     {
 
-                        category_id = response['category_id'];
+                        categoryID = response['category_id'];
 
                         $('#prev-btn').prop('disabled', true);
 
@@ -67,7 +67,7 @@ var KTWizard3 = function () {
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     data:
                         { attributes : selectedAttributesIDs ,
-                            category_id: category_id
+                            category_id: categoryID
                         },
                     url: '/dashboard/categories/attributes',
                 }).done(function (response) {
