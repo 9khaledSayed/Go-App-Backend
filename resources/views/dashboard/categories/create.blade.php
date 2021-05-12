@@ -114,6 +114,7 @@
                                                         <label class="col-form-label"><b></b>الخدمات</label>
                                                         <div></div>
                                                         <select class="custom-select form-control" name="service_id">
+                                                            <option value="">أختر</option>
                                                             @foreach($services as $service)
                                                                 <option value="{{$service->id}}">{{$service->name}}</option>
                                                             @endforeach
@@ -131,6 +132,7 @@
                                                         <label class="col-form-label"><b></b>الفئات الرئيسيه</label>
                                                         <div></div>
                                                         <select class="custom-select form-control" name="parent_id">
+                                                            <option value="">أختر</option>
                                                             @foreach($parentCategories as $category)
                                                                 <option value="{{$category->id}}">{{$category->name}}</option>
                                                             @endforeach
@@ -318,8 +320,9 @@
             }else
             {
                 $(this).removeClass('bg-primary');
+                $(this).removeClass('text-light');
                 $(this).addClass('text-dark');
-                $(this).addClass('bg-light');
+                $(this).addClass('bg-gray-200');
                 $(this).children().eq(1).remove();
 
                 const idIndex = selectedAttributesIDs.indexOf(id);

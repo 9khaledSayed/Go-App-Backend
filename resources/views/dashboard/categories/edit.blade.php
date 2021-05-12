@@ -348,8 +348,9 @@
             }else
             {
                 $(this).removeClass('bg-primary');
+                $(this).removeClass('text-light');
                 $(this).addClass('text-dark');
-                $(this).addClass('bg-light');
+                $(this).addClass('bg-gray-200');
                 $(this).children().eq(1).remove();
 
                 const idIndex = selectedAttributesIDs.indexOf(id);

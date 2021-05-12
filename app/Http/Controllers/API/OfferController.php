@@ -53,7 +53,6 @@ class OfferController extends Controller
             'price' => 'required|numeric|min:0',
             'description' => 'required|string'
         ]);
-
         $data['provider_id'] = auth()->user()->id;
 
         $offerExists = Offer::where([

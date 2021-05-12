@@ -110,7 +110,5 @@ if(!function_exists('sendFirebaseNotification')){
             'Content-Type' => 'application/json'
         ])->post('https://fcm.googleapis.com/fcm/send', $data);
 
-        dd($response);
-
     }
 }
