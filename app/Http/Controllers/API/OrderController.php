@@ -30,7 +30,7 @@ class OrderController extends Controller
 
         $data = $request->validate([
            'category_id' => 'required' ,
-           'notes' => 'required' ,
+//           'notes' => 'required' ,
            'details' => 'required' ,
         ]);
 
