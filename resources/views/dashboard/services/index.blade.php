@@ -23,7 +23,7 @@
                 @endif
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                     <div class="card-title">
-                        <h3>قائمه الخدمات</h3>
+                        <h3>قائمة الخدمات</h3>
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Dropdown-->
@@ -95,7 +95,7 @@
 													</g>
 												</svg>
                                                 <!--end::Svg Icon-->
-											</span>إضـافه خدمه جـديده
+											</span>إضـافة خدمه جـديدة
                         </a>
                         <!--end::Button-->
                     </div>

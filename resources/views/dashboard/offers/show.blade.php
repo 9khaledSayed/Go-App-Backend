@@ -36,11 +36,11 @@
                                     <div class="mb-2">
                                         <div class="form-group row">
                                             <div class="col-lg-6">
-                                                <label>* أســـم مزود الخدمه:</label>
+                                                <label>* أســـم مزود الخدمة:</label>
                                                 <input type="text"  disabled class="form-control" value="{{$offer->provider->name}}" />
                                             </div>
                                             <div class="col-lg-6">
-                                                <label>* رقم هاتف مزود الخدمه:</label>
+                                                <label>* رقم هاتف مزود الخدمة:</label>
                                                 <input type="text"  disabled class="form-control" value="{{$offer->provider->phone}}" />
                                             </div>
 

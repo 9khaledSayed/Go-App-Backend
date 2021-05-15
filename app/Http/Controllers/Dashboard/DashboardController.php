@@ -9,6 +9,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
+
+        if(auth()->guard('provider')->check()){
+            return view('provider_dashboard.categories.index');
+        }
+
         return view('dashboard.index');
     }
 }

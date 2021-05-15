@@ -36,6 +36,9 @@ class OfferController extends Controller
         $order->status = "in_progress";
         $order->save();
 
+        // tell the provider that his offer has been accepted
+        sendFirebaseNotification("Provider",'تم قبول عرضك بنجاح' , $offer['provider_id']);
+
         return response()->json([
             'status' => true,
             'message' => "The offer has been approved",

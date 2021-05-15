@@ -22,6 +22,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:provider')->except('logout');
     }
 
     public function showAdminLoginForm()
@@ -41,6 +42,24 @@ class LoginController extends Controller
 
             return redirect()->intended('/dashboard');
 
+        }
+        return back()->withInput($request->only('email', 'remember'));
+    }
+
+    public function showProviderLoginForm()
+    {
+        return view('auth.provider_login');
+    }
+
+    public function providerLogin(\Illuminate\Http\Request $request)
+    {
+        $request->validate([
+            'email'   => 'required|email|exists:providers',
+            'password' => 'required|min:6'
+        ]);
+
+        if (Auth::guard('provider')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember_me'))) {
+            return redirect()->intended(route('provider_dashboard.index'));
         }
         return back()->withInput($request->only('email', 'remember'));
     }

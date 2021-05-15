@@ -62,7 +62,7 @@ var KTWizard3 = function () {
                         { attributes : selectedAttributesIDs ,
                             category_id: categoryID
                         },
-                    url: '/dashboard/categories/attributes',
+                    url: '/provider/dashboard/categories/attributes',
                 }).done(function (response) {
                     if (response['errors'] != null)
                     {
@@ -78,10 +78,6 @@ var KTWizard3 = function () {
 
                     }else
                     {
-
-                        categoryID = response['category_id'];
-
-                        $('#prev-btn').prop('disabled', true);
 
                         _wizard.goNext();
                     }
@@ -107,7 +103,7 @@ var KTWizard3 = function () {
 
         btn.on('click', function(e) {
 
-            window.location.href = redirectURL;
+            window.location.href = '/provider/dashboard/categories';
 
         });
     }

@@ -65,7 +65,7 @@ class OrderController extends Controller
     public function inProgressOrders()
     {
 
-        $orders = auth()->guard('user-api')->user()->orders->where('status','in_progress')->map(function ($order){
+        $orders = auth()->user()->orders->where('status','in_progress')->values()->map(function ($order){
 
             $acceptedOffer = $order->offers->where('status','approved')->first();
             $daysLeft      = new Carbon( $acceptedOffer['accepted_date'] );
@@ -86,6 +86,7 @@ class OrderController extends Controller
                 'daysLeft' => $acceptedOffer['duration'] - $daysLeft,
             ];
         });
+
         return response($orders);
     }
 

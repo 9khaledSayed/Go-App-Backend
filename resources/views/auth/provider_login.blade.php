@@ -59,21 +59,17 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="login-aside order-2 order-lg-1 d-flex flex-column-fluid flex-lg-row-auto bgi-size-cover bgi-no-repeat p-7 p-lg-10">
             <!--begin: Aside Container-->
             <div class="d-flex flex-row-fluid flex-column justify-content-between">
-                <div class="form-group d-flex flex-wrap justify-content-start mt-2">
-                    <a href="{{route('provider.show_login')}}" class="text-primary font-weight-bold h4">سجل دخول كمزود خدمة ؟ </a>
-                </div>
                 <!--begin::Aside body-->
                 <div class="d-flex flex-column-fluid flex-column flex-center mt-5 mt-lg-0">
-
                     <a href="#" class="mb-15 text-center">
                         <img src="{{asset('assets/logo_colored.png')}}" height="250px" class="max-h-90px" alt="" />
                     </a>
                     <!--begin::Signin-->
                     <div class="login-form login-signin">
                         <div class="text-center mb-10 mb-lg-20">
-                            <h2 class="font-weight-bold">تسجيل الدخول</h2></div>
+                            <h2 class="font-weight-bold">تسجيل الدخول مزود الخدمة</h2></div>
                         <!--begin::Form-->
-                        <form class="form" method="post" action="{{route('admin.login')}}">
+                        <form class="form" method="post" action="{{route('provider.login')}}">
                             @csrf
                             <div class="form-group py-3 m-0">
                                 <input class="form-control h-auto border-0 px-0 placeholder-dark-75"  type="email"  placeholder="البريد الألكتروني" name="email" autocomplete="off" value="{{old('email')}}"/>

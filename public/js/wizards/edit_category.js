@@ -22,33 +22,31 @@ var KTWizard3 = function () {
             if ( wizard.getStep() == 1)
             {
 
+                $("#kt_form").ajaxSubmit({
 
-                $.ajax({
-                    method: 'PUT',
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success:function (response){
+                        if (response['errors'] != null)
+                        {
+                            for (let key in response['errors']) {
 
-                    data: $('#kt_form').serialize(),
-                    url: '/dashboard/categories/' + categoryID,
-                }).done(function (response) {
-                    if (response['errors'] != null)
-                    {
-                        for (let key in response['errors']) {
+                                $('#' + key + 'ValidationError').text(response['errors'][key][0]);
 
-                            $('#' + key + 'ValidationError').text(response['errors'][key][0]);
+                            }
 
+                            console.log(response);
+
+                            KTUtil.scrollTop();
+
+                        }else
+                        {
+
+                            categoryID = response['category_id'];
+
+                            $('#prev-btn').prop('disabled', true);
+
+                            _wizard.goNext();
                         }
-
-                        console.log(response);
-
-                        KTUtil.scrollTop();
-
-                    }else
-                    {
-
-                        _wizard.goNext();
                     }
-
-
                 });
 
 

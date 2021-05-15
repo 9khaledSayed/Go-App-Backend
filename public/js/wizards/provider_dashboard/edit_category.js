@@ -13,7 +13,7 @@ var KTWizard3 = function () {
         // Initialize form wizard
         _wizard = new KTWizard(_wizardEl, {
             startStep: 1, // initial active step number
-            clickableSteps: false  // allow step clicking
+            clickableSteps: true  // allow step clicking
         });
 
 
@@ -22,9 +22,8 @@ var KTWizard3 = function () {
             if ( wizard.getStep() == 1)
             {
 
-                let formData      = new FormData( _formEl );
-
                 $("#kt_form").ajaxSubmit({
+
                     success:function (response){
                         if (response['errors'] != null)
                         {
@@ -59,14 +58,16 @@ var KTWizard3 = function () {
                     method: 'post',
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     data:
-                        { attributes : selectedAttributesIDs ,
+                        {
+                            attributes : selectedAttributesIDs ,
                             category_id: categoryID
                         },
-                    url: '/dashboard/categories/attributes',
+                    url: '/provider/dashboard/categories/attributes',
                 }).done(function (response) {
                     if (response['errors'] != null)
                     {
-                        for (let key in response['errors']) {
+                        for (let key in response['errors'])
+                        {
 
                             $('#' + key + 'ValidationError').text(response['errors'][key][0]);
 
@@ -78,11 +79,6 @@ var KTWizard3 = function () {
 
                     }else
                     {
-
-                        categoryID = response['category_id'];
-
-                        $('#prev-btn').prop('disabled', true);
-
                         _wizard.goNext();
                     }
 
@@ -107,7 +103,7 @@ var KTWizard3 = function () {
 
         btn.on('click', function(e) {
 
-            window.location.href = redirectURL;
+            window.location.href = '/provider/dashboard/categories';
 
         });
     }
@@ -117,7 +113,7 @@ var KTWizard3 = function () {
         // public functions
         init: function () {
             _wizardEl = KTUtil.getById('kt_wizard_v3');
-            _formEl = KTUtil.getById('kt_form');
+            _formEl   = KTUtil.getById('kt_form');
 
             initWizard();
             initSubmit();

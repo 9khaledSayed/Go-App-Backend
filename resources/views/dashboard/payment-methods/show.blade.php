@@ -11,7 +11,7 @@
                 <div class="col-lg-12">
                     <div class="card card-custom example example-compact">
                         <div class="card-header">
-                            <h2 class="card-title">إضـافه طريقه الدفع جـديده</h2>
+                            <h2 class="card-title">إضـافة طريقه الدفع جـديدة</h2>
                         </div>
                         <!--begin::Form-->
                         <form class="form">

@@ -17,7 +17,7 @@
                     <div class="col-lg-12">
                         <div class="card card-custom example example-compact">
                             <div class="card-header">
-                                <h2 class="card-title">إضـافه خاصية جديدة</h2>
+                                <h2 class="card-title">إضـافة خاصية جديدة</h2>
                             </div>
                             <!--begin::Form-->
                             <form class="form" id="kt_form" action="{{route('dashboard.attributes.store')}}" method = "POST" enctype="multipart/form-data">

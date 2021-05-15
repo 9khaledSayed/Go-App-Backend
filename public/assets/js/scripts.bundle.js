@@ -1,5 +1,34 @@
 "use strict";
 
+var KTLocator = function () {
+
+    function KTLocator(messages) {
+        this.messages = messages;
+        this.locale = document.querySelector('html').getAttribute('lang') || 'en';
+    }
+    KTLocator.prototype.__ = function (key) {
+        if(this.messages.hasOwnProperty(this.locale)){
+            if(this.messages[this.locale].hasOwnProperty(key)){
+                return this.messages[this.locale][key];
+            }
+        }
+        return key;
+    };
+
+    return KTLocator;
+}();
+
+var messages = {
+    'ar': {
+        'No records found': "لا يوجد محفوظات",
+        'Please wait...': "من فضلك انتظر...",
+        'Loading...': "تحميل...",
+        'Showing {{start}} - {{end}} of {{total}}': "عرض {{start}} - {{end}} من {{total}} سجلات",
+    }
+};
+
+var locator = new KTLocator(messages);
+
 // Component Definition
 var KTApp = function() {
     /** @type {object} colors State colors **/
@@ -1001,7 +1030,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 "use strict";
 // DOCS: https://javascript.info/cookie
 
-// Component Definition 
+// Component Definition
 var KTCookie = function() {
   return {
     // returns the cookie with the given name,
@@ -1056,7 +1085,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
 "use strict";
 
-// Component Definition 
+// Component Definition
 var KTDialog = function(options) {
     // Main object
     var the = this;
@@ -1071,7 +1100,7 @@ var KTDialog = function(options) {
         'type'  : 'loader',
         'width' : 100,
         'state' : 'default',
-        'message' : 'Loading...'
+        'message' : locator.__('Loading...')
     };
 
     ////////////////////////////
@@ -1453,7 +1482,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
 "use strict";
 
-// Component Definition 
+// Component Definition
 var KTImageInput = function(elementId, options) {
     // Main object
     var the = this;
@@ -2990,7 +3019,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
 "use strict";
 
-// Component Definition 
+// Component Definition
 var KTToggle = function(elementId, options) {
     // Main object
     var the = this;
@@ -8801,8 +8830,8 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 		// By default the stirngs will be in the plugin source and here can override it
 		translate: {
 			records: {
-				processing: 'Please wait...',
-				noRecords: 'No records found',
+				processing: locator.__('Please wait...'),
+				noRecords: locator.__('No records found'),
 			},
 			toolbar: {
 				pagination: {
@@ -8817,7 +8846,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 							select: 'Select page size',
 							all: 'all',
 						},
-						info: 'Showing {{start}} - {{end}} of {{total}}',
+						info: locator.__('Showing {{start}} - {{end}} of {{total}}'),
 					},
 				},
 			},
@@ -9549,7 +9578,7 @@ var KTLayoutContent = function() {
 
         if (_element) {
             height = height - parseInt(KTUtil.css(_element, 'paddingTop')) - parseInt(KTUtil.css(_element, 'paddingBottom'));
-        }        
+        }
 
         height = height - KTLayoutHeader.getHeight();
         height = height - KTLayoutSubheader.getHeight();

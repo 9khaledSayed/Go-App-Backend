@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.master')
+@extends('provider_dashboard.layouts.master')
 @push('styles')
     <link href="{{asset('assets/css/pages/wizard/wizard-3.css')}}" rel="stylesheet" type="text/css"/>
     <style>
@@ -53,7 +53,7 @@
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <!--begin: Wizard Form-->
-                                <form class="form" id="kt_form" action="{{route('dashboard.categories.update', $category)}}" method="post">
+                                <form class="form" id="kt_form" action="{{route('provider_dashboard.categories.update', $category)}}" method="post">
                                 @method('PUT')
                                 @csrf
 
@@ -108,25 +108,6 @@
                                                         </label>
 
                                                     </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-group row mb-15" id="services">
-                                                <div class="col-lg-12">
-                                                    <label class="col-form-label"><b></b>الخدمات</label>
-                                                    <div></div>
-                                                    <select class="custom-select form-control" name="service_id">
-                                                        <option  value="" selected >أختر</option>
-                                                        @foreach($services as $service)
-                                                            <option value="{{$service->id}}" {{ $category['service_id']  ? 'selected' : '' }}>{{$service->name}}</option>
-                                                        @endforeach
-                                                    </select>
-
-                                                    <div>
-                                                        <p class="invalid-input" id="service_idValidationError"></p>
-                                                    </div>
-
                                                 </div>
                                             </div>
 
@@ -289,7 +270,7 @@
 
         let selectedAttributesIDs = @json($category->attributes->pluck('id')->toArray())
     </script>
-    <script src="{{asset('js/wizards/edit_category.js')}}"></script>
+    <script src="{{asset('js/wizards/provider_dashboard/edit_category.js')}}"></script>
 
     <script src="{{asset('js/vue.js')}}"></script>
 
@@ -391,7 +372,7 @@
                     $.ajax({
                         method: 'POST',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        url: '/dashboard/categories/image/remove',
+                        url: '/provider/dashboard/categories/image/remove',
                         data:{category_id:category_id,image_index:image_index},
                     }).done(function (res) {
                         swal.fire({

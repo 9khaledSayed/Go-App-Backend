@@ -8,8 +8,11 @@
     <!--begin::Container-->
     <div class="container-fluid d-flex align-items-stretch justify-content-between">
         <!--begin::Header Menu Wrapper-->
-        <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
-
+        <div class="header-menu-wrapper header-menu-wrapper-left d-flex align-items-center" id="kt_header_menu_wrapper">
+            <a onclick="document.getElementById('logout-header').submit();" href="javascript:" class="h5 text-white cursor-pointer"><i class="fa fa-door-open"></i> تسجيل خروج</a>
+            <form id="logout-header" action="{{ route('provider_dashboard.logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </div>
         <!--end::Header Menu Wrapper-->
         <!--begin::Topbar-->
@@ -212,7 +215,7 @@
             <div class="topbar-item">
                 <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
                     <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">مرحبا , </span>
-                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ Auth::guard('admin')->user()->name }}</span>
+                    <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3">{{ auth()->user()->name }}</span>
                     <span class="symbol symbol-35 symbol-light-success">
 											<span class="symbol-label font-size-h5 font-weight-bold">A</span>
 										</span>

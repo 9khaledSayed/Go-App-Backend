@@ -23,7 +23,7 @@
                 @endif
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                     <div class="card-title">
-                        <h3>قائمه الخصائص</h3>
+                        <h3>قائمة الخصائص</h3>
                     </div>
                     <div class="card-toolbar">
                         <!--begin::Dropdown-->
@@ -95,7 +95,7 @@
 													</g>
 												</svg>
                                                 <!--end::Svg Icon-->
-											</span>إضـافه خاصيه جـديده
+											</span>إضـافة خاصيه جـديدة
                         </a>
                         <!--end::Button-->
                     </div>

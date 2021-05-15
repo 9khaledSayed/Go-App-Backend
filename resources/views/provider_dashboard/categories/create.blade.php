@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.master')
+@extends('provider_dashboard.layouts.master')
 @push('styles')
     <link href="{{asset('assets/css/pages/wizard/wizard-3.css')}}" rel="stylesheet" type="text/css"/>
     <style>
@@ -23,7 +23,7 @@
                                 <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
                                     <div class="wizard-label">
                                         <h3 class="wizard-title">
-                                            <span>1. </span>اضافة المعلومات الأساسية للفئة الجديدة</h3>
+                                            <span>1. </span>اضافm المعلومات الأساسية للفئة الجديدة</h3>
                                         <div class="wizard-bar"></div>
                                     </div>
                                 </div>
@@ -53,8 +53,8 @@
                         <div class="row justify-content-center">
                             <div class="col-12">
                                 <!--begin: Wizard Form-->
-                                <form class="form" id="kt_form" action="{{route('dashboard.categories.store')}}" method="post">
-                                @csrf
+                                <form class="form" id="kt_form" action="{{route('provider_dashboard.categories.store')}}" method="post">
+                                    @csrf
 
                                     <!--begin: Wizard Step 1-->
                                     <div class="p-15" data-wizard-type="step-content" data-wizard-state="current">
@@ -105,25 +105,6 @@
                                                             </label>
 
                                                         </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="form-group row mb-15" id="services">
-                                                    <div class="col-lg-12">
-                                                        <label class="col-form-label"><b></b>الخدمات</label>
-                                                        <div></div>
-                                                        <select class="custom-select form-control" name="service_id">
-                                                            <option value="">أختر</option>
-                                                            @foreach($services as $service)
-                                                                <option value="{{$service->id}}">{{$service->name}}</option>
-                                                            @endforeach
-                                                        </select>
-
-                                                        <div>
-                                                            <p class="invalid-input" id="service_idValidationError"></p>
-                                                        </div>
-
                                                     </div>
                                                 </div>
 
@@ -258,7 +239,7 @@
         let selectedAttributesIDs = [];
 
     </script>
-    <script src="{{asset('js/wizards/create_category.js')}}"></script>
+    <script src="{{asset('js/wizards/provider_dashboard/create_category.js')}}"></script>
 
     <script src="{{asset('js/vue.js')}}"></script>
 

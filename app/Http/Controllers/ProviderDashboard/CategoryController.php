@@ -1,21 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\ProviderDashboard;
 
 use App\Attribute;
 use App\Category;
 use App\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function index(Request $request)
     {
         if ($request->ajax())
@@ -26,7 +22,7 @@ class CategoryController extends Controller
 
         }
 
-        return view('dashboard.categories.index');
+        return view('provider_dashboard.categories.index');
     }
 
     public function childrenCategories(Request $request)
@@ -49,34 +45,25 @@ class CategoryController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $parentCategories = Category::whereNull('parent_id')->get();
         $services         = Service::all();
         $attributes       = Attribute::get(['id','name']);
 
-        return view('dashboard.categories.create', compact('parentCategories','services','attributes'));
+        return view('provider_dashboard.categories.create', compact('parentCategories','services','attributes'));
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function store(Request $request)
     {
 
         $validation = Validator::make($request->all() , [
             'name'        => 'required | string | max:255',
             'description' => 'required_if:type,sub',
-            'service_id' => 'required_if:type,main',
+//            'service_id' => 'required_if:type,main',
             'parent_id' => 'required_if:type,sub',
         ]);
 
@@ -152,34 +139,24 @@ class CategoryController extends Controller
 
     public function storeAttributes(Request $request )
     {
-
+dd($request->toArray());
         $category   = Category::find( $request['category_id'] );
         $attributes = $request['attributes'];
 
         if( $attributes )
-        $category->attributes()->detach();
+            $category->attributes()->detach();
         $category->attributes()->attach($attributes);
 
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Category $category)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Category $category)
     {
 
@@ -188,16 +165,10 @@ class CategoryController extends Controller
         $attributes       = Attribute::get(['id','name']);
         $categoryID       = $category->id;
 
-        return view('dashboard.categories.edit', compact('category','parentCategories','services','attributes','categoryID'));
+        return view('provider_dashboard.categories.edit', compact('category','parentCategories','services','attributes','categoryID'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Category $category)
     {
 
@@ -205,7 +176,7 @@ class CategoryController extends Controller
         $validation = Validator::make($request->all() , [
             'name'        => 'required | string | max:255 ',
             'description' => 'required_if:type,sub',
-            'service_id' => 'required_if:type,main',
+//            'service_id' => 'required_if:type,main',
             'parent_id' => 'required_if:type,sub',
         ]);
 
@@ -231,19 +202,12 @@ class CategoryController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, Category $category)
     {
 
         if($request->ajax())
         {
-            Category::find($id)->destroy($id);
+            $category->delete();
         }
     }
 }

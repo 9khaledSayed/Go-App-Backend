@@ -35,7 +35,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">قائمه المشرفون</span>
+                                    <span class="menu-text">قائمة المشرفون</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
@@ -43,7 +43,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">اضافه المشرفون</span>
+                                    <span class="menu-text">اضافة المشرفون</span>
                                 </a>
                             </li>
                         </ul>
@@ -69,7 +69,7 @@
                                     <i class="flaticon2-user-1"></i>
                                 </span>
                             </span>
-                        <span class="menu-text">مزودي الخدمه</span>
+                        <span class="menu-text">مزودي الخدمة</span>
                     </a>
                 </li>
 
@@ -113,7 +113,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">قائمه الخدمات</span>
+                                    <span class="menu-text">قائمة الخدمات</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
@@ -121,7 +121,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">اضافه خدمة جديدة</span>
+                                    <span class="menu-text">اضافة خدمة جديدة</span>
                                 </a>
                             </li>
                         </ul>
@@ -146,7 +146,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">قائمه الفئات</span>
+                                    <span class="menu-text">قائمة الفئات</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
@@ -154,7 +154,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">اضافه فئه جديده</span>
+                                    <span class="menu-text">اضافة فئة جديدة</span>
                                 </a>
                             </li>
                         </ul>
@@ -179,7 +179,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">قائمه الخصائص</span>
+                                    <span class="menu-text">قائمة الخصائص</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
@@ -187,7 +187,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">اضافه خاصية جديدة</span>
+                                    <span class="menu-text">اضافة خاصية جديدة</span>
                                 </a>
                             </li>
                         </ul>
@@ -213,7 +213,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">قائمه طرق الدفع</span>
+                                    <span class="menu-text">قائمة طرق الدفع</span>
                                 </a>
                             </li>
                             <li class="menu-item" aria-haspopup="true">
@@ -221,7 +221,7 @@
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">اضافه طريقه دفع جديده</span>
+                                    <span class="menu-text">اضافة طريقه دفع جديدة</span>
                                 </a>
                             </li>
                         </ul>

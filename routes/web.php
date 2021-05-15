@@ -20,10 +20,13 @@ Route::redirect('/' ,'login/admin');
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('admin.show-login');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin')->name('admin.login');
 
+Route::get('/login/provider', 'Auth\LoginController@showProviderLoginForm')->name('provider.show_login');
+Route::post('/login/provider', 'Auth\LoginController@providerLogin')->name('provider.login');
+
 Route::get('test' , function ()
 {
 
-        sendFirebaseNotification("User");
+        sendFirebaseNotification("Provider",'ahmed gama');
 //      \App\Order::create([
 //         'category_id' => 1,
 //         'user_id' => 1,

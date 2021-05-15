@@ -98,7 +98,7 @@
 											</span>
                                 <div class="d-flex flex-column text-right">
                                     <span class="text-dark-75 font-weight-bolder font-size-h3 text-center">+ 2222</span>
-                                   <h4> <span class="font-weight-bold mt-2 text-center"><b>الطلبات الجديده</b></span></h4>
+                                   <h4> <span class="font-weight-bold mt-2 text-center"><b>الطلبات الجديدة</b></span></h4>
                                 </div>
                             </div>
                             </a>
@@ -188,10 +188,10 @@
                         <!--begin::Header-->
                         <div class="card-header border-0 pt-5">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label font-weight-bolder text-dark">الطلبات الجديده</span>
+                                <span class="card-label font-weight-bolder text-dark">الطلبات الجديدة</span>
                             </h3>
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label font-weight-bolder text-dark">العدد   <big>1212</big> طلبات جديده </span>
+                                <span class="card-label font-weight-bolder text-dark">العدد   <big>1212</big> طلبات جديدة </span>
                             </h3>
                         </div>
                         <!--end::Header-->

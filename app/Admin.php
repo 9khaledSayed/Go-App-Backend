@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class Admin extends Authenticatable
 {
     use Notifiable,SoftDeletes;
+
     protected $table = 'admins';
     protected $guard = 'admin';
     protected $guarded = [];

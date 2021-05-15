@@ -15,6 +15,7 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('provider_id')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('service_id')->nullable();
             $table->string('name');
@@ -23,6 +24,11 @@ class CreateCategoriesTable extends Migration
             $table->longText('images')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('provider_id')
+                ->references('id')
+                ->on('providers');
+//                ->onDelete('cascade');
 
             $table->foreign('service_id')
                 ->references('id')

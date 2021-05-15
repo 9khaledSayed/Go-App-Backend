@@ -33,11 +33,11 @@
                                     <div class="mb-2">
                                         <div class="form-group row">
                                             <div class="col-lg-6">
-                                                <label>* أســـم طالب الخدمه:</label>
+                                                <label>* أســـم طالب الخدمة:</label>
                                                 <input type="text"  disabled class="form-control" value="{{$order->user->name}}" />
                                             </div>
                                             <div class="col-lg-6">
-                                                <label>* رقم هاتف طالب الخدمه:</label>
+                                                <label>* رقم هاتف طالب الخدمة:</label>
                                                 <input type="text"  disabled class="form-control" value="{{$order->user->phone}}" />
                                             </div>
 
