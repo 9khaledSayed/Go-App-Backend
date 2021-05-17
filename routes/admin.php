@@ -15,7 +15,8 @@ Route::group( ['prefix' => 'dashboard' ,  'namespace' => 'Dashboard' , 'middlewa
         Route::get('/offers/{offer}' ,'OfferController@show')->name('offers.show');
         Route::get('/categories/children' ,'CategoryController@childrenCategories');
         Route::put('notifications/mark-read' ,'NotifictionController@markAsRead');
-
+        Route::get('settings/general' ,'SettingsController@showGeneralSettings')->name('settings.general');
+        Route::post('settings/general/save' ,'SettingsController@saveGeneralSettings')->name('settings.general.save');
 
         Route::resource('admins','AdminController');
         Route::resource('users','UserController');

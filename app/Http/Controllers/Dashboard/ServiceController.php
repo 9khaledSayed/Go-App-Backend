@@ -38,7 +38,7 @@ class ServiceController extends Controller
 
         Service::create($data);
 
-        return redirect(route('dashboard.services.index'));
+        return redirect(route('dashboard.services.index'))->with('message', 'تم اضافة الخدمة بنجاح');
     }
 
 
@@ -68,7 +68,7 @@ class ServiceController extends Controller
         }
 
         $service->update($data);
-        return view('dashboard.services.index');
+        return redirect(route('dashboard.services.index'))->with('message', 'تم تعديل الخدمة بنجاح');
     }
 
 

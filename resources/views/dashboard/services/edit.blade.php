@@ -17,21 +17,7 @@
                                 @method('put')
                                 @csrf
                                 <div class="card-body">
-                                    @if ($errors->any())
-                                        <div class="alert alert-custom alert-light-danger" role="alert" id="kt_form_2_msg" >
-                                            <div class="alert-icon">
-                                                <i class="flaticon2-bell-5"></i>
-                                            </div>
-                                            <div class="alert-text font-weight-bold">خطأ في التحقق من الصحة ، قم بتغيير بعض الأشياء وحاول الإرسال مرة أخرى.</div>
-                                            <div class="alert-close">
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span>
-                                            <i class="ki ki-close"></i>
-                                        </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    @endif
+                                    @include('dashboard.layouts.error')
                                     <div class="mb-3">
                                         <div class="mb-2">
                                             <label class="col-12 text-center mb-5">شعار الخدمة</label>

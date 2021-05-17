@@ -39,3 +39,8 @@ Route::get('test' , function ()
 //    Artisan::call('migrate');
     dd("done");
 });
+
+Route::get('/path', function (){
+    setting(['color' => 'red']);
+    setting()->save();
+});

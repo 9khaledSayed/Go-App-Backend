@@ -6,21 +6,7 @@
         <div class="container">
             <!--begin::Card-->
             <div class="card card-custom">
-                @if(session()->has('message'))
-                    <div class="alert alert-custom alert-light-success" role="alert" id="kt_form_2_msg" >
-                        <div class="alert-icon">
-                            <i class="flaticon2-bell-5"></i>
-                        </div>
-                        <div class="alert-text font-weight-bold">{{session()->get('message')}}</div>
-                        <div class="alert-close">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span>
-                                                <i class="ki ki-close"></i>
-                                            </span>
-                            </button>
-                        </div>
-                    </div>
-                @endif
+                @include('dashboard.layouts.success')
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
                     <div class="card-title">
                         <h3>قائمة الخصائص</h3>

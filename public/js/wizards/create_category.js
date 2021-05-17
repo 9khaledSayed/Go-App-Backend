@@ -8,7 +8,7 @@ var KTWizard3 = function () {
     var _wizard;
 
 
-    // Private functions
+    // Private functionsredirectURL
     var initWizard = function () {
         // Initialize form wizard
         _wizard = new KTWizard(_wizardEl, {
@@ -107,7 +107,7 @@ var KTWizard3 = function () {
 
         btn.on('click', function(e) {
 
-            window.location.href = redirectURL;
+            window.location.href = '/dashboard/categories';
 
         });
     }

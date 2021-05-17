@@ -229,6 +229,17 @@
                 </li>
 
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="{{route('dashboard.settings.general')}}" class="menu-link menu-toggle">
+                	<span class="svg-icon menu-icon">
+                        <span class="svg-icon menu-icon">
+                            <i class="flaticon2-settings"></i>
+                        </span>
+                    </span>
+                        <span class="menu-text">الاعدادات</span>
+                    </a>
+                </li>
+
+                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a onclick="document.getElementById('logout-form').submit();" href="javascript:" class="menu-link menu-toggle">
                 	<span class="svg-icon menu-icon">
                         <span class="svg-icon menu-icon">

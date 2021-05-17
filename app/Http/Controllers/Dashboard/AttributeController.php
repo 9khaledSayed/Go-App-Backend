@@ -35,7 +35,7 @@ class AttributeController extends Controller
 
         Attribute::create($data);
 
-        return redirect(route('dashboard.attributes.index'));
+        return redirect(route('dashboard.attributes.index'))->with('message', 'تم اضافة الخاصية بنجاح');
     }
 
 
@@ -60,7 +60,7 @@ class AttributeController extends Controller
         ]);
         $attribute->update($data);
 
-        return redirect(route('dashboard.attributes.index'));
+        return redirect(route('dashboard.attributes.index'))->with('message', 'تم تعديل الخاصية بنجاح');
     }
 
 

@@ -11,28 +11,32 @@
                 <div class="col-lg-12">
                     <div class="card card-custom example example-compact">
                         <div class="card-header">
-                            <h2 class="card-title">إضـافة مشرف جـديد</h2>
+                            <h2 class="card-title">الاعدادت العامة</h2>
                         </div>
                         <!--begin::Form-->
-                        <form class="form" id="kt_form" action="{{route('dashboard.admins.store')}}" method = "POST" enctype="multipart/form-data">
+                        <form class="form" id="kt_form" action="{{route('dashboard.settings.general.save')}}" method = "POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
+                                @include('dashboard.layouts.success')
                                 @include('dashboard.layouts.error')
                                 <div class="mb-3">
                                     <div class="mb-2">
                                         <div class="form-group row">
-                                            <div class="col-lg-6">
-                                                <label>* الأســـم :</label>
-                                                <input type="text" name="name" class="form-control" placeholder="أدخل اسم المشرف"  value="{{old('name')}}" />
-                                                @if ($errors->has('name'))
+                                            <div class="col-lg-6 mx-auto">
+                                                <label>* رقم الجوال :</label>
+                                                <input type="tel" name="phone" class="form-control" placeholder="أدخل رقم الجوال الذي سيظهر في التطبيق"  value="{{old('phone') ?? setting('phone')}}" />
+                                                @if ($errors->has('phone'))
                                                     <div>
-                                                        <p class="invalid-input">{{ $errors->first('name') }}</p>
+                                                        <p class="invalid-input">{{ $errors->first('phone') }}</p>
                                                     </div>
                                                 @endif
                                             </div>
-                                            <div class="col-lg-6">
-                                                <label>* البريد الألكتروني :</label>
-                                                <input type="email" name="email" class="form-control" placeholder="أدخل البريد الألكتروني"  value="{{old('email')}}" />
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-lg-6 mx-auto">
+                                                <label>* البريد الالكتروني :</label>
+                                                <input type="email" name="email" class="form-control" placeholder="أدخل البريد الالكتروني الذي سيظهر في التطبيق"  value="{{old('email')  ?? setting('email')}}" />
                                                 @if ($errors->has('email'))
                                                     <div>
                                                         <p class="invalid-input">{{ $errors->first('email') }}</p>
@@ -41,25 +45,17 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-lg-6">
-                                                <label>* كلمه المرور :</label>
-                                                <input type="password" name="password" class="form-control" placeholder="أدخل كلمــه المرور" value="{{old('password')}}" />
-                                                @if ($errors->has('password'))
+                                            <div class="col-lg-6 mx-auto">
+                                                <label>* رابط حساب تويتر :</label>
+                                                <input type="text" name="twitter_link" class="form-control" placeholder="أدخل رابط حساب تويتر الذي سيظهر في التطبيق"  value="{{old('twitter_link')  ?? setting('twitter_link')}}" />
+                                                @if ($errors->has('twitter_link'))
                                                     <div>
-                                                        <p class="invalid-input">{{ $errors->first('password') }}</p>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <label>* تأكيد كلمه المرور :</label>
-                                                <input type="password" name="password_confirmation" class="form-control"  placeholder="أدخل كلمــه المرور مره اخري"  value="{{old('password_confirmation')}}" />
-                                                @if ($errors->has('password_confirmation'))
-                                                    <div>
-                                                        <p class="invalid-input">{{ $errors->first('password_confirmation') }}</p>
+                                                        <p class="invalid-input">{{ $errors->first('twitter_link') }}</p>
                                                     </div>
                                                 @endif
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
