@@ -1,16 +1,25 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => 'f4a1aea2e64df7ab0f0fcba4d78809ab8501fc30',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
   array (
+    'akaunting/laravel-setting' => 
+    array (
+      'pretty_version' => '1.2.7',
+      'version' => '1.2.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '10186327e3b93fca56eaa9e4d8ee2ead189f0332',
+    ),
     'asm89/stack-cors' => 
     array (
       'pretty_version' => 'v2.0.3',
@@ -453,12 +462,12 @@
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'f4a1aea2e64df7ab0f0fcba4d78809ab8501fc30',
     ),
     'laravel/passport' => 
     array (

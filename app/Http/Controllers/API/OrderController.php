@@ -138,7 +138,7 @@ class OrderController extends Controller
 
     public function workshop()
     {
-        $orders = Order::where('status', 'pending')->get()->map(function ($order){
+        $orders = Order::where('status', 'pending')->get()->latest()->map(function ($order){
             return
                 [
                     'id' => $order['id'],
