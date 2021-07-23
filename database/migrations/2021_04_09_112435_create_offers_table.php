@@ -18,6 +18,7 @@ class CreateOffersTable extends Migration
             $table->unsignedBigInteger('provider_id');
             $table->unsignedBigInteger('order_id');
             $table->decimal('price')->default(0);
+            $table->decimal('delivery_price')->default(0);
             $table->longText('description');
             $table->integer('duration')->default(0);
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');

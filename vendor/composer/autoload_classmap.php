@@ -45,6 +45,7 @@ return array(
     'App\\Http\\Controllers\\Dashboard\\PaymentMethodController' => $baseDir . '/app/Http/Controllers/Dashboard/PaymentMethodController.php',
     'App\\Http\\Controllers\\Dashboard\\ProviderController' => $baseDir . '/app/Http/Controllers/Dashboard/ProviderController.php',
     'App\\Http\\Controllers\\Dashboard\\ServiceController' => $baseDir . '/app/Http/Controllers/Dashboard/ServiceController.php',
+    'App\\Http\\Controllers\\Dashboard\\SettingsController' => $baseDir . '/app/Http/Controllers/Dashboard/SettingsController.php',
     'App\\Http\\Controllers\\Dashboard\\UserController' => $baseDir . '/app/Http/Controllers/Dashboard/UserController.php',
     'App\\Http\\Controllers\\ProviderDashboard\\CategoryController' => $baseDir . '/app/Http/Controllers/ProviderDashboard/CategoryController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

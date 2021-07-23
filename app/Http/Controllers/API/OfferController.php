@@ -20,9 +20,12 @@ class OfferController extends Controller
             'provider' => $offer->provider->name,
             'price' => $offer->price,
             'offer_description' => $offer->description,
+            'delivery_price' => $offer->delivery_price,
             'order_details' => $order->details,
             'category_images' => $category->images,
+            'duration' => $offer->duration,
             'status' => $offer->status,
+            'order_notes' => $order->notes,
         ]);
     }
 

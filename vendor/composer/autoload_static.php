@@ -622,6 +622,7 @@ class ComposerStaticInit81d038829c483f64ba6663285e15d553
         'App\\Http\\Controllers\\Dashboard\\PaymentMethodController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/PaymentMethodController.php',
         'App\\Http\\Controllers\\Dashboard\\ProviderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ProviderController.php',
         'App\\Http\\Controllers\\Dashboard\\ServiceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ServiceController.php',
+        'App\\Http\\Controllers\\Dashboard\\SettingsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/SettingsController.php',
         'App\\Http\\Controllers\\Dashboard\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/UserController.php',
         'App\\Http\\Controllers\\ProviderDashboard\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProviderDashboard/CategoryController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

@@ -14,12 +14,19 @@ class OrderController extends Controller
     public function offers(Order $order)
     {
         $offers = $order->offers->map(function ($offer) use ($order){
+            $category = $order->category;
             return [
               'id' => $offer->id,
-              'category' => $order->category->name,
+              'category' => $category->name,
               'provider' => $offer->provider->name,
               'price' => $offer->price,
+              'offer_description' => $offer->description,
+              'order_details' => $order->details,
+              'category_images' => $category->images,
+              'duration' => $offer->duration,
               'status' => $offer->status,
+              'delivery_price' => $offer->delivery_price,
+              'order_notes' => $order->notes,
             ];
         });
         return response($offers);
