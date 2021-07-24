@@ -26,6 +26,7 @@ return array(
     'App\\Http\\Controllers\\API\\CategoryController' => $baseDir . '/app/Http/Controllers/API/CategoryController.php',
     'App\\Http\\Controllers\\API\\OfferController' => $baseDir . '/app/Http/Controllers/API/OfferController.php',
     'App\\Http\\Controllers\\API\\OrderController' => $baseDir . '/app/Http/Controllers/API/OrderController.php',
+    'App\\Http\\Controllers\\API\\ProfileController' => $baseDir . '/app/Http/Controllers/API/ProfileController.php',
     'App\\Http\\Controllers\\API\\ServiceController' => $baseDir . '/app/Http/Controllers/API/ServiceController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

@@ -25,8 +25,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'photo', 'updated_at', 'created_at', 'deleted_at', 'payment_method_id'
     ];
+
+    protected $appends = ['photo_url'];
 
     /**
      * The attributes that should be cast to native types.
@@ -40,5 +42,10 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function getPhotoUrlAttribute()
+    {
+        return asset(getImagesPath('Users') . $this->attributes['photo']);
     }
 }

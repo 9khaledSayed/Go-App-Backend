@@ -16,6 +16,7 @@ class ProfileController extends Controller
            'name' => 'required|string|max:191',
            'email' => 'required|email|unique:users,id,' . auth()->id(),
            'phone' => 'required|unique:users,id,' . auth()->id(),
+           'photo' => 'nullable|mimes:jpeg,jpg,png,gif,svg|max:10000',
            'password' => 'nullable|min:8',
         ]);
 
@@ -25,24 +26,16 @@ class ProfileController extends Controller
             unset($data['password']);
         }
 
-//        if($request->hasFile('image'))
-//        {
-//            deleteImage($paymentMethod['logo'] , "PaymentMethods");
-//            $data['logo'] = uploadImage($request->file('logo'), "PaymentMethods");
-//        }
+        if($request->hasFile('photo'))
+        {
+            deleteImage(auth()->user()->photo , "Users");
+            $data['photo'] = uploadImage($request->file('photo'), "Users");
+        }
 
 
         auth()->user()->update($data);
 
-        $response = ['user' => [
-            'id' => auth()->user()->id,
-            'name' => auth()->user()->name,
-            'email' => auth()->user()->email,
-            'phone' => auth()->user()->phone,
-            'fcm_token' => auth()->user()->fcm_token,
-            'updated_at' => auth()->user()->updated_at,
-            'created_at' => auth()->user()->created_at,
-        ]];
+        $response = ['user' => auth()->user()];
 
         return response($response, 200);
     }
@@ -53,6 +46,7 @@ class ProfileController extends Controller
            'name' => 'required|string|max:191',
            'email' => 'required|email|unique:providers,id,' . auth()->id(),
            'phone' => 'required|unique:providers,id,' . auth()->id(),
+           'photo' => 'nullable|mimes:jpeg,jpg,png,gif,svg|max:10000',
            'password' => 'nullable|min:8',
         ]);
 
@@ -62,24 +56,15 @@ class ProfileController extends Controller
             unset($data['password']);
         }
 
-//        if($request->hasFile('image'))
-//        {
-//            deleteImage($paymentMethod['logo'] , "PaymentMethods");
-//            $data['logo'] = uploadImage($request->file('logo'), "PaymentMethods");
-//        }
-
+        if($request->hasFile('photo'))
+        {
+            deleteImage(auth()->user()->photo , "Providers");
+            $data['photo'] = uploadImage($request->file('photo'), "Providers");
+        }
 
         auth()->user()->update($data);
 
-        $response = ['user' => [
-            'id' => auth()->user()->id,
-            'name' => auth()->user()->name,
-            'email' => auth()->user()->email,
-            'phone' => auth()->user()->phone,
-            'fcm_token' => auth()->user()->fcm_token,
-            'updated_at' => auth()->user()->updated_at,
-            'created_at' => auth()->user()->created_at,
-        ]];
+        $response = ['user' => auth()->user()];
 
         return response($response, 200);
     }
