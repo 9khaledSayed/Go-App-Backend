@@ -17,7 +17,7 @@ var KTWizard3 = function () {
         });
 
 
-        _wizard.on('beforeNext', function (wizard) {
+        _wizard.on('change', function (wizard) {
 
             if ( wizard.getStep() == 1)
             {

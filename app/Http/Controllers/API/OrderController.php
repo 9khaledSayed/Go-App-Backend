@@ -43,9 +43,22 @@ class OrderController extends Controller
 
         $data['user_id'] = auth('user-api')->id();
 
-        $order = Order::create($data);
+        Order::create($data);
 
-        return response($order);
+        $order = auth('user-api')->user()->orders()->latest()->first();
+
+        $response = [
+            'id' => $order['id'],
+            'category_id' => $order['category_id'],
+            'user_id' => $order['user_id'],
+            'notes' => $order['notes'],
+            'details' => $order['details'],
+            'categoryName' => $order['category']['name'],
+            'orderDate' => date('d-m-Y' , strtotime($order['created_at'])),
+            'status' => $order['status'],
+        ];
+
+        return response($response);
     }
 
     public function index()
@@ -72,7 +85,7 @@ class OrderController extends Controller
     public function inProgressOrders()
     {
 
-        $orders = auth()->user()->orders->where('status','in_progress')->values()->map(function ($order){
+        $orders = auth()->user()->orders()->where('status', 'in_progress')->get()->map(function ($order){
 
             $acceptedOffer = $order->offers->where('status','approved')->first();
             $daysLeft      = new Carbon( $acceptedOffer['accepted_date'] );
@@ -97,6 +110,26 @@ class OrderController extends Controller
         return response($orders);
     }
 
+    public function pendingOrders(Request $request)
+    {
+
+        $orders = auth()->user()->orders()->where('status', 'pending')->get()->map(function ($order){
+            return
+                [
+                    'id' => $order['id'],
+                    'category_id' => $order['category_id'],
+                    'user_id' => $order['user_id'],
+                    'notes' => $order['notes'],
+                    'details' => $order['details'],
+                    'categoryName' => $order['category']['name'],
+                    'orderDate' => $order->created_at,
+                    'status' => $order->status,
+                ];
+        });
+
+
+        return response($orders);
+    }
 
     public function finishedOrders()
     {
@@ -124,24 +157,6 @@ class OrderController extends Controller
         return response($orders);
     }
 
-        public function pendingOrders(Request $request)
-    {
-        $orders = auth()->user()->orders()->where('status', 'pending')->get()->map(function ($order){
-            return
-                [
-                    'id' => $order['id'],
-                    'category_id' => $order['category_id'],
-                    'user_id' => $order['user_id'],
-                    'notes' => $order['notes'],
-                    'details' => $order['details'],
-                    'categoryName' => $order['category']['name'],
-                    'orderDate' => $order->created_at,
-                ];
-        });
-
-
-        return response($orders);
-    }
 
     public function workshop()
     {
