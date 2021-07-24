@@ -44,3 +44,7 @@ Route::get('/path', function (){
     setting(['color' => 'red']);
     setting()->save();
 });
+Route::get('/alterTables', function (){
+    Artisan::call('migrate --path=/database/migrations/2021_07_17_165837_add_column_to_offers_table.php');
+    dd('done');
+});
