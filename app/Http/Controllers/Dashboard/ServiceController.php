@@ -30,6 +30,7 @@ class ServiceController extends Controller
             'name' => 'required|max:255,unique:services',
             'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|max:255',
+            'color' => 'required|max:255',
         ]);
 
         if ($request->hasFile('logo')) {
@@ -60,6 +61,7 @@ class ServiceController extends Controller
             'name' => 'required|max:255,unique:services,'. $service->id,
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|max:255',
+            'color' => 'required|max:255',
         ]);
 
         if ($request->hasFile('logo')) {

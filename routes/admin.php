@@ -3,8 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::post('dashboard/categories/image/remove' ,'Dashboard/CategoryController@deleteImage');
-Route::post('dashboard/categories/images' , 'Dashboard/CategoryController@storeImages');
+Route::get('storage-link', function (){
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    dd('done');
+});
+Route::post('dashboard/categories/image/remove' ,'Dashboard\CategoryController@deleteImage');
+Route::post('dashboard/categories/images' , 'Dashboard\CategoryController@storeImages');
 
 Route::group( ['prefix' => 'dashboard' ,  'namespace' => 'Dashboard' , 'middleware' => ['web' ,'auth:admin']], function (){
 

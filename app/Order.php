@@ -29,6 +29,17 @@ class Order extends Model
         return intval($this->attributes['user_id']);
     }
 
+    public function getStatusAttribute()
+    {
+        switch ( $this->attributes['status'] )
+        {
+            case "pending"     : return "جديده";
+            case "in_progress" : return "تحت النفيذ";
+            case "finished"    : return "تم النفيذ";
+            case "canceled"    : return "تم الإلغاء";
+        }
+    }
+
     public function getCreatedAtAttribute()
     {
         return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');

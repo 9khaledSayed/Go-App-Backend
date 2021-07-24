@@ -269,10 +269,6 @@
             var notification_body = document.getElementById('notificationsBody');
             notification_body.insertAdjacentHTML("afterbegin", notificationRow);
 
-            {{--var notificationSound = new Audio("{{asset('notify.mp3')}}");--}}
-
-            {{--notificationSound.play();--}}
-
             $('#sound')[0].play();
 
             if( document.getElementById('no_notifications'))

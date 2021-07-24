@@ -43,7 +43,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-4">
                                                     <label>* الأســـم :</label>
                                                     <input type="text" name="name" class="form-control" placeholder="أدخل اسم الخدمة"  value="{{old('name') ?? $service->name}}" />
                                                     @error('name')
@@ -52,10 +52,19 @@
                                                     </div>
                                                     @enderror
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-4">
                                                     <label>* الوصف :</label>
                                                     <input type="text" name="description" class="form-control" placeholder="أدخل وصف بسيط للخدمة"  value="{{old('description') ?? $service->description}}" />
                                                     @error('description')
+                                                    <div>
+                                                        <p class="invalid-input">{{ $message }}</p>
+                                                    </div>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <label>* اللون :</label>
+                                                    <input type="color" name="color" class="form-control" value="{{old('color') ?? $service->color}}" />
+                                                    @error('color')
                                                     <div>
                                                         <p class="invalid-input">{{ $message }}</p>
                                                     </div>

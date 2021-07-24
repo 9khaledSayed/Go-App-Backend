@@ -14,8 +14,7 @@
             <div class="card card-custom">
                 <div class="card-body p-0">
                     <!--begin: Wizard-->
-                    <div class="wizard wizard-3" id="kt_wizard_v3" data-wizard-state="step-first"
-                         data-wizard-clickable="true">
+                    <div class="wizard wizard-3" id="kt_wizard_v3" data-wizard-state="step-first" data-wizard-clickable="true">
                         <!--begin: Wizard Nav-->
                         <div class="wizard-nav">
                             <div class="wizard-steps px-8 py-8 px-lg-15 py-lg-3">

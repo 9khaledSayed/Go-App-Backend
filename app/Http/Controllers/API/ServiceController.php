@@ -17,6 +17,7 @@ class ServiceController extends Controller
                 "name" => $service['name'],
                 "logo" => getImagesPath('Services') . $service['logo'],
                 "description" => $service['description'],
+                "color" => $service['color'],
             ];
         });
         return response($services);
