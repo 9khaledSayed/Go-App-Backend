@@ -11,6 +11,10 @@ class Offer extends Model
     use SoftDeletes;
     protected $guarded = [];
 
+    protected $casts = [
+        'accepted_date' => 'date: Y-m-d',
+    ];
+
     public function provider()
     {
         return $this->belongsTo(Provider::class);
@@ -40,5 +44,10 @@ class Offer extends Model
             sendFirebaseNotification("User",'يوجد عرض جديد علي طلبك رقم ' . $offer->order->id ,$offer->order->user_id);
         });
 
+    }
+
+    public function getEndDateAttribute()
+    {
+        return $this->accepted_date->addDays($this->attributes['duration']);
     }
 }
