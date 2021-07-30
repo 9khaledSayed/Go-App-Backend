@@ -88,8 +88,12 @@ class OrderController extends Controller
         $orders = auth()->user()->orders()->where('status', 'in_progress')->get()->map(function ($order){
 
             $acceptedOffer = $order->offers->where('status','approved')->first();
-            $daysLeft      = new Carbon( $acceptedOffer['accepted_date'] );
-            $daysLeft      = $daysLeft->diffInDays( Carbon::now() );
+//            $acceptedDate      = $acceptedOffer->accepted_date->addDays();
+            $daysLeft = 0;
+            if ($acceptedOffer->end_date->gt(Carbon::now())){
+                $daysLeft      = $acceptedOffer->end_date->diffInDays( Carbon::now() );
+            }
+
 
             return
             [
@@ -160,7 +164,7 @@ class OrderController extends Controller
 
     public function workshop()
     {
-        $orders = Order::where('status', 'pending')->get()->latest()->map(function ($order){
+        $orders = Order::where('status', 'pending')->latest()->get()->map(function ($order){
             return
                 [
                     'id' => $order['id'],
