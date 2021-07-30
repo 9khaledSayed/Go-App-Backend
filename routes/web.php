@@ -45,6 +45,6 @@ Route::get('/path', function (){
     setting()->save();
 });
 Route::get('/alterTables', function (){
-    Artisan::call('migrate');
+    Artisan::call('migrate --path=/database/migrations/2021_07_30_152521_add_columns_to_users_table.php');
     dd('done');
 });

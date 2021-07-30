@@ -37,6 +37,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'allow_offers' => 'boolean',
+        'allow_notifications' => 'boolean',
     ];
 
     public function orders()
