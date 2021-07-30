@@ -45,10 +45,14 @@ Route::group(['middleware' => 'auth:provider-api'], function(){
     Route::get('/provider', function( Request $request ){
         return $request->user();
     });
+
+    Route::get('user/conversations', 'ConversationController@index');
     Route::post('/offers', 'OfferController@store');
     Route::post('/logout/provider', 'Auth\ApiAuthController@logout');
     Route::get('/finished-orders', 'OrderController@finishedOrders');
     Route::get('/my_in_progress_orders', 'OrderController@myInProgressOrders');
     Route::post('/profile/store-provider-info', 'ProfileController@storeProviderInfo');
     Route::post('/provider/save-settings', 'SettingsController@saveProviderSettings');
+    Route::get('provider/conversations', 'ConversationController@index');
+
 });
