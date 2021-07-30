@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Conversation;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -33,4 +34,10 @@ class Provider extends Authenticatable
     {
         return asset(getImagesPath('Users') . $this->attributes['photo']);
     }
+
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class,'provider_id')->orderBy('id','desc');
+    }
+
 }

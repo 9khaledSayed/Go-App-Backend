@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="5c25aa08-8c28-4a3e-864d-13d519a842e9" name="go-app" url="http://cashuce.com">
-        <fileTransfer host="cashuce.com" port="21">
+      <webServer id="5c25aa08-8c28-4a3e-864d-13d519a842e9" name="go-app" url="http://zakighanem-academy.com">
+        <fileTransfer host="zakighanem-academy.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

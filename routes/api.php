@@ -27,10 +27,7 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 
 
 Route::group(['middleware' => ['auth:user-api']], function(){
-    Route::get('/user', function( Request $request ){
-        dd($request->user());
-        return $request->user();
-    });
+
 
     Route::post('/logout/user', 'Auth\ApiAuthController@logout');
     Route::post('/store-order', 'OrderController@store');
@@ -39,17 +36,17 @@ Route::group(['middleware' => ['auth:user-api']], function(){
     Route::get('/pending_orders', 'OrderController@pendingOrders');
     Route::get('/offers/{offer}/accept', 'OfferController@accept');
     Route::post('/profile/store-user-info', 'ProfileController@storeUserInfo');
+    Route::get('user/conversations', 'ConversationController@index');
+
 });
 
 Route::group(['middleware' => 'auth:provider-api'], function(){
-    Route::get('/provider', function( Request $request ){
-        dd($request->user());
-        return $request->user();
-    });
+
     Route::post('/offers', 'OfferController@store');
     Route::post('/logout/provider', 'Auth\ApiAuthController@logout');
     Route::get('/finished-orders', 'OrderController@finishedOrders');
     Route::get('/my_in_progress_orders', 'OrderController@myInProgressOrders');
     Route::post('/profile/store-provider-info', 'ProfileController@storeProviderInfo');
+    Route::get('provider/conversations', 'ConversationController@index');
 
 });
