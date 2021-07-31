@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Conversation;
+use App\Conversation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,8 +65,6 @@ class ConversationController extends Controller
 
         $response = [
           'conversation_id' => $conversation->id,
-          'user_id'         => $conversation->user->id,
-          'provider_id'     => $conversation->provider->id,
           'receiver_name'   => $conversation->provider->name,
           'receiver_photo'  => $conversation->provider->photo,
           'messages'        => $messages,

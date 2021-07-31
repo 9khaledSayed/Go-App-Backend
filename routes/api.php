@@ -38,9 +38,12 @@ Route::group(['middleware' => ['auth:user-api']], function(){
     Route::get('/pending_orders', 'OrderController@pendingOrders');
     Route::get('/offers/{offer}/accept', 'OfferController@accept');
     Route::post('/profile/store-user-info', 'ProfileController@storeUserInfo');
+    Route::get('user/conversations', 'ConversationController@index');
+    Route::post('user/conversations', 'ConversationController@store');
     Route::post('/user/save-settings', 'SettingsController@saveUserSettings');
     Route::get('user/notifications', 'NotificationsController@userNotifications');
     Route::get('user/notifications/{id}/mark_as_red', 'NotificationsController@markUserNotificationAsRead');
+
 });
 
 Route::group(['middleware' => 'auth:provider-api'], function(){
@@ -58,4 +61,6 @@ Route::group(['middleware' => 'auth:provider-api'], function(){
     Route::get('provider/conversations', 'ConversationController@index');
     Route::get('provider/notifications', 'NotificationsController@providerNotifications');
     Route::get('provider/notifications/{id}/mark_as_red', 'NotificationsController@markProviderNotificationAsRead');
+    Route::post('provider/conversations', 'ConversationController@store');
+
 });
