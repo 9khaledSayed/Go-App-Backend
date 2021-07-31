@@ -37,11 +37,16 @@ class OrderController extends Controller
 
         $data = $request->validate([
            'category_id' => 'required' ,
-//           'notes' => 'required' ,
+           'notes' => 'nullable' ,
            'details' => 'required' ,
         ]);
 
         $data['user_id'] = auth('user-api')->id();
+
+        if($request->hasFile('file'))
+        {
+            $data['file'] = uploadImage($request->file('file'), "Orders");
+        }
 
         Order::create($data);
 

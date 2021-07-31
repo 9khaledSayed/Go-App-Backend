@@ -38,9 +38,10 @@ Route::group(['middleware' => ['auth:user-api']], function(){
     Route::get('/pending_orders', 'OrderController@pendingOrders');
     Route::get('/offers/{offer}/accept', 'OfferController@accept');
     Route::post('/profile/store-user-info', 'ProfileController@storeUserInfo');
-    Route::get('user/conversations', 'ConversationController@index');
-    Route::post('user/conversations', 'ConversationController@store');
     Route::post('/user/save-settings', 'SettingsController@saveUserSettings');
+    Route::get('/user/get-conversations', 'ConversationController@index');
+    Route::post('/user/conversation', 'ConversationController@store');
+    Route::post('/user/send-message', 'MessageController@store');
 
 });
 
@@ -56,7 +57,8 @@ Route::group(['middleware' => 'auth:provider-api'], function(){
     Route::get('/my_in_progress_orders', 'OrderController@myInProgressOrders');
     Route::post('/profile/store-provider-info', 'ProfileController@storeProviderInfo');
     Route::post('/provider/save-settings', 'SettingsController@saveProviderSettings');
-    Route::get('provider/conversations', 'ConversationController@index');
-    Route::post('provider/conversations', 'ConversationController@store');
+    Route::get('/provider/get-conversations', 'ConversationController@index');
+    Route::post('/provider/conversation', 'ConversationController@store');
+    Route::post('/provider/send-message', 'MessageController@store');
 
 });
