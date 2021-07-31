@@ -13,6 +13,7 @@ class Offer extends Model
 
     protected $casts = [
         'accepted_date' => 'date: Y-m-d',
+        'price' => 'decimal,2',
     ];
 
     public function provider()

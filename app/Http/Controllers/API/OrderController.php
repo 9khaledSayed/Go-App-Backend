@@ -108,7 +108,8 @@ class OrderController extends Controller
                 'provider_name' => $acceptedOffer['provider']['name'],
                 'provider_id' => $acceptedOffer['provider']['id'],
                 'totalDays' => intval( $acceptedOffer['duration'] ),
-                'daysLeft' => $acceptedOffer['duration'] - $daysLeft,
+                'daysLeft' => $daysLeft,
+                'price' => $acceptedOffer->price,
             ];
         });
 
@@ -189,7 +190,7 @@ class OrderController extends Controller
     {
         $provider = auth()->user();
 
-        $myInProgressOrders = $provider->offers->where('status', 'approved')->map(function ($offer){
+        $myInProgressOrders = $provider->offers()->where('status', 'approved')->get()->map(function ($offer){
             $order = $offer->order;
             if($order->status == 'in_progress'){
                 return [
