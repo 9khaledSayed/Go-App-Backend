@@ -39,9 +39,14 @@ Route::group(['middleware' => ['auth:user-api']], function(){
     Route::get('/offers/{offer}/accept', 'OfferController@accept');
     Route::post('/profile/store-user-info', 'ProfileController@storeUserInfo');
     Route::post('/user/save-settings', 'SettingsController@saveUserSettings');
+
     Route::get('/user/get-conversations', 'ConversationController@index');
     Route::post('/user/conversation', 'ConversationController@store');
     Route::post('/user/send-message', 'MessageController@store');
+
+    Route::get('user/notifications', 'NotificationsController@userNotifications');
+    Route::get('user/notifications/{id}/mark_as_red', 'NotificationsController@markUserNotificationAsRead');
+
 
 });
 
@@ -57,8 +62,15 @@ Route::group(['middleware' => 'auth:provider-api'], function(){
     Route::get('/my_in_progress_orders', 'OrderController@myInProgressOrders');
     Route::post('/profile/store-provider-info', 'ProfileController@storeProviderInfo');
     Route::post('/provider/save-settings', 'SettingsController@saveProviderSettings');
+
     Route::get('/provider/get-conversations', 'ConversationController@index');
     Route::post('/provider/conversation', 'ConversationController@store');
     Route::post('/provider/send-message', 'MessageController@store');
+
+
+    Route::get('provider/notifications', 'NotificationsController@providerNotifications');
+    Route::get('provider/notifications/{id}/mark_as_red', 'NotificationsController@markProviderNotificationAsRead');
+
+
 
 });
