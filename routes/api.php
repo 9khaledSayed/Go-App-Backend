@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth:user-api']], function(){
     Route::get('/offers/{offer}/accept', 'OfferController@accept');
     Route::post('/profile/store-user-info', 'ProfileController@storeUserInfo');
     Route::get('user/conversations', 'ConversationController@index');
+    Route::post('user/conversations', 'ConversationController@store');
 
 });
 
@@ -48,5 +49,6 @@ Route::group(['middleware' => 'auth:provider-api'], function(){
     Route::get('/my_in_progress_orders', 'OrderController@myInProgressOrders');
     Route::post('/profile/store-provider-info', 'ProfileController@storeProviderInfo');
     Route::get('provider/conversations', 'ConversationController@index');
+    Route::post('provider/conversations', 'ConversationController@store');
 
 });

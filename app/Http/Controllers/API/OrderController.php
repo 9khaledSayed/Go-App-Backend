@@ -106,6 +106,7 @@ class OrderController extends Controller
                 'orderDate' => date('d-m-Y' , strtotime($order['created_at'])),
                 'status' => $order['status'],
                 'provider_name' => $acceptedOffer['provider']['name'],
+                'provider_id' => $acceptedOffer['provider']['id'],
                 'totalDays' => intval( $acceptedOffer['duration'] ),
                 'daysLeft' => $acceptedOffer['duration'] - $daysLeft,
             ];
@@ -164,7 +165,7 @@ class OrderController extends Controller
 
     public function workshop()
     {
-        $orders = Order::where('status', 'pending')->latest()->get()->map(function ($order){
+        $orders = Order::latest()->where('status', 'pending')->get()->map(function ($order){
             return
                 [
                     'id' => $order['id'],
@@ -176,6 +177,7 @@ class OrderController extends Controller
                     'orderDate' => $order->created_at,
                     'category_images' => $order->category->images,
                     'user_name' => $order->user->name,
+                    'status' => $order->status,
                 ];
         });
 
