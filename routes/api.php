@@ -39,6 +39,8 @@ Route::group(['middleware' => ['auth:user-api']], function(){
     Route::get('/offers/{offer}/accept', 'OfferController@accept');
     Route::post('/profile/store-user-info', 'ProfileController@storeUserInfo');
     Route::post('/user/save-settings', 'SettingsController@saveUserSettings');
+    Route::get('user/notifications', 'NotificationsController@userNotifications');
+    Route::get('user/notifications/{id}/mark_as_red', 'NotificationsController@markUserNotificationAsRead');
 });
 
 Route::group(['middleware' => 'auth:provider-api'], function(){
@@ -54,5 +56,6 @@ Route::group(['middleware' => 'auth:provider-api'], function(){
     Route::post('/profile/store-provider-info', 'ProfileController@storeProviderInfo');
     Route::post('/provider/save-settings', 'SettingsController@saveProviderSettings');
     Route::get('provider/conversations', 'ConversationController@index');
-
+    Route::get('provider/notifications', 'NotificationsController@providerNotifications');
+    Route::get('provider/notifications/{id}/mark_as_red', 'NotificationsController@markProviderNotificationAsRead');
 });
