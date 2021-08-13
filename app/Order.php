@@ -17,6 +17,8 @@ class Order extends Model
         'created_at' => 'datetime:Y-m-d',
     ];
 
+    protected $appends = ['file_path'];
+
     protected $guarded = [];
 
     public function getCategoryIdAttribute()
@@ -78,6 +80,15 @@ class Order extends Model
             sendFirebaseNotification("Provider",'يوجد طلب جديد');
         });
 
+    }
+
+    public function getFilePathAttribute()
+    {
+        if ($this->file){
+            return getImagesPath('Orders') . $this->file;
+        }
+
+        return $this->file;
     }
 
 }

@@ -54,7 +54,7 @@ class OfferController extends Controller
             'order_id' => 'required|numeric|exists:orders,id',
             'duration' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
-            'description' => 'required|string'
+            'description' => 'nullable|string'
         ]);
         $data['provider_id'] = auth()->user()->id;
 

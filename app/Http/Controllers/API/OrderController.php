@@ -179,6 +179,7 @@ class OrderController extends Controller
                     'category_images' => $order->category->images,
                     'user_name' => $order->user->name,
                     'status' => $order->status,
+                    'file_path' => $order->file_path,
                 ];
         });
 
