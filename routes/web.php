@@ -36,7 +36,7 @@ Route::get('test' , function ()
 //
 //      ]);
 //    Artisan::call('passport:install');
-    Artisan::call('config:cache');
+    Artisan::call('migrate');
     dd("done");
 });
 

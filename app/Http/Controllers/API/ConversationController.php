@@ -12,17 +12,22 @@ class ConversationController extends Controller
 
     public function index()
     {
-        $authType = auth('user-api')->check() ? 'App/User' : 'App/Provider';
+        $authType = auth('user-api')->check() ? 'App\User' : 'App\Provider';
 
         $response = auth()->user()->conversations->map( function ($conversation) use ($authType)
         {
+            $recentMessage = $conversation->messages->count() > 0 ? $conversation->messages()->latest()->first()->message : '';
+            $timeAgo       = $conversation->messages->count() > 0 ? $conversation->messages()->latest()->first()->created_at->diffForHumans() : '';
             return
             [
                 'conversation_id' => $conversation->id,
                 'user_id'         => $conversation->user->id,
                 'provider_id'     => $conversation->provider->id,
-                'receiver_name'   => $conversation->provider->name,
-                'receiver_photo'  => $conversation->provider->photo,
+                'receiver_name'   => auth('user-api')->check() ? $conversation->provider->name: $conversation->user->name,
+                'receiver_photo'  => auth('user-api')->check() ? $conversation->provider->photo: $conversation->user->photo,
+                'receiver_id'     => auth('user-api')->check() ? $conversation->provider->id: $conversation->user->id,
+                'recent_message'  => $recentMessage,
+                'time_ago'        => $timeAgo,
                 'messages'        => $conversation->messages->map( function ($message) use ($authType)
                 {
                     return
@@ -65,8 +70,9 @@ class ConversationController extends Controller
 
         $response = [
           'conversation_id' => $conversation->id,
-          'receiver_name'   => $conversation->provider->name,
-          'receiver_photo'  => $conversation->provider->photo,
+          'receiver_name'   => auth('user-api')->check() ? $conversation->provider->name : $conversation->user->name,
+          'receiver_photo'  => auth('user-api')->check() ? $conversation->provider->photo : $conversation->user->photo,
+          'receiver_id'     => auth('user-api')->check() ? $conversation->provider->id : $conversation->user->id,
           'messages'        => $messages,
         ];
 

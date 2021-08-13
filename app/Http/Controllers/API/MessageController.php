@@ -20,13 +20,16 @@ class MessageController extends Controller
         ]);
 
         $data['sender_id'] = auth()->id();
-        $data['sender_type'] = auth('user-api')->check() ? 'App/User' : 'App/Provider';
+        $data['sender_type'] = auth('user-api')->check() ? 'App\User' : 'App\Provider';
 
         Message::create($data);
 
-        //$receiverToken = User::find( $request['receiver_id'] )->fcm_token;
+        $modelName   = auth('user-api')->check() ? 'Provider' : 'User';
+        $modelObject = app("App\\$modelName");
 
-        //sendFirebaseNotification( $request['message'] , $receiverToken);
+
+
+        sendFirebaseNotification( $modelName , $request['message'] , $request['receiver_id']);
 
         return response()->json([
             'status' => true,
