@@ -17,7 +17,7 @@ class Order extends Model
         'created_at' => 'datetime:Y-m-d',
     ];
 
-    protected $appends = ['file_path'];
+    protected $appends = ['file_path','status_name'];
 
     protected $guarded = [];
 
@@ -31,11 +31,11 @@ class Order extends Model
         return intval($this->attributes['user_id']);
     }
 
-    public function getStatusAttribute()
+    public function getStatusNameAttribute()
     {
         switch ( $this->attributes['status'] )
         {
-            case "pending"     : return "جديده";
+            case "pending"     : return "جديدة";
             case "in_progress" : return "تحت النفيذ";
             case "finished"    : return "تم النفيذ";
             case "canceled"    : return "تم الإلغاء";

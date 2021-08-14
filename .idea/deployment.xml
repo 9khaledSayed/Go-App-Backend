@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="PublishConfigData" autoUpload="Always" serverName="goApp" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="goApp">
+=======
+  <component name="PublishConfigData" serverName="go-app" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="go-app">
+>>>>>>> 5e48de4d38de815b38dabc9ea195d5d762b92e2e
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
@@ -10,6 +16,9 @@
         </serverdata>
       </paths>
     </serverData>
+<<<<<<< HEAD
     <option name="myAutoUpload" value="ALWAYS" />
+=======
+>>>>>>> 5e48de4d38de815b38dabc9ea195d5d762b92e2e
   </component>
 </project>

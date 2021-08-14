@@ -2,7 +2,11 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
+<<<<<<< HEAD
       <webServer id="09e8394a-cd0f-4419-817b-8e043f27169c" name="goApp" url="http://cashuce.com">
+=======
+      <webServer id="17597f93-a7bc-4e3b-8094-4f266af7aeda" name="go-app" url="http://cashuce.com">
+>>>>>>> 5e48de4d38de815b38dabc9ea195d5d762b92e2e
         <fileTransfer host="cashuce.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
