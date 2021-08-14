@@ -82,7 +82,7 @@ class ApiAuthController extends Controller
         $data =  $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required',
+            'phone' => 'required|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'fcm_token' => ['required', 'string', 'max:255'],
         ]);
@@ -98,7 +98,7 @@ class ApiAuthController extends Controller
         $data =  $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:providers',
-            'phone' => 'required',
+            'phone' => 'required|unique:providers',
             'password' => 'required|string|min:6|confirmed',
             'fcm_token' => ['required', 'string', 'max:255'],
         ]);

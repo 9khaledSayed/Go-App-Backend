@@ -36,7 +36,7 @@ class Provider extends Authenticatable
 
     public function getPhotoUrlAttribute()
     {
-        return asset(getImagesPath('Users') . $this->attributes['photo']);
+        return asset(getImagesPath('Providers') . $this->photo);
     }
 
     public function conversations()
