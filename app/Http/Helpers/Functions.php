@@ -100,7 +100,7 @@ if(!function_exists('sendFirebaseNotification')){
             $data['registration_ids'] = $tokens;
         }else
         {
-            $token  =  $Model::find($id)->fcm_tokens;
+            $token  =  $Model::find($id)->fcm_token;
             $data['to'] = $token;
         }
 

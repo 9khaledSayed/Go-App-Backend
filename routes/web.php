@@ -26,7 +26,7 @@ Route::post('/login/provider', 'Auth\LoginController@providerLogin')->name('prov
 Route::get('test' , function ()
 {
 
-//        sendFirebaseNotification("User","this the body");
+//        sendFirebaseNotification("User","this the body",4);
 //      \App\Order::create([
 //         'category_id' => 1,
 //         'user_id' => 1,
@@ -36,7 +36,7 @@ Route::get('test' , function ()
 //
 //      ]);
 //    Artisan::call('passport:install');
-    Artisan::call('migrate');
+//    Artisan::call('migrate');
     dd("done");
 });
 

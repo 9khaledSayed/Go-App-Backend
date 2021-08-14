@@ -21,6 +21,8 @@ class ApiAuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (Hash::check($request->password, $user->password)) {
+            $user->fcm_token = $request['fcm_token'];
+            $user->save();
             $token = $user->createToken('Laravel Password Grant Client')->accessToken;
             $response = ['token' => $token, 'user' => $user];
             return response($response, 200);
@@ -37,6 +39,8 @@ class ApiAuthController extends Controller
 
         $provider = Provider::where('email', $request->email)->first();
         if (Hash::check($request->password, $provider->password)) {
+            $provider->fcm_token = $request['fcm_token'];
+            $provider->save();
             $token = $provider->createToken('Laravel Password Grant Client')->accessToken;
             $response = ['token' => $token, 'user' => $provider];
             return response($response, 200);

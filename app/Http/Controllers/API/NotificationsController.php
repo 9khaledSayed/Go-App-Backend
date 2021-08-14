@@ -23,7 +23,6 @@ class NotificationsController extends Controller
     }
     public function providerNotifications()
     {
-        auth()->user()->notify(new NewOrder('hello this is a test notification', '2020-10-10', '/'));
         $notifications = auth()->user()->notifications->map(function ($notification){
             return [
                 'id' => $notification->id,

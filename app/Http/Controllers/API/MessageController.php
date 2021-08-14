@@ -20,14 +20,12 @@ class MessageController extends Controller
             'message' => 'required',
         ]);
 
-        $data['sender_id'] = auth()->id();
+        $data['sender_id']   = auth()->id();
         $data['sender_type'] = $isUser ? 'App\User' : 'App\Provider';
 
         Message::create($data);
 
         $modelName   = $isUser ? 'Provider' : 'User';
-        $modelObject = app("App\\$modelName");
-
 
 
         sendFirebaseNotification( $modelName , $request['message'] , $request['receiver_id']);
