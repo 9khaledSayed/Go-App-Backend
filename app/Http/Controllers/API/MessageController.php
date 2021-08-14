@@ -13,6 +13,7 @@ class MessageController extends Controller
 
     public function store(Request $request)
     {
+        $isUser   = request()->segment(2) == 'user';
 
         $data = $request->validate([
             'conversation_id' => 'required',
@@ -20,11 +21,11 @@ class MessageController extends Controller
         ]);
 
         $data['sender_id'] = auth()->id();
-        $data['sender_type'] = auth('user-api')->check() ? 'App\User' : 'App\Provider';
+        $data['sender_type'] = $isUser ? 'App\User' : 'App\Provider';
 
         Message::create($data);
 
-        $modelName   = auth('user-api')->check() ? 'Provider' : 'User';
+        $modelName   = $isUser ? 'Provider' : 'User';
         $modelObject = app("App\\$modelName");
 
 
