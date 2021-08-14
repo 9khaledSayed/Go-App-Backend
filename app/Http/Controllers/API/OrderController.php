@@ -25,6 +25,7 @@ class OrderController extends Controller
               'category_images' => $category->images,
               'duration' => $offer->duration,
               'status' => $offer->status,
+              'status_name' => $offer->status_name,
               'delivery_price' => $offer->delivery_price,
               'order_notes' => $order->notes,
             ];
@@ -61,6 +62,7 @@ class OrderController extends Controller
             'categoryName' => $order['category']['name'],
             'orderDate' => date('d-m-Y' , strtotime($order['created_at'])),
             'status' => $order['status'],
+            'status_name' => $order['status_name'],
         ];
 
         return response($response);
@@ -80,6 +82,7 @@ class OrderController extends Controller
                 'categoryName' => $order['category']['name'],
                 'orderDate' => date('d-m-Y' , strtotime($order['created_at'])),
                 'status' => $order['status'],
+                'status_name' => $order['status_name'],
 
             ];
         });
@@ -110,6 +113,7 @@ class OrderController extends Controller
                 'categoryName' => $order['category']['name'],
                 'orderDate' => date('d-m-Y' , strtotime($order['created_at'])),
                 'status' => $order['status'],
+                'status_name' => $order['status_name'],
                 'provider_name' => $acceptedOffer['provider']['name'],
                 'provider_id' => $acceptedOffer['provider']['id'],
                 'totalDays' => intval( $acceptedOffer['duration'] ),
@@ -135,6 +139,7 @@ class OrderController extends Controller
                     'categoryName' => $order['category']['name'],
                     'orderDate' => $order->created_at,
                     'status' => $order->status,
+                    'status_name' => $order->status_name,
                 ];
         });
 
@@ -162,6 +167,7 @@ class OrderController extends Controller
                         'categoryName' => $offer['order']['category']['name'],
                         'orderDate' => date('d-m-Y', strtotime($offer['order']['created_at'])),
                         'status' => $offer['order']['status'],
+                        'status_name' => $offer['order']['status_name'],
                     ];
             });
 
@@ -184,6 +190,7 @@ class OrderController extends Controller
                     'category_images' => $order->category->images,
                     'user_name' => $order->user->name,
                     'status' => $order->status,
+                    'status_name' => $order->status_name,
                     'file_path' => $order->file_path,
                 ];
         });
